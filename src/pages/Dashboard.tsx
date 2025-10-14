@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
 import { 
   MessageCircle, 
   Users, 
@@ -31,6 +32,10 @@ const Dashboard = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [blacklistNumber, setBlacklistNumber] = useState("");
   const [blacklist, setBlacklist] = useState<string[]>([]);
+  
+  const exportedContacts = 1247;
+  const totalContacts = 2500;
+  const exportProgress = (exportedContacts / totalContacts) * 100;
   
   const [numbers, setNumbers] = useState([
     { phone: "+1 777 123 4567", active: true },
@@ -168,15 +173,14 @@ const Dashboard = () => {
             <Users className="w-5 h-5 text-primary" />
             <h2 className="text-xl font-semibold">Contacts Database</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-accent p-4 rounded-lg">
-              <p className="text-3xl font-bold text-accent-foreground">1,247</p>
-              <p className="text-sm text-muted-foreground">Exported contacts</p>
-            </div>
-            <div className="bg-accent p-4 rounded-lg">
-              <p className="text-3xl font-bold text-accent-foreground">15,632</p>
-              <p className="text-sm text-muted-foreground">Total messages</p>
-            </div>
+          <div className="space-y-3">
+            <p className="text-lg text-foreground">
+              We exported chats of <span className="font-bold text-primary">{exportedContacts}</span> out of <span className="font-bold">{totalContacts}</span> contacts
+            </p>
+            <Progress value={exportProgress} className="h-3" />
+            <p className="text-sm text-muted-foreground text-right">
+              {exportProgress.toFixed(0)}% complete
+            </p>
           </div>
         </Card>
 
