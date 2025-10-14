@@ -14,9 +14,16 @@ import {
   Calendar,
   Send,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  ChevronDown
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -25,11 +32,21 @@ const Dashboard = () => {
   const [blacklistNumber, setBlacklistNumber] = useState("");
   const [blacklist, setBlacklist] = useState<string[]>([]);
   
-  const [numbers] = useState([
+  const [numbers, setNumbers] = useState([
     { phone: "+1 777 123 4567", active: true },
     { phone: "+1 701 987 6543", active: false },
     { phone: "+1 705 555 1122", active: false },
   ]);
+
+  const activeNumber = numbers.find(n => n.active) || numbers[0];
+
+  const handleNumberSwitch = (selectedPhone: string) => {
+    setNumbers(numbers.map(n => ({ ...n, active: n.phone === selectedPhone })));
+    toast({
+      title: "Number switched",
+      description: `Now using ${selectedPhone}`,
+    });
+  };
 
   const handleConnect = () => {
     setIsConnected(true);
@@ -55,17 +72,57 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 pb-20 animate-fade-in">
-      <div className="max-w-4xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-muted-foreground">Manage your WhatsApp campaigns</p>
+    <div className="min-h-screen bg-background animate-fade-in">
+      {/* Header with active number and dropdown */}
+      <header className="sticky top-0 z-50 bg-background border-b">
+        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="bg-primary rounded-full p-2">
+              <MessageCircle className="w-5 h-5 text-primary-foreground" />
+            </div>
+            <div className="font-mono text-sm font-medium text-foreground">
+              {activeNumber.phone}
+            </div>
           </div>
-          <div className="bg-primary rounded-full p-3">
-            <MessageCircle className="w-6 h-6 text-primary-foreground" />
-          </div>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="gap-2">
+                My Numbers
+                <ChevronDown className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              {numbers.map((number) => (
+                <DropdownMenuItem
+                  key={number.phone}
+                  onClick={() => handleNumberSwitch(number.phone)}
+                  className="font-mono text-sm"
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <span>{number.phone}</span>
+                    {number.active && (
+                      <Badge variant="default" className="bg-success text-white ml-2">
+                        Active
+                      </Badge>
+                    )}
+                  </div>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuItem className="text-primary">
+                <Plus className="w-4 h-4 mr-2" />
+                Add Number
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </header>
+
+      <div className="max-w-4xl mx-auto p-4 pb-20 space-y-6">
+        {/* Page Title */}
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground">Manage your WhatsApp campaigns</p>
         </div>
 
         {/* WhatsApp Connection */}
@@ -120,35 +177,6 @@ const Dashboard = () => {
               <p className="text-3xl font-bold text-accent-foreground">15,632</p>
               <p className="text-sm text-muted-foreground">Total messages</p>
             </div>
-          </div>
-        </Card>
-
-        {/* My Numbers */}
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">My Numbers</h2>
-            <Button variant="outline" size="sm">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Number
-            </Button>
-          </div>
-          <div className="space-y-3">
-            {numbers.map((number, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <p className="font-mono text-foreground">{number.phone}</p>
-                  {number.active && (
-                    <Badge variant="default" className="bg-success text-white">
-                      Active
-                    </Badge>
-                  )}
-                </div>
-                <Switch defaultChecked={number.active} />
-              </div>
-            ))}
           </div>
         </Card>
 
