@@ -8,7 +8,9 @@ import Auth from "./pages/Auth";
 import AuthVerify from "./pages/AuthVerify";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
+import Campaigns from "./pages/Campaigns";
 import NotFound from "./pages/NotFound";
+import BottomNav from "./components/BottomNav";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +25,8 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/auth/verify" element={<AuthVerify />} />
           <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<><Dashboard /><BottomNav /></>} />
+          <Route path="/campaigns" element={<><Campaigns /><BottomNav /></>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -2,20 +2,14 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { 
   MessageCircle, 
   Users, 
   Plus, 
-  Trash2, 
-  Calendar,
-  Send,
+  Trash2,
   CheckCircle2,
-  AlertCircle,
   ChevronDown
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -181,64 +175,6 @@ const Dashboard = () => {
             <p className="text-sm text-muted-foreground text-right">
               {exportProgress.toFixed(0)}% complete
             </p>
-          </div>
-        </Card>
-
-        {/* Launch Campaign */}
-        <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent border-primary/20">
-          <div className="flex items-center gap-2 mb-6">
-            <Send className="w-5 h-5 text-primary" />
-            <h2 className="text-xl font-semibold">Launch Campaign</h2>
-          </div>
-          
-          <div className="space-y-6">
-            <div>
-              <Label className="text-base mb-3 block">Select Tags</Label>
-              <div className="space-y-2">
-                {["Customers", "Leads", "VIP Clients"].map((tag) => (
-                  <div key={tag} className="flex items-center space-x-3">
-                    <Checkbox id={tag} />
-                    <Label htmlFor={tag} className="cursor-pointer text-base">
-                      {tag}
-                    </Label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="start-date" className="text-sm mb-2 block">Start Date</Label>
-                <Input type="date" id="start-date" />
-              </div>
-              <div>
-                <Label htmlFor="end-date" className="text-sm mb-2 block">End Date</Label>
-                <Input type="date" id="end-date" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="start-time" className="text-sm mb-2 block">Start Time</Label>
-                <Input type="time" id="start-time" defaultValue="10:00" />
-              </div>
-              <div>
-                <Label htmlFor="end-time" className="text-sm mb-2 block">End Time</Label>
-                <Input type="time" id="end-time" defaultValue="18:00" />
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2 p-3 bg-accent/50 rounded-lg">
-              <AlertCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-muted-foreground">
-                Messages will be evenly distributed during the selected period
-              </p>
-            </div>
-
-            <Button className="w-full h-12 text-base" size="lg">
-              <Calendar className="w-5 h-5 mr-2" />
-              Schedule Campaign
-            </Button>
           </div>
         </Card>
 
