@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Send } from "lucide-react";
+import { LayoutDashboard, Send, CreditCard } from "lucide-react";
 
 const BottomNav = () => {
   const navItems = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { to: "/campaigns", icon: Send, label: "Campaign" },
+    { to: "/payment", icon: CreditCard, label: "Payment" },
   ];
 
   return (

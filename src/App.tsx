@@ -9,6 +9,7 @@ import AuthVerify from "./pages/AuthVerify";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Campaigns from "./pages/Campaigns";
+import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 import BottomNav from "./components/BottomNav";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/dashboard" element={<><Dashboard /><BottomNav /></>} />
           <Route path="/campaigns" element={<><Campaigns /><BottomNav /></>} />
+          <Route path="/payment" element={<><Payment /><BottomNav /></>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
