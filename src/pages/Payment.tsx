@@ -54,8 +54,7 @@ const Payment = () => {
                 className="w-full h-12 text-lg"
                 size="lg"
               >
-                <img src={kaspiLogo} alt="Kaspi" className="h-6 w-6" />
-                Pay with Kaspi Pay
+                Pay with <img src={kaspiLogo} alt="Kaspi" className="h-6 w-6 mx-1" /> Kaspi Pay
               </Button>
             </div>
 
