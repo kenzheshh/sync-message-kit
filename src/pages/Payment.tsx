@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import kaspiLogo from "@/assets/kaspi-logo.png";
 
 const Payment = () => {
   const handleKaspiPayment = () => {
@@ -53,6 +54,7 @@ const Payment = () => {
                 className="w-full h-12 text-lg"
                 size="lg"
               >
+                <img src={kaspiLogo} alt="Kaspi" className="h-6 w-6" />
                 Pay with Kaspi Pay
               </Button>
             </div>
