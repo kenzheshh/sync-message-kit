@@ -366,7 +366,7 @@ const Index = () => {
               </div>
               <div className="space-y-2">
                 <div className="text-5xl font-bold">23%</div>
-                <p className="text-muted-foreground text-lg">Average repeat rate</p>
+                <p className="text-muted-foreground text-lg">Average conversion rate</p>
               </div>
               <div className="space-y-2">
                 <div className="text-5xl font-bold">2 min</div>
