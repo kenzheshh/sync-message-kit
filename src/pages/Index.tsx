@@ -46,15 +46,15 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO / ABOVE THE FOLD */}
       <section className="container mx-auto px-4 py-20 lg:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-in">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            Don't make connecting awkward
+            Re-engage customers automatically — no manual work
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            No more fumbling for contacts or lost conversations. SalemBot automatically re-engages every customer who ever messaged your business WhatsApp.
+            Connect your WhatsApp, segment contacts, and send personalized messages in seconds
           </p>
           
           <div className="pt-6">
@@ -63,155 +63,278 @@ const Index = () => {
               className="h-16 text-lg px-10 bg-foreground text-background hover:bg-foreground/90 rounded-full"
               onClick={() => navigate("/auth")}
             >
-              Sign up free
+              Start Free — 2-minute Setup
             </Button>
           </div>
           
           <div className="pt-12">
             <img 
               src="/placeholder.svg" 
-              alt="SalemBot Dashboard" 
+              alt="SalemBot Dashboard — WhatsApp message automation" 
               className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full"
             />
           </div>
         </div>
       </section>
 
-      {/* 2. HOW IT WORKS */}
+      {/* 2. PROBLEM → AGITATION → SOLUTION */}
       <section className="py-32 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Here's how it works
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              More engaging, less awkward.
-            </p>
-          </div>
-          
-          <div className="max-w-5xl mx-auto space-y-32">
-            {/* Step 1 */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <div className="aspect-square bg-muted rounded-3xl flex items-center justify-center">
-                  <Plug className="w-32 h-32 text-primary" />
-                </div>
-              </div>
-              <div className="order-1 lg:order-2 space-y-4">
-                <h3 className="text-4xl font-bold">Connect your WhatsApp</h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  When it's time to reconnect with customers, simply link your business WhatsApp number to SalemBot with one click.
-                </p>
-              </div>
+          <div className="max-w-3xl mx-auto space-y-16">
+            {/* Problem */}
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Manual follow-ups are draining your time and leaking revenue.
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                You forget to message past customers, they drift away, and repeat sales die.
+              </p>
             </div>
 
-            {/* Step 2 */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-4">
-                <h3 className="text-4xl font-bold">Auto-segment contacts</h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  SalemBot instantly scans your chat history and groups everyone into categories: new, active, or past customers.
-                </p>
-              </div>
-              <div>
-                <div className="aspect-square bg-muted rounded-3xl flex items-center justify-center">
-                  <FolderKanban className="w-32 h-32 text-primary" />
-                </div>
-              </div>
+            {/* Agitation */}
+            <div className="bg-muted rounded-3xl p-12 space-y-4">
+              <p className="text-2xl font-semibold">
+                Every week you lose potential sales because you can't remember to follow up.
+              </p>
+              <p className="text-xl text-muted-foreground">
+                Every missed message is a lost opportunity to reconnect.
+              </p>
             </div>
 
-            {/* Step 3 */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <div className="aspect-square bg-muted rounded-3xl flex items-center justify-center">
-                  <Rocket className="w-32 h-32 text-primary" />
-                </div>
-              </div>
-              <div className="order-1 lg:order-2 space-y-4">
-                <h3 className="text-4xl font-bold">Launch campaigns</h3>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  At the end of each week, you can quickly review your contacts and send personalized messages to re-engage them.
-                </p>
-              </div>
+            {/* Solution */}
+            <div className="text-center space-y-6">
+              <h3 className="text-3xl md:text-4xl font-bold">
+                With SalemBot, that stops.
+              </h3>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Automate your re-engagement messaging: WhatsApp sync, segmentation, and sending — all in one flow.
+              </p>
+              <Button 
+                size="lg"
+                className="h-14 text-lg px-10 bg-foreground text-background hover:bg-foreground/90 rounded-full"
+                onClick={() => navigate("/auth")}
+              >
+                Try it now
+              </Button>
             </div>
-          </div>
-          
-          <div className="text-center mt-20">
-            <Button 
-              size="lg"
-              className="h-14 text-lg px-10 bg-foreground text-background hover:bg-foreground/90 rounded-full"
-              onClick={() => navigate("/auth")}
-            >
-              Start connecting
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* 3. STATS */}
+      {/* 3. HOW IT WORKS */}
       <section className="py-32 bg-muted relative z-10">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="border-2 hover:shadow-xl transition-shadow">
-              <CardContent className="p-12 text-center">
-                <div className="text-5xl font-bold mb-4">10K+</div>
-                <p className="text-muted-foreground text-lg">Contacts reached daily</p>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              How it works
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Four simple steps to re-engage your customers
+            </p>
+          </div>
+          
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Step 1 */}
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
+              <CardContent className="p-8 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <Plug className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Connect WhatsApp</h3>
+                <p className="text-muted-foreground">
+                  Link your business number; messages sync instantly.
+                </p>
               </CardContent>
             </Card>
-            <Card className="border-2 hover:shadow-xl transition-shadow">
-              <CardContent className="p-12 text-center">
-                <div className="text-5xl font-bold mb-4">23%</div>
-                <p className="text-muted-foreground text-lg">Average repeat rate</p>
+
+            {/* Step 2 */}
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
+              <CardContent className="p-8 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <FolderKanban className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Auto-segment contacts</h3>
+                <p className="text-muted-foreground">
+                  SalemBot groups your customers by recency, activity, or tags.
+                </p>
               </CardContent>
             </Card>
-            <Card className="border-2 hover:shadow-xl transition-shadow">
-              <CardContent className="p-12 text-center">
-                <div className="text-5xl font-bold mb-4">2 min</div>
-                <p className="text-muted-foreground text-lg">Setup time</p>
+
+            {/* Step 3 */}
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
+              <CardContent className="p-8 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <Rocket className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Send personalized campaigns</h3>
+                <p className="text-muted-foreground">
+                  Pick or create templates, target segments, and launch.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Step 4 */}
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
+              <CardContent className="p-8 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Track & optimize</h3>
+                <p className="text-muted-foreground">
+                  View replies, click rates, and performance — then iterate.
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* 4. PRICING */}
+      {/* 4. KEY BENEFITS */}
       <section className="py-32 relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Simple pricing
+              Why customers love SalemBot
             </h2>
-            <p className="text-xl text-muted-foreground">
-              One plan. Everything included.
-            </p>
           </div>
 
-          <Card className="max-w-lg mx-auto border-2 hover:shadow-2xl transition-shadow">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            <Card className="border-2 hover:shadow-xl transition-all">
+              <CardContent className="p-10 space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <CheckCircle className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Save hours weekly</h3>
+                <p className="text-lg text-muted-foreground">
+                  No manual messaging. Set it up once, let automation handle follow-ups.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-xl transition-all">
+              <CardContent className="p-10 space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <ArrowRight className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">More replies & conversions</h3>
+                <p className="text-lg text-muted-foreground">
+                  Messages feel personal. Customers respond because you reached out at the right time.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-xl transition-all">
+              <CardContent className="p-10 space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <Rocket className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Quick setup</h3>
+                <p className="text-lg text-muted-foreground">
+                  Go live in under 2 minutes. No complex integration or technical skills needed.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:shadow-xl transition-all">
+              <CardContent className="p-10 space-y-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">Built-in analytics</h3>
+                <p className="text-lg text-muted-foreground">
+                  See what works, double down on winning campaigns, and optimize over time.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. SOCIAL PROOF / TRUST */}
+      <section className="py-32 bg-muted relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-16">
+            <div className="text-center">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Trusted by businesses like yours
+              </h2>
+            </div>
+
+            {/* Testimonial */}
+            <Card className="border-2 bg-background">
+              <CardContent className="p-12 space-y-6">
+                <p className="text-2xl font-semibold leading-relaxed">
+                  "Using SalemBot, we brought 25% of dormant customers back within 30 days. The automation is seamless and the results speak for themselves."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-primary">JS</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg">Jane Smith</p>
+                    <p className="text-muted-foreground">Marketing Director, ExampleCo</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Trust badges */}
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="space-y-2">
+                <div className="text-5xl font-bold">10K+</div>
+                <p className="text-muted-foreground text-lg">Contacts reached daily</p>
+              </div>
+              <div className="space-y-2">
+                <div className="text-5xl font-bold">23%</div>
+                <p className="text-muted-foreground text-lg">Average repeat rate</p>
+              </div>
+              <div className="space-y-2">
+                <div className="text-5xl font-bold">2 min</div>
+                <p className="text-muted-foreground text-lg">Setup time</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <p className="text-lg text-muted-foreground">
+                ✓ Fully compliant & secure · Built on WhatsApp Business API
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* 6. PRICING / PLAN */}
+      <section className="py-32 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Simple pricing, all core features included
+            </h2>
+          </div>
+
+          <Card className="max-w-lg mx-auto border-2 hover:shadow-2xl transition-shadow bg-background">
             <CardContent className="p-12 text-center space-y-8">
               <div>
                 <div className="text-6xl font-bold mb-2">50,000₸</div>
-                <p className="text-muted-foreground">per month</p>
+                <p className="text-muted-foreground text-lg">per month</p>
               </div>
               
               <ul className="space-y-4 text-left">
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
                   <span className="text-lg">Unlimited contacts</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
-                  <span className="text-lg">Auto-segmentation</span>
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                  <span className="text-lg">Templates</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
-                  <span className="text-lg">Campaign templates</span>
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                  <span className="text-lg">Analytics</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
-                  <span className="text-lg">Analytics dashboard</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-success flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
                   <span className="text-lg">Priority support</span>
                 </li>
               </ul>
@@ -221,23 +344,23 @@ const Index = () => {
                 className="w-full h-14 text-lg bg-foreground text-background hover:bg-foreground/90 rounded-full"
                 onClick={() => navigate("/auth")}
               >
-                Get started
+                Try 14 days free
               </Button>
               
               <p className="text-sm text-muted-foreground">
-                14-day free trial · No credit card required
+                No credit card required
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* 5. FAQ */}
+      {/* 7. FAQ / OBJECTION HANDLING */}
       <section className="py-32 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold">
-              Questions?
+              Frequently asked questions
             </h2>
           </div>
 
@@ -245,40 +368,64 @@ const Index = () => {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  Do you store my messages?
+                  Do you store my message content?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  No, all data stays on your device. SalemBot only accesses your WhatsApp to send messages on your behalf — nothing is stored on our servers.
+                  No — we only use metadata (timestamps, sender/receiver) to segment. Your actual message content stays private.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  Is this WhatsApp-compliant?
+                  Is this compliant with WhatsApp rules?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  Yes, 100%. SalemBot follows all WhatsApp guidelines and only sends messages to contacts who have previously messaged you.
+                  Yes — we use the official WhatsApp Business API and follow best practices to keep your account safe.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  Can my number get blocked?
+                  How long does setup take?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  SalemBot sends messages responsibly with built-in rate limiting and delays to keep your number safe.
+                  Less than 2 minutes — just connect and go.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  How long does setup take?
+                  Can I cancel anytime?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  Just 2 minutes! Connect your WhatsApp, let SalemBot scan your contacts, and you're ready to launch your first campaign.
+                  Yes — no long-term commitment. Cancel whenever you want.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FINAL CTA / CLOSING */}
+      <section className="py-32 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="text-5xl md:text-6xl font-bold">
+              Ready to bring back lost customers?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Start re-engaging in minutes. No technical skills needed.
+            </p>
+            <Button 
+              size="lg"
+              className="h-16 text-lg px-12 bg-foreground text-background hover:bg-foreground/90 rounded-full"
+              onClick={() => navigate("/auth")}
+            >
+              Start Free Trial
+            </Button>
+            <p className="text-sm text-muted-foreground">
+              No credit card needed · Cancel anytime
+            </p>
           </div>
         </div>
       </section>
