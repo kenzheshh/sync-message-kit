@@ -160,7 +160,7 @@ const translations = {
     'howitworks.step2.desc': 'SalemBot группирует клиентов по давности, активности или тегам.',
     'howitworks.step3.title': 'Отправляйте рассылки',
     'howitworks.step3.desc': 'Выберите или создайте шаблоны, выберите сегменты и запустите.',
-    'howitworks.step4.title': 'Отслеживайте и оптимизируйте',
+    'howitworks.step4.title': 'Получите результат',
     'howitworks.step4.desc': 'Смотрите ответы, клики и результаты — и улучшайте.',
     
     // Benefits
