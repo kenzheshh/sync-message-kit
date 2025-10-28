@@ -120,26 +120,29 @@ const Index = () => {
               <div className="relative">
                 <Card className="border-2 p-8 bg-muted/50">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border-2 border-red-500/40">
                       <MessageCircle className="w-5 h-5 text-muted-foreground" />
                       <div className="flex-1">
                         <div className="h-3 bg-muted rounded w-3/4"></div>
                         <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
                       </div>
+                      <span className="text-sm text-red-600 font-medium whitespace-nowrap">14 days ago</span>
                     </div>
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border-2 border-red-500/50">
                       <MessageCircle className="w-5 h-5 text-muted-foreground" />
                       <div className="flex-1">
                         <div className="h-3 bg-muted rounded w-2/3"></div>
                         <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
                       </div>
+                      <span className="text-sm text-red-600 font-medium whitespace-nowrap">20 days ago</span>
                     </div>
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-30">
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border-2 border-red-600/60">
                       <MessageCircle className="w-5 h-5 text-muted-foreground" />
                       <div className="flex-1">
                         <div className="h-3 bg-muted rounded w-4/5"></div>
                         <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
                       </div>
+                      <span className="text-sm text-red-700 font-semibold whitespace-nowrap">30+ days ago</span>
                     </div>
                     <div className="text-center py-4 text-muted-foreground text-sm">
                       Unread messages pile up...
