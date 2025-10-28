@@ -65,7 +65,7 @@ const Index = () => {
           </div>
           
           <div className="pt-12">
-            <img src={problemVisual} alt="WhatsApp automation showing customer engagement and messaging" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full" />
+            <img src={problemVisual} alt="WhatsApp automation showing customer engagement and messaging" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-6xl w-full" />
           </div>
         </div>
       </section>
