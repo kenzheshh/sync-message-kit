@@ -38,10 +38,13 @@ const Index = () => {
 
       {/* Navigation */}
       <nav className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-3xl font-bold">SalemBot</div>
+        <div className="text-3xl font-bold text-primary">SalemBot</div>
         <div className="flex gap-4">
           <Button variant="ghost" onClick={() => navigate("/auth")}>Login</Button>
-          <Button className="bg-foreground text-background hover:bg-foreground/90" onClick={() => navigate("/auth")}>
+          <Button 
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" 
+            onClick={() => navigate("/auth")}
+          >
             Sign up
           </Button>
         </div>
@@ -61,7 +64,7 @@ const Index = () => {
           <div className="pt-6">
             <Button 
               size="lg"
-              className="h-16 text-lg px-10 bg-foreground text-background hover:bg-foreground/90 rounded-full"
+              className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
               onClick={() => navigate("/auth")}
             >
               Start Free — 2-minute Setup
@@ -188,7 +191,7 @@ const Index = () => {
               {/* Text content */}
               <div className="order-1 lg:order-2 space-y-8 animate-fade-in">
                 <div className="space-y-4">
-                  <h3 className="text-5xl md:text-6xl font-bold">
+                  <h3 className="text-4xl md:text-5xl font-bold">
                     With SalemBot, that stops.
                   </h3>
                   <p className="text-xl text-muted-foreground leading-relaxed">
@@ -199,7 +202,7 @@ const Index = () => {
                 <div className="space-y-4">
                   <Button 
                     size="lg"
-                    className="h-16 text-lg px-12 bg-primary text-white hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
+                    className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
                     onClick={() => navigate("/auth")}
                   >
                     Try it now
@@ -292,7 +295,7 @@ const Index = () => {
           </div>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <Card className="border-2 hover:shadow-xl transition-all">
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
               <CardContent className="p-10 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <CheckCircle className="w-6 h-6 text-primary" />
@@ -304,7 +307,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:shadow-xl transition-all">
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
               <CardContent className="p-10 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <ArrowRight className="w-6 h-6 text-primary" />
@@ -316,7 +319,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:shadow-xl transition-all">
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
               <CardContent className="p-10 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <Rocket className="w-6 h-6 text-primary" />
@@ -328,7 +331,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:shadow-xl transition-all">
+            <Card className="border-2 hover:shadow-xl transition-all bg-background">
               <CardContent className="p-10 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-primary" />
@@ -434,7 +437,7 @@ const Index = () => {
 
               <Button 
                 size="lg"
-                className="w-full h-14 text-lg bg-foreground text-background hover:bg-foreground/90 rounded-full"
+                className="w-full h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
                 onClick={() => navigate("/auth")}
               >
                 Try 14 days free
@@ -511,7 +514,7 @@ const Index = () => {
             </p>
             <Button 
               size="lg"
-              className="h-16 text-lg px-12 bg-foreground text-background hover:bg-foreground/90 rounded-full"
+              className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
               onClick={() => navigate("/auth")}
             >
               Start Free Trial
@@ -523,24 +526,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 6. FOOTER */}
-      <footer className="py-20 relative z-10">
+      {/* FOOTER */}
+      <footer className="py-32 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 mb-12">
               <div>
-                <div className="text-3xl font-bold mb-4">SalemBot</div>
+                <div className="text-3xl font-bold mb-4 text-primary">SalemBot</div>
                 <p className="text-muted-foreground text-lg mb-6">
                   Built for businesses who grow through conversations.
                 </p>
                 <div className="flex gap-4">
-                  <Button variant="outline" size="icon" className="rounded-full">
+                  <Button variant="outline" size="icon" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
                     <Mail className="w-5 h-5" />
                   </Button>
-                  <Button variant="outline" size="icon" className="rounded-full">
+                  <Button variant="outline" size="icon" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
                     <Phone className="w-5 h-5" />
                   </Button>
-                  <Button variant="outline" size="icon" className="rounded-full">
+                  <Button variant="outline" size="icon" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
                     <MessageCircle className="w-5 h-5" />
                   </Button>
                 </div>
@@ -550,17 +553,17 @@ const Index = () => {
                 <div>
                   <h3 className="font-semibold mb-4 text-lg">Product</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
-                    <li><a href="#" className="hover:text-foreground transition-colors">Pricing</a></li>
-                    <li><a href="#" className="hover:text-foreground transition-colors">FAQ</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-4 text-lg">Company</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li><a href="#" className="hover:text-foreground transition-colors">About</a></li>
-                    <li><a href="#" className="hover:text-foreground transition-colors">Privacy</a></li>
-                    <li><a href="#" className="hover:text-foreground transition-colors">Terms</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
                   </ul>
                 </div>
               </div>
