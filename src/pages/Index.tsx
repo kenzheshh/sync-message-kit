@@ -8,7 +8,7 @@ import networkVisual from "@/assets/network-visual.png";
 import problemVisual from "@/assets/problem-visual.png";
 const Index = () => {
   const navigate = useNavigate();
-  return <div className="min-h-screen bg-background relative overflow-hidden">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 relative overflow-hidden">
       
       {/* Organic blob shapes - Green theme */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] opacity-20 animate-blob">
