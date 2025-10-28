@@ -84,37 +84,44 @@ const Index = () => {
       {/* 2. PROBLEM → AGITATION → SOLUTION - Visual Story */}
       
       {/* Block 1: The Pain - Dark chaos */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-800 py-32">
-        {/* Floating chat bubbles - chaos */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0c1527] via-[#1a2332] to-slate-800 py-32">
+        {/* Floating stat - adds credibility */}
+        <div className="absolute top-12 left-8 md:left-16 z-20 animate-fade-in">
+          <div className="bg-slate-800/60 backdrop-blur-md border border-slate-700/50 rounded-2xl px-6 py-3 text-white shadow-xl">
+            <p className="text-sm md:text-base">⏱ <span className="font-bold">3 hours/day</span> lost to manual follow-ups</p>
+          </div>
+        </div>
+
+        {/* Floating chat bubbles - chaos with upward drift */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[10%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center">
+          <div className="absolute top-20 left-[10%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center">
             <MessageCircle className="w-8 h-8 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" />
           </div>
-          <div className="absolute top-40 right-[15%] w-20 h-20 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '1s' }}>
+          <div className="absolute top-40 right-[15%] w-20 h-20 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '1s' }}>
             <MessageCircle className="w-10 h-10 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
           </div>
-          <div className="absolute top-60 left-[20%] w-14 h-14 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '2s' }}>
+          <div className="absolute top-60 left-[20%] w-14 h-14 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '2s' }}>
             <MessageCircle className="w-7 h-7 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
           </div>
-          <div className="absolute bottom-40 right-[25%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '0.5s' }}>
+          <div className="absolute bottom-40 right-[25%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '0.5s' }}>
             <MessageCircle className="w-8 h-8 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
           </div>
-          <div className="absolute top-32 left-[60%] w-18 h-18 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '1.5s' }}>
+          <div className="absolute top-32 left-[60%] w-18 h-18 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '1.5s' }}>
             <MessageCircle className="w-9 h-9 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '0.3s' }} />
           </div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-wide animate-fade-in">
               Manual follow-ups are draining your time and leaking revenue.
             </h2>
-            <p className="text-xl text-slate-300">
+            <p className="text-xl text-slate-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               You forget to message past customers, they drift away, and repeat sales die.
             </p>
           </div>
@@ -122,87 +129,91 @@ const Index = () => {
       </section>
 
       {/* Block 2: The Realization - Order emerging */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 to-slate-100 py-32">
-        {/* Organizing bubbles */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 via-slate-600 to-[#f3f6fb] py-32">
+        {/* Organizing bubbles - horizontal alignment */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[15%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000">
+          <div className="absolute top-20 left-[15%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align">
             <MessageCircle className="w-8 h-8 text-slate-500" />
           </div>
-          <div className="absolute top-20 left-[35%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000" style={{ transitionDelay: '0.2s' }}>
+          <div className="absolute top-20 left-[35%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align" style={{ animationDelay: '0.2s' }}>
             <MessageCircle className="w-8 h-8 text-slate-500" />
           </div>
-          <div className="absolute top-20 left-[55%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000" style={{ transitionDelay: '0.4s' }}>
+          <div className="absolute top-20 left-[55%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align" style={{ animationDelay: '0.4s' }}>
             <MessageCircle className="w-8 h-8 text-slate-500" />
           </div>
-          <div className="absolute top-20 right-[15%] w-16 h-16 bg-primary/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-glow" style={{ transitionDelay: '0.6s' }}>
+          <div className="absolute top-20 right-[15%] w-16 h-16 bg-primary/40 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-glow-pulse" style={{ animationDelay: '0.6s' }}>
             <MessageCircle className="w-8 h-8 text-primary" />
-            <CheckCircle className="w-5 h-5 text-primary absolute -bottom-1 -right-1" />
+            <CheckCircle className="w-5 h-5 text-primary absolute -bottom-1 -right-1 animate-scale-in" style={{ animationDelay: '0.8s' }} />
           </div>
           
-          {/* Connecting lines */}
-          <svg className="absolute top-24 left-[17%] w-[70%] h-20 opacity-30" style={{ animationDelay: '0.8s' }}>
-            <line x1="0" y1="10" x2="100%" y2="10" stroke="hsl(142, 76%, 36%)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+          {/* Connecting line - animates from left to right */}
+          <svg className="absolute top-24 left-[17%] w-[70%] h-20 opacity-0 animate-draw-line" style={{ animationDelay: '0.8s' }}>
+            <line x1="0" y1="10" x2="100%" y2="10" stroke="hsl(142, 76%, 36%)" strokeWidth="2" strokeDasharray="8,8" className="animate-pulse" />
           </svg>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto space-y-6 animate-fade-in">
-            <h3 className="text-4xl md:text-5xl font-bold text-slate-800">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h3 className="text-4xl md:text-5xl font-bold text-[#1e2b3e] tracking-wide animate-fade-in">
               Every week you lose potential sales because you can't remember to follow up.
             </h3>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-slate-700 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Every missed message is a lost opportunity to reconnect.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Block 3: The Solution - Bright clarity */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-background py-32">
-        {/* Flow lines decoration */}
-        <div className="absolute inset-0 overflow-hidden opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-primary rounded-full animate-pulse" />
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 border-2 border-secondary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Block 3: The Solution - Bright clarity with radial glow */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#f3f6fb] to-background py-32">
+        {/* Radial glow under solution */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-primary/20 rounded-full animate-pulse-slow" />
+          <div className="absolute top-1/3 right-1/4 w-48 h-48 border-2 border-secondary/20 rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Phone mockup */}
-              <div className="order-2 lg:order-1 animate-fade-in">
+              {/* Phone mockup with wave reveal */}
+              <div className="order-2 lg:order-1 animate-slide-up-reveal">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-glow" />
+                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-glow-pulse" />
                   <img 
                     src={heroWhatsapp} 
                     alt="WhatsApp automation in action" 
-                    className="relative rounded-3xl shadow-2xl border-2 border-primary/20"
+                    className="relative rounded-3xl shadow-2xl border-2 border-primary/20 transform transition-transform duration-500 hover:scale-105"
                   />
                   
-                  {/* Flowing icons */}
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg animate-float">
+                  {/* Flowing icons with burst animation */}
+                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg animate-float-burst">
                     <Rocket className="w-8 h-8 text-white" />
                   </div>
-                  <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg animate-float" style={{ animationDelay: '0.5s' }}>
+                  <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg animate-float-burst" style={{ animationDelay: '0.3s' }}>
                     <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg animate-float-burst" style={{ animationDelay: '0.6s' }}>
+                    <ArrowRight className="w-6 h-6 text-white" />
                   </div>
                 </div>
               </div>
 
-              {/* Text content */}
-              <div className="order-1 lg:order-2 space-y-8 animate-fade-in">
+              {/* Text content with staggered fade */}
+              <div className="order-1 lg:order-2 space-y-8">
                 <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-bold">
+                  <h3 className="text-4xl md:text-5xl font-bold text-[#1e2b3e] tracking-wide animate-fade-in">
                     With SalemBot, that stops.
                   </h3>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
                     Automate your re-engagement messaging: WhatsApp sync, segmentation, and sending — all in one flow.
                   </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                   <Button 
                     size="lg"
-                    className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
+                    className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 rounded-full shadow-xl hover:shadow-2xl transition-all"
                     onClick={() => navigate("/auth")}
                   >
                     Try it now
