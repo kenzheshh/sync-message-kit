@@ -158,7 +158,7 @@ const translations = {
     'howitworks.step1.desc': 'Привяжите бизнес-номер; сообщения синхронизируются мгновенно.',
     'howitworks.step2.title': 'Сегментация контактов',
     'howitworks.step2.desc': 'SalemBot группирует клиентов по давности, активности или тегам.',
-    'howitworks.step3.title': 'Отправляйте персональные кампании',
+    'howitworks.step3.title': 'Отправляйте рассылки',
     'howitworks.step3.desc': 'Выберите или создайте шаблоны, выберите сегменты и запустите.',
     'howitworks.step4.title': 'Отслеживайте и оптимизируйте',
     'howitworks.step4.desc': 'Смотрите ответы, клики и результаты — и улучшайте.',
