@@ -7,6 +7,7 @@ import {
   CheckCircle, ArrowRight, Mail, Phone
 } from "lucide-react";
 import heroWhatsapp from "@/assets/hero-whatsapp.png";
+import networkVisual from "@/assets/network-visual.png";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -158,13 +159,10 @@ const Index = () => {
               <div className="order-2 lg:order-1">
                 <div className="relative">
                   <img 
-                    src={heroWhatsapp} 
-                    alt="SalemBot automation interface" 
-                    className="rounded-2xl shadow-xl border border-border"
+                    src={networkVisual} 
+                    alt="SalemBot automation network connecting customers" 
+                    className="rounded-2xl shadow-xl w-full"
                   />
-                  <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-lg font-semibold">
-                    ✓ Automated
-                  </div>
                 </div>
               </div>
 
