@@ -156,7 +156,7 @@ const translations = {
     'howitworks.subtitle': 'Четыре простых шага для возвращения клиентов',
     'howitworks.step1.title': 'Подключите WhatsApp',
     'howitworks.step1.desc': 'Привяжите бизнес-номер; сообщения синхронизируются мгновенно.',
-    'howitworks.step2.title': 'Автосегментация контактов',
+    'howitworks.step2.title': 'Сегментация контактов',
     'howitworks.step2.desc': 'SalemBot группирует клиентов по давности, активности или тегам.',
     'howitworks.step3.title': 'Отправляйте персональные кампании',
     'howitworks.step3.desc': 'Выберите или создайте шаблоны, выберите сегменты и запустите.',
