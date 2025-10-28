@@ -491,9 +491,6 @@ const Index = () => {
             <Button size="lg" className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
               {t('cta.button')}
             </Button>
-            <p className="text-sm text-muted-foreground">
-              No credit card needed · Cancel anytime
-            </p>
           </div>
         </div>
       </section>
