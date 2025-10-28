@@ -361,16 +361,16 @@ const Index = () => {
             {/* Trust badges */}
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div className="space-y-2">
-                <div className="text-5xl font-bold">10K+</div>
-                <p className="text-muted-foreground text-lg">Contacts reached daily</p>
+                <div className="text-5xl font-bold">{t('social.metric1.value')}</div>
+                <p className="text-muted-foreground text-lg">{t('social.metric1.label')}</p>
               </div>
               <div className="space-y-2">
-                <div className="text-5xl font-bold">23%</div>
-                <p className="text-muted-foreground text-lg">Average conversion rate</p>
+                <div className="text-5xl font-bold">{t('social.metric2.value')}</div>
+                <p className="text-muted-foreground text-lg">{t('social.metric2.label')}</p>
               </div>
               <div className="space-y-2">
-                <div className="text-5xl font-bold">2 min</div>
-                <p className="text-muted-foreground text-lg">Setup time</p>
+                <div className="text-5xl font-bold">{t('social.metric3.value')}</div>
+                <p className="text-muted-foreground text-lg">{t('social.metric3.label')}</p>
               </div>
             </div>
 

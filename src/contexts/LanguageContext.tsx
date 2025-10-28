@@ -68,6 +68,12 @@ const translations = {
     'social.testimonial.quote': 'We went from spending 4 hours a day on follow-ups to zero. SalemBot brought back 30% of our dormant customers in the first month.',
     'social.testimonial.author': 'Aisha K.',
     'social.testimonial.role': 'E-commerce Owner',
+    'social.metric1.value': '10K+',
+    'social.metric1.label': 'Contacts reached daily',
+    'social.metric2.value': '23%',
+    'social.metric2.label': 'Average conversion rate',
+    'social.metric3.value': '2 min',
+    'social.metric3.label': 'Setup time',
     
     // Pricing
     'pricing.title': 'Simple, transparent pricing',
@@ -191,6 +197,12 @@ const translations = {
     'social.testimonial.quote': 'Мы перешли с 4 часов в день на напоминания к нулю. SalemBot вернул 30% наших неактивных клиентов в первый месяц.',
     'social.testimonial.author': 'Аиша К.',
     'social.testimonial.role': 'Владелица e-commerce',
+    'social.metric1.value': '10К+',
+    'social.metric1.label': 'Контактов достигнуто ежедневно',
+    'social.metric2.value': '23%',
+    'social.metric2.label': 'Средний коэффициент конверсии',
+    'social.metric3.value': '2 мин',
+    'social.metric3.label': 'Время настройки',
     
     // Pricing
     'pricing.title': 'Простые, прозрачные цены',
