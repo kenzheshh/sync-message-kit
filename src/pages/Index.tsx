@@ -494,7 +494,7 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-32 bg-muted relative z-10">
+      <footer className="pt-32 pb-8 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 mb-12">
@@ -536,7 +536,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="border-t pt-8 text-center text-muted-foreground">
+            <div className="border-t pt-6 text-center text-muted-foreground">
               <p>{t('footer.copyright')}</p>
             </div>
           </div>
