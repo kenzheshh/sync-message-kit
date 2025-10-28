@@ -144,7 +144,7 @@ const Index = () => {
                       </div>
                       <span className="text-sm text-red-700 font-semibold whitespace-nowrap">30+ days ago</span>
                     </div>
-                    <div className="text-center py-4 text-muted-foreground text-sm">
+                    <div className="text-center py-4 text-muted-foreground text-lg font-medium">
                       Unread messages pile up...
                     </div>
                   </div>
