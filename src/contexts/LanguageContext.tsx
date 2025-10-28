@@ -123,7 +123,7 @@ const translations = {
     'footer.legal': 'Legal',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
-    'footer.copyright': '© 2024 SalemBot. All rights reserved.',
+    'footer.copyright': '© 2025 SalemBot. All rights reserved.',
   },
   ru: {
     // Navigation
@@ -237,7 +237,7 @@ const translations = {
     'footer.legal': 'Правовая информация',
     'footer.privacy': 'Политика конфиденциальности',
     'footer.terms': 'Условия использования',
-    'footer.copyright': '© 2024 SalemBot. Все права защищены.',
+    'footer.copyright': '© 2025 SalemBot. Все права защищены.',
   },
 };
 
