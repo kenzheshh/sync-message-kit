@@ -503,7 +503,7 @@ const Index = () => {
               <div>
                 <div className="text-3xl font-bold mb-4 text-primary">SalemBot</div>
                 <p className="text-muted-foreground text-lg mb-6">
-                  Built for businesses who grow through conversations.
+                  {t('footer.tagline')}
                 </p>
                 <div className="flex gap-4">
                   <Button variant="outline" size="icon" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">

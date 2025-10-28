@@ -120,6 +120,7 @@ const translations = {
     'cta.button': 'Get Started',
     
     // Footer
+    'footer.tagline': 'Built for businesses to return customers',
     'footer.product': 'Product',
     'footer.features': 'Features',
     'footer.pricing': 'Pricing',
@@ -242,6 +243,7 @@ const translations = {
     'cta.button': 'Начать',
     
     // Footer
+    'footer.tagline': 'Создано для бизнеса, чтобы возвращать клиентов',
     'footer.product': 'Продукт',
     'footer.features': 'Возможности',
     'footer.pricing': 'Цены',
