@@ -78,45 +78,137 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 2. PROBLEM → AGITATION → SOLUTION */}
-      <section className="py-32 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-16">
-            {/* Problem */}
-            <div className="text-center space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Manual follow-ups are draining your time and leaking revenue.
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                You forget to message past customers, they drift away, and repeat sales die.
-              </p>
-            </div>
+      {/* 2. PROBLEM → AGITATION → SOLUTION - Visual Story */}
+      
+      {/* Block 1: The Pain - Dark chaos */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-800 py-32">
+        {/* Floating chat bubbles - chaos */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-[10%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center">
+            <MessageCircle className="w-8 h-8 text-slate-400" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+          </div>
+          <div className="absolute top-40 right-[15%] w-20 h-20 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '1s' }}>
+            <MessageCircle className="w-10 h-10 text-slate-400" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+          </div>
+          <div className="absolute top-60 left-[20%] w-14 h-14 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '2s' }}>
+            <MessageCircle className="w-7 h-7 text-slate-400" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+          </div>
+          <div className="absolute bottom-40 right-[25%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '0.5s' }}>
+            <MessageCircle className="w-8 h-8 text-slate-400" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+          </div>
+          <div className="absolute top-32 left-[60%] w-18 h-18 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float flex items-center justify-center" style={{ animationDelay: '1.5s' }}>
+            <MessageCircle className="w-9 h-9 text-slate-400" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+          </div>
+        </div>
 
-            {/* Agitation */}
-            <div className="bg-muted rounded-3xl p-12 space-y-4">
-              <p className="text-2xl font-semibold">
-                Every week you lose potential sales because you can't remember to follow up.
-              </p>
-              <p className="text-xl text-muted-foreground">
-                Every missed message is a lost opportunity to reconnect.
-              </p>
-            </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Manual follow-ups are draining your time and leaking revenue.
+            </h2>
+            <p className="text-xl text-slate-300">
+              You forget to message past customers, they drift away, and repeat sales die.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            {/* Solution */}
-            <div className="text-center space-y-6">
-              <h3 className="text-3xl md:text-4xl font-bold">
-                With SalemBot, that stops.
-              </h3>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Automate your re-engagement messaging: WhatsApp sync, segmentation, and sending — all in one flow.
-              </p>
-              <Button 
-                size="lg"
-                className="h-14 text-lg px-10 bg-foreground text-background hover:bg-foreground/90 rounded-full"
-                onClick={() => navigate("/auth")}
-              >
-                Try it now
-              </Button>
+      {/* Block 2: The Realization - Order emerging */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 to-slate-100 py-32">
+        {/* Organizing bubbles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-[15%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000">
+            <MessageCircle className="w-8 h-8 text-slate-500" />
+          </div>
+          <div className="absolute top-20 left-[35%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000" style={{ transitionDelay: '0.2s' }}>
+            <MessageCircle className="w-8 h-8 text-slate-500" />
+          </div>
+          <div className="absolute top-20 left-[55%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000" style={{ transitionDelay: '0.4s' }}>
+            <MessageCircle className="w-8 h-8 text-slate-500" />
+          </div>
+          <div className="absolute top-20 right-[15%] w-16 h-16 bg-primary/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-glow" style={{ transitionDelay: '0.6s' }}>
+            <MessageCircle className="w-8 h-8 text-primary" />
+            <CheckCircle className="w-5 h-5 text-primary absolute -bottom-1 -right-1" />
+          </div>
+          
+          {/* Connecting lines */}
+          <svg className="absolute top-24 left-[17%] w-[70%] h-20 opacity-30" style={{ animationDelay: '0.8s' }}>
+            <line x1="0" y1="10" x2="100%" y2="10" stroke="hsl(142, 76%, 36%)" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto space-y-6 animate-fade-in">
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-800">
+              Every week you lose potential sales because you can't remember to follow up.
+            </h3>
+            <p className="text-xl text-slate-600">
+              Every missed message is a lost opportunity to reconnect.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Block 3: The Solution - Bright clarity */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-background py-32">
+        {/* Flow lines decoration */}
+        <div className="absolute inset-0 overflow-hidden opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-primary rounded-full animate-pulse" />
+          <div className="absolute top-1/3 right-1/4 w-48 h-48 border-2 border-secondary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Phone mockup */}
+              <div className="order-2 lg:order-1 animate-fade-in">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-glow" />
+                  <img 
+                    src={heroWhatsapp} 
+                    alt="WhatsApp automation in action" 
+                    className="relative rounded-3xl shadow-2xl border-2 border-primary/20"
+                  />
+                  
+                  {/* Flowing icons */}
+                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg animate-float">
+                    <Rocket className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg animate-float" style={{ animationDelay: '0.5s' }}>
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Text content */}
+              <div className="order-1 lg:order-2 space-y-8 animate-fade-in">
+                <div className="space-y-4">
+                  <h3 className="text-5xl md:text-6xl font-bold">
+                    With SalemBot, that stops.
+                  </h3>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    Automate your re-engagement messaging: WhatsApp sync, segmentation, and sending — all in one flow.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <Button 
+                    size="lg"
+                    className="h-16 text-lg px-12 bg-primary text-white hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
+                    onClick={() => navigate("/auth")}
+                  >
+                    Try it now
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Setup takes 2 minutes
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
