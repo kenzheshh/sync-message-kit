@@ -420,12 +420,8 @@ const Index = () => {
               </ul>
 
               <Button size="lg" className="w-full h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
-                Try 14 days free
+                {t('pricing.pro.cta')}
               </Button>
-              
-              <p className="text-sm text-muted-foreground">
-                No credit card required
-              </p>
             </CardContent>
           </Card>
         </div>

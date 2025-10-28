@@ -79,7 +79,7 @@ const translations = {
     'pricing.starter.feature2': '2 campaigns per month',
     'pricing.starter.feature3': 'Basic analytics',
     'pricing.starter.feature4': 'Email support',
-    'pricing.starter.cta': 'Start Free Trial',
+    'pricing.starter.cta': 'Get Started',
     'pricing.pro.name': 'Pro',
     'pricing.pro.price': '$79',
     'pricing.pro.period': '/month',
@@ -88,7 +88,7 @@ const translations = {
     'pricing.pro.feature2': 'Unlimited campaigns',
     'pricing.pro.feature3': 'Advanced analytics & A/B testing',
     'pricing.pro.feature4': 'Priority support',
-    'pricing.pro.cta': 'Start Free Trial',
+    'pricing.pro.cta': 'Get Started',
     'pricing.enterprise.name': 'Enterprise',
     'pricing.enterprise.price': 'Custom',
     'pricing.enterprise.desc': 'For businesses with custom needs',
@@ -106,13 +106,13 @@ const translations = {
     'faq.a2': 'Most users are up and running in under 2 minutes. Just connect your WhatsApp Business account and you\'re ready.',
     'faq.q3': 'Can I cancel anytime?',
     'faq.a3': 'Absolutely. No contracts, no commitments. Cancel with one click from your dashboard.',
-    'faq.q4': 'Do you offer a free trial?',
-    'faq.a4': 'Yes! Try any plan free for 14 days. No credit card required.',
+    'faq.q4': 'How do I get started?',
+    'faq.a4': 'Simply sign up with your email and connect your WhatsApp Business account. You\'ll be up and running in minutes.',
     
     // CTA
     'cta.title': 'Ready to stop losing customers?',
-    'cta.subtitle': 'Start re-engaging your audience today — no credit card required',
-    'cta.button': 'Start Free Trial',
+    'cta.subtitle': 'Start re-engaging your audience today',
+    'cta.button': 'Get Started',
     
     // Footer
     'footer.product': 'Product',
@@ -196,7 +196,7 @@ const translations = {
     'pricing.starter.feature2': '2 кампании в месяц',
     'pricing.starter.feature3': 'Базовая аналитика',
     'pricing.starter.feature4': 'Поддержка по email',
-    'pricing.starter.cta': 'Начать пробный период',
+    'pricing.starter.cta': 'Начать',
     'pricing.pro.name': 'Профессиональный',
     'pricing.pro.price': '$79',
     'pricing.pro.period': '/месяц',
@@ -205,7 +205,7 @@ const translations = {
     'pricing.pro.feature2': 'Неограниченные кампании',
     'pricing.pro.feature3': 'Расширенная аналитика и A/B тесты',
     'pricing.pro.feature4': 'Приоритетная поддержка',
-    'pricing.pro.cta': 'Начать пробный период',
+    'pricing.pro.cta': 'Начать',
     'pricing.enterprise.name': 'Корпоративный',
     'pricing.enterprise.price': 'По запросу',
     'pricing.enterprise.desc': 'Для бизнеса с особыми требованиями',
@@ -223,13 +223,13 @@ const translations = {
     'faq.a2': 'Большинство пользователей запускаются менее чем за 2 минуты. Просто подключите ваш аккаунт WhatsApp Business и всё готово.',
     'faq.q3': 'Могу ли я отменить в любое время?',
     'faq.a3': 'Абсолютно. Никаких контрактов, никаких обязательств. Отмените одним кликом из вашей панели.',
-    'faq.q4': 'Есть ли бесплатный пробный период?',
-    'faq.a4': 'Да! Попробуйте любой план бесплатно в течение 14 дней. Кредитная карта не требуется.',
+    'faq.q4': 'Как начать работу?',
+    'faq.a4': 'Просто зарегистрируйтесь с вашим email и подключите ваш аккаунт WhatsApp Business. Вы будете готовы к работе за несколько минут.',
     
     // CTA
     'cta.title': 'Готовы перестать терять клиентов?',
-    'cta.subtitle': 'Начните возвращать свою аудиторию сегодня — кредитная карта не требуется',
-    'cta.button': 'Начать пробный период',
+    'cta.subtitle': 'Начните возвращать свою аудиторию сегодня',
+    'cta.button': 'Начать',
     
     // Footer
     'footer.product': 'Продукт',
