@@ -397,7 +397,7 @@ const Index = () => {
             <CardContent className="p-12 text-center space-y-8">
               <div>
                 <div className="text-6xl font-bold mb-2">50,000₸</div>
-                <p className="text-muted-foreground text-lg">per month</p>
+                <p className="text-muted-foreground text-lg">{t('pricing.permonth')}</p>
               </div>
               
               <ul className="space-y-4 text-left">

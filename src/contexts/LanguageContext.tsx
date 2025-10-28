@@ -71,6 +71,7 @@ const translations = {
     
     // Pricing
     'pricing.title': 'Simple, transparent pricing',
+    'pricing.permonth': 'per month',
     'pricing.starter.name': 'Starter',
     'pricing.starter.price': '$29',
     'pricing.starter.period': '/month',
@@ -188,6 +189,7 @@ const translations = {
     
     // Pricing
     'pricing.title': 'Простые, прозрачные цены',
+    'pricing.permonth': 'в месяц',
     'pricing.starter.name': 'Стартовый',
     'pricing.starter.price': '$29',
     'pricing.starter.period': '/месяц',
