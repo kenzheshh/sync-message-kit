@@ -75,8 +75,8 @@ const Index = () => {
           
           <div className="pt-12">
             <img 
-              src={heroWhatsapp} 
-              alt="Business professional using SalemBot WhatsApp automation" 
+              src={problemVisual} 
+              alt="WhatsApp automation showing customer engagement and messaging" 
               className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full"
             />
           </div>
