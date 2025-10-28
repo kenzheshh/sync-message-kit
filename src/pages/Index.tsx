@@ -81,146 +81,128 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 2. PROBLEM → AGITATION → SOLUTION - Visual Story */}
-      
-      {/* Block 1: The Pain - Dark chaos */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0c1527] via-[#1a2332] to-slate-800 py-32">
-        {/* Floating stat - adds credibility */}
-        <div className="absolute top-12 left-8 md:left-16 z-20 animate-fade-in">
-          <div className="bg-slate-800/60 backdrop-blur-md border border-slate-700/50 rounded-2xl px-6 py-3 text-white shadow-xl">
-            <p className="text-sm md:text-base">⏱ <span className="font-bold">3 hours/day</span> lost to manual follow-ups</p>
-          </div>
-        </div>
-
-        {/* Floating chat bubbles - chaos with upward drift */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[10%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center">
-            <MessageCircle className="w-8 h-8 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" />
-          </div>
-          <div className="absolute top-40 right-[15%] w-20 h-20 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '1s' }}>
-            <MessageCircle className="w-10 h-10 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
-          </div>
-          <div className="absolute top-60 left-[20%] w-14 h-14 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '2s' }}>
-            <MessageCircle className="w-7 h-7 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
-          </div>
-          <div className="absolute bottom-40 right-[25%] w-16 h-16 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '0.5s' }}>
-            <MessageCircle className="w-8 h-8 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
-          </div>
-          <div className="absolute top-32 left-[60%] w-18 h-18 bg-slate-700/40 backdrop-blur-sm rounded-2xl animate-float-up flex items-center justify-center" style={{ animationDelay: '1.5s' }}>
-            <MessageCircle className="w-9 h-9 text-slate-400" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse-slow" style={{ animationDelay: '0.3s' }} />
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-wide animate-fade-in">
-              Manual follow-ups are draining your time and leaking revenue.
-            </h2>
-            <p className="text-xl text-slate-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              You forget to message past customers, they drift away, and repeat sales die.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Block 2: The Realization - Order emerging */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 via-slate-600 to-[#f3f6fb] py-32">
-        {/* Organizing bubbles - horizontal alignment */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[15%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align">
-            <MessageCircle className="w-8 h-8 text-slate-500" />
-          </div>
-          <div className="absolute top-20 left-[35%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align" style={{ animationDelay: '0.2s' }}>
-            <MessageCircle className="w-8 h-8 text-slate-500" />
-          </div>
-          <div className="absolute top-20 left-[55%] w-16 h-16 bg-slate-600/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-slide-in-align" style={{ animationDelay: '0.4s' }}>
-            <MessageCircle className="w-8 h-8 text-slate-500" />
-          </div>
-          <div className="absolute top-20 right-[15%] w-16 h-16 bg-primary/40 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-1000 animate-glow-pulse" style={{ animationDelay: '0.6s' }}>
-            <MessageCircle className="w-8 h-8 text-primary" />
-            <CheckCircle className="w-5 h-5 text-primary absolute -bottom-1 -right-1 animate-scale-in" style={{ animationDelay: '0.8s' }} />
-          </div>
-          
-          {/* Connecting line - animates from left to right */}
-          <svg className="absolute top-24 left-[17%] w-[70%] h-20 opacity-0 animate-draw-line" style={{ animationDelay: '0.8s' }}>
-            <line x1="0" y1="10" x2="100%" y2="10" stroke="hsl(142, 76%, 36%)" strokeWidth="2" strokeDasharray="8,8" className="animate-pulse" />
-          </svg>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h3 className="text-4xl md:text-5xl font-bold text-[#1e2b3e] tracking-wide animate-fade-in">
-              Every week you lose potential sales because you can't remember to follow up.
-            </h3>
-            <p className="text-xl text-slate-700 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              Every missed message is a lost opportunity to reconnect.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Block 3: The Solution - Bright clarity with radial glow */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#f3f6fb] to-background py-32">
-        {/* Radial glow under solution */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-primary/20 rounded-full animate-pulse-slow" />
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 border-2 border-secondary/20 rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto">
+      {/* 2. PROBLEM STATEMENT - Clean & Direct */}
+      <section className="py-32 bg-background relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Phone mockup with wave reveal */}
-              <div className="order-2 lg:order-1 animate-slide-up-reveal">
+              <div className="space-y-6">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                  Stop losing customers to forgotten follow-ups
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  Every day, potential sales slip away because manual outreach is impossible to scale. Your best customers deserve better than being forgotten in a crowded chat list.
+                </p>
+                <div className="flex flex-col gap-4 pt-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-red-600 text-sm">✕</span>
+                    </div>
+                    <p className="text-muted-foreground">Manual messaging takes 3+ hours daily</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-red-600 text-sm">✕</span>
+                    </div>
+                    <p className="text-muted-foreground">Past customers drift away silently</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-red-600 text-sm">✕</span>
+                    </div>
+                    <p className="text-muted-foreground">Revenue opportunities constantly missed</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <Card className="border-2 p-8 bg-muted/50">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-3/4"></div>
+                        <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-2/3"></div>
+                        <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-30">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-4/5"></div>
+                        <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="text-center py-4 text-muted-foreground text-sm">
+                      Unread messages pile up...
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SOLUTION - Clean & Visual */}
+      <section className="py-32 bg-muted relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="order-2 lg:order-1">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-glow-pulse" />
                   <img 
                     src={heroWhatsapp} 
-                    alt="WhatsApp automation in action" 
-                    className="relative rounded-3xl shadow-2xl border-2 border-primary/20 transform transition-transform duration-500 hover:scale-105"
+                    alt="SalemBot automation interface" 
+                    className="rounded-2xl shadow-xl border border-border"
                   />
-                  
-                  {/* Flowing icons with burst animation */}
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg animate-float-burst">
-                    <Rocket className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-lg animate-float-burst" style={{ animationDelay: '0.3s' }}>
-                    <CheckCircle className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg animate-float-burst" style={{ animationDelay: '0.6s' }}>
-                    <ArrowRight className="w-6 h-6 text-white" />
+                  <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-lg font-semibold">
+                    ✓ Automated
                   </div>
                 </div>
               </div>
 
-              {/* Text content with staggered fade */}
-              <div className="order-1 lg:order-2 space-y-8">
-                <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-bold text-[#1e2b3e] tracking-wide animate-fade-in">
-                    With SalemBot, that stops.
-                  </h3>
-                  <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                    Automate your re-engagement messaging: WhatsApp sync, segmentation, and sending — all in one flow.
-                  </p>
+              <div className="order-1 lg:order-2 space-y-6">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                  SalemBot handles it automatically
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  Connect once. Let automation handle the rest. Your customers get timely, personalized messages without you lifting a finger.
+                </p>
+                <div className="flex flex-col gap-4 pt-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                    </div>
+                    <p className="font-medium">Auto-segment by activity & recency</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                    </div>
+                    <p className="font-medium">Send personalized campaigns in bulk</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                    </div>
+                    <p className="font-medium">Track replies & optimize performance</p>
+                  </div>
                 </div>
-
-                <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="pt-4">
                   <Button 
                     size="lg"
-                    className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 rounded-full shadow-xl hover:shadow-2xl transition-all"
+                    className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all"
                     onClick={() => navigate("/auth")}
                   >
-                    Try it now
+                    Get Started Free
                   </Button>
-                  <p className="text-sm text-muted-foreground">
-                    Setup takes 2 minutes
-                  </p>
                 </div>
               </div>
             </div>
