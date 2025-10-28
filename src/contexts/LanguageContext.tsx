@@ -161,7 +161,7 @@ const translations = {
     'howitworks.step3.title': 'Отправляйте рассылки',
     'howitworks.step3.desc': 'Выберите или создайте шаблоны, выберите сегменты и запустите.',
     'howitworks.step4.title': 'Получите результат',
-    'howitworks.step4.desc': 'Смотрите ответы, клики и результаты — и улучшайте.',
+    'howitworks.step4.desc': 'Получайте новые заявки со старых чатов и окупите сервис за 1 день',
     
     // Benefits
     'benefits.title': 'Почему клиенты любят SalemBot',
