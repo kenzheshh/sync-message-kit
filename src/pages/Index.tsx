@@ -6,6 +6,7 @@ import {
   MessageCircle, Plug, FolderKanban, Rocket, 
   CheckCircle, ArrowRight, Mail, Phone
 } from "lucide-react";
+import heroWhatsapp from "@/assets/hero-whatsapp.png";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -69,8 +70,8 @@ const Index = () => {
           
           <div className="pt-12">
             <img 
-              src="/placeholder.svg" 
-              alt="SalemBot Dashboard — WhatsApp message automation" 
+              src={heroWhatsapp} 
+              alt="Business professional using SalemBot WhatsApp automation" 
               className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full"
             />
           </div>
