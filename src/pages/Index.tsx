@@ -118,11 +118,34 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <img 
-                  src={problemVisual} 
-                  alt="WhatsApp messages piling up showing customer engagement challenges" 
-                  className="rounded-2xl shadow-xl w-full"
-                />
+                <Card className="border-2 p-8 bg-muted/50">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-3/4"></div>
+                        <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-2/3"></div>
+                        <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-30">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-4/5"></div>
+                        <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
+                      </div>
+                    </div>
+                    <div className="text-center py-4 text-muted-foreground text-sm">
+                      Unread messages pile up...
+                    </div>
+                  </div>
+                </Card>
               </div>
             </div>
           </div>
