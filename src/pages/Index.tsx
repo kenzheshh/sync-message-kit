@@ -374,11 +374,6 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="text-center">
-              <p className="text-lg text-muted-foreground">
-                ✓ Fully compliant & secure · Built on WhatsApp Business API
-              </p>
-            </div>
           </div>
         </div>
       </section>
