@@ -200,7 +200,7 @@ const translations = {
     'social.metric1.value': '10К+',
     'social.metric1.label': 'Контактов достигнуто ежедневно',
     'social.metric2.value': '23%',
-    'social.metric2.label': 'Средний коэффициент конверсии',
+    'social.metric2.label': 'Средняя конверсия в ответ',
     'social.metric3.value': '2 мин',
     'social.metric3.label': 'Время настройки',
     
