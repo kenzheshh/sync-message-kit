@@ -198,7 +198,7 @@ const translations = {
     'social.testimonial.author': 'Аиша К.',
     'social.testimonial.role': 'Владелица e-commerce',
     'social.metric1.value': '10К+',
-    'social.metric1.label': 'Контактов достигнуто ежедневно',
+    'social.metric1.label': 'Сообщений отправляется ежедневно',
     'social.metric2.value': '15-20%',
     'social.metric2.label': 'Средняя конверсия в ответ',
     'social.metric3.value': '2 мин',
