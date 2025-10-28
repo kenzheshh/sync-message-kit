@@ -3,15 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MessageCircle, Plug, FolderKanban, Rocket, CheckCircle, ArrowRight, Mail, Phone } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageSwitch } from "@/components/LanguageSwitch";
 import heroWhatsapp from "@/assets/hero-whatsapp.png";
 import networkVisual from "@/assets/network-visual.png";
 import problemVisual from "@/assets/problem-visual.png";
 const Index = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
-  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 relative overflow-hidden">
+  return <div className="min-h-screen bg-background relative overflow-hidden">
       
       {/* Organic blob shapes - Green theme */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] opacity-20 animate-blob">
@@ -44,11 +41,10 @@ const Index = () => {
       {/* Navigation */}
       <nav className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="text-3xl font-bold text-primary">SalemBot</div>
-        <div className="flex gap-4 items-center">
-          <LanguageSwitch />
-          <Button variant="ghost" onClick={() => navigate("/auth")}>{t('nav.login')}</Button>
+        <div className="flex gap-4">
+          <Button variant="ghost" onClick={() => navigate("/auth")}>Login</Button>
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>
-            {t('nav.signup')}
+            Sign up
           </Button>
         </div>
       </nav>
@@ -57,19 +53,21 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20 lg:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8 animate-fade-in">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            {t('hero.title')}
+            Re-engage customers automatically — no manual work
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {t('hero.subtitle')}
+            Connect your WhatsApp, segment contacts, and send personalized messages in seconds
           </p>
           
           <div className="pt-6">
-            <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-[48px]">{t('hero.cta')}</Button>
+            <Button size="lg" className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
+              Start Free — 2-minute Setup
+            </Button>
           </div>
           
           <div className="pt-12">
-            <img src={problemVisual} alt="WhatsApp automation showing customer engagement and messaging" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-6xl w-full" />
+            <img src={problemVisual} alt="WhatsApp automation showing customer engagement and messaging" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full" />
           </div>
         </div>
       </section>
@@ -81,29 +79,29 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                  {t('problem.title')}
+                  Stop losing customers to forgotten follow-ups
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  {t('problem.subtitle')}
+                  Every day, potential sales slip away because manual outreach is impossible to scale. Your best customers deserve better than being forgotten in a crowded chat list.
                 </p>
                 <div className="flex flex-col gap-4 pt-4">
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-red-600 text-sm">✕</span>
                     </div>
-                    <p className="text-muted-foreground">{t('problem.point1')}</p>
+                    <p className="text-muted-foreground">Manual messaging takes 3+ hours daily</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-red-600 text-sm">✕</span>
                     </div>
-                    <p className="text-muted-foreground">{t('problem.point2')}</p>
+                    <p className="text-muted-foreground">Past customers drift away silently</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-red-600 text-sm">✕</span>
                     </div>
-                    <p className="text-muted-foreground">{t('problem.point3')}</p>
+                    <p className="text-muted-foreground">Revenue opportunities constantly missed</p>
                   </div>
                 </div>
               </div>
@@ -111,38 +109,29 @@ const Index = () => {
               <div className="relative">
                 <Card className="border-2 p-8 bg-muted/50">
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-400/60 opacity-60">
-                      <div className="flex items-center gap-3 flex-1">
-                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                        <div className="flex-1">
-                          <div className="h-3 bg-muted rounded w-3/4"></div>
-                          <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
-                        </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-3/4"></div>
+                        <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
                       </div>
-                      <span className="text-sm text-red-500/70 font-medium whitespace-nowrap">{t('problem.time1')}</span>
                     </div>
-                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-500/70 opacity-70">
-                      <div className="flex items-center gap-3 flex-1">
-                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                        <div className="flex-1">
-                          <div className="h-3 bg-muted rounded w-2/3"></div>
-                          <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
-                        </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-2/3"></div>
+                        <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
                       </div>
-                      <span className="text-sm text-red-500/80 font-medium whitespace-nowrap">{t('problem.time2')}</span>
                     </div>
-                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-600/80 opacity-80">
-                      <div className="flex items-center gap-3 flex-1">
-                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                        <div className="flex-1">
-                          <div className="h-3 bg-muted rounded w-4/5"></div>
-                          <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
-                        </div>
+                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-30">
+                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-muted rounded w-4/5"></div>
+                        <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
                       </div>
-                      <span className="text-sm text-red-600/90 font-medium whitespace-nowrap">{t('problem.time3')}</span>
                     </div>
-                    <div className="text-center py-4 text-muted-foreground text-lg font-medium">
-                      {t('problem.mockup')}
+                    <div className="text-center py-4 text-muted-foreground text-sm">
+                      Unread messages pile up...
                     </div>
                   </div>
                 </Card>
@@ -165,34 +154,34 @@ const Index = () => {
 
               <div className="order-1 lg:order-2 space-y-6">
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                  {t('solution.title')}
+                  SalemBot handles it automatically
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  {t('solution.subtitle')}
+                  Connect once. Let automation handle the rest. Your customers get timely, personalized messages without you lifting a finger.
                 </p>
                 <div className="flex flex-col gap-4 pt-4">
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point1')}</p>
+                    <p className="font-medium">Auto-segment by activity & recency</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point2')}</p>
+                    <p className="font-medium">Send personalized campaigns in bulk</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point3')}</p>
+                    <p className="font-medium">Track replies & optimize performance</p>
                   </div>
                 </div>
                 <div className="pt-4">
                   <Button size="lg" className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
-                    {t('solution.cta')}
+                    Get Started Free
                   </Button>
                 </div>
               </div>
@@ -206,10 +195,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              {t('howitworks.title')}
+              How it works
             </h2>
             <p className="text-xl text-muted-foreground">
-              {t('howitworks.subtitle')}
+              Four simple steps to re-engage your customers
             </p>
           </div>
           
@@ -220,9 +209,9 @@ const Index = () => {
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                   <Plug className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('howitworks.step1.title')}</h3>
+                <h3 className="text-2xl font-bold">Connect WhatsApp</h3>
                 <p className="text-muted-foreground">
-                  {t('howitworks.step1.desc')}
+                  Link your business number; messages sync instantly.
                 </p>
               </CardContent>
             </Card>
@@ -233,9 +222,9 @@ const Index = () => {
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                   <FolderKanban className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('howitworks.step2.title')}</h3>
+                <h3 className="text-2xl font-bold">Auto-segment contacts</h3>
                 <p className="text-muted-foreground">
-                  {t('howitworks.step2.desc')}
+                  SalemBot groups your customers by recency, activity, or tags.
                 </p>
               </CardContent>
             </Card>
@@ -246,9 +235,9 @@ const Index = () => {
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                   <Rocket className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('howitworks.step3.title')}</h3>
+                <h3 className="text-2xl font-bold">Send personalized campaigns</h3>
                 <p className="text-muted-foreground">
-                  {t('howitworks.step3.desc')}
+                  Pick or create templates, target segments, and launch.
                 </p>
               </CardContent>
             </Card>
@@ -259,9 +248,9 @@ const Index = () => {
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('howitworks.step4.title')}</h3>
+                <h3 className="text-2xl font-bold">Track & optimize</h3>
                 <p className="text-muted-foreground">
-                  {t('howitworks.step4.desc')}
+                  View replies, click rates, and performance — then iterate.
                 </p>
               </CardContent>
             </Card>
@@ -274,7 +263,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              {t('benefits.title')}
+              Why customers love SalemBot
             </h2>
           </div>
 
@@ -284,9 +273,9 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <CheckCircle className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('benefits.benefit1.title')}</h3>
+                <h3 className="text-2xl font-bold">Save hours weekly</h3>
                 <p className="text-lg text-muted-foreground">
-                  {t('benefits.benefit1.desc')}
+                  No manual messaging. Set it up once, let automation handle follow-ups.
                 </p>
               </CardContent>
             </Card>
@@ -296,9 +285,9 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <ArrowRight className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('benefits.benefit2.title')}</h3>
+                <h3 className="text-2xl font-bold">More replies & conversions</h3>
                 <p className="text-lg text-muted-foreground">
-                  {t('benefits.benefit2.desc')}
+                  Messages feel personal. Customers respond because you reached out at the right time.
                 </p>
               </CardContent>
             </Card>
@@ -308,9 +297,9 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <Rocket className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('benefits.benefit3.title')}</h3>
+                <h3 className="text-2xl font-bold">Quick setup</h3>
                 <p className="text-lg text-muted-foreground">
-                  {t('benefits.benefit3.desc')}
+                  Go live in under 2 minutes. No complex integration or technical skills needed.
                 </p>
               </CardContent>
             </Card>
@@ -320,9 +309,9 @@ const Index = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold">{t('benefits.benefit4.title')}</h3>
+                <h3 className="text-2xl font-bold">Built-in analytics</h3>
                 <p className="text-lg text-muted-foreground">
-                  {t('benefits.benefit4.desc')}
+                  See what works, double down on winning campaigns, and optimize over time.
                 </p>
               </CardContent>
             </Card>
@@ -336,7 +325,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto space-y-16">
             <div className="text-center">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                {t('social.title')}
+                Trusted by businesses like yours
               </h2>
             </div>
 
@@ -344,15 +333,15 @@ const Index = () => {
             <Card className="border-2 bg-background">
               <CardContent className="p-12 space-y-6">
                 <p className="text-2xl font-semibold leading-relaxed">
-                  "{t('social.testimonial.quote')}"
+                  "Using SalemBot, we brought 25% of dormant customers back within 30 days. The automation is seamless and the results speak for themselves."
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-primary">AK</span>
+                    <span className="text-2xl font-bold text-primary">JS</span>
                   </div>
                   <div>
-                    <p className="font-bold text-lg">{t('social.testimonial.author')}</p>
-                    <p className="text-muted-foreground">{t('social.testimonial.role')}</p>
+                    <p className="font-bold text-lg">Jane Smith</p>
+                    <p className="text-muted-foreground">Marketing Director, ExampleCo</p>
                   </div>
                 </div>
               </CardContent>
@@ -389,7 +378,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              {t('pricing.title')}
+              Simple pricing, all core features included
             </h2>
           </div>
 
@@ -397,31 +386,35 @@ const Index = () => {
             <CardContent className="p-12 text-center space-y-8">
               <div>
                 <div className="text-6xl font-bold mb-2">50,000₸</div>
-                <p className="text-muted-foreground text-lg">{t('pricing.permonth')}</p>
+                <p className="text-muted-foreground text-lg">per month</p>
               </div>
               
               <ul className="space-y-4 text-left">
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">{t('pricing.feature.unlimited')}</span>
+                  <span className="text-lg">Unlimited contacts</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">{t('pricing.feature.templates')}</span>
+                  <span className="text-lg">Templates</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">{t('pricing.feature.analytics')}</span>
+                  <span className="text-lg">Analytics</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">{t('pricing.feature.support')}</span>
+                  <span className="text-lg">Priority support</span>
                 </li>
               </ul>
 
               <Button size="lg" className="w-full h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
-                {t('pricing.pro.cta')}
+                Try 14 days free
               </Button>
+              
+              <p className="text-sm text-muted-foreground">
+                No credit card required
+              </p>
             </CardContent>
           </Card>
         </div>
@@ -432,7 +425,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold">
-              {t('faq.title')}
+              Frequently asked questions
             </h2>
           </div>
 
@@ -440,37 +433,35 @@ const Index = () => {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  {t('faq.q1')}
+                  Do you store my message content?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  {t('faq.a1')}
+                  No — we only use metadata (timestamps, sender/receiver) to segment. Your actual message content stays private.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  {t('faq.q2')}
+                  Is this compliant with WhatsApp rules?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  {t('faq.a2')}
+                  Yes — we use the official WhatsApp Business API and follow best practices to keep your account safe.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-2 rounded-2xl px-8 bg-background">
                 <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  {t('faq.q3')}
+                  How long does setup take?
                 </AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  {t('faq.a3')}
+                  Less than 2 minutes — just connect and go.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-2 rounded-2xl px-8 bg-background">
-                <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">
-                  {t('faq.q4')}
-                </AccordionTrigger>
+                <AccordionTrigger className="text-left text-xl font-semibold py-6 hover:no-underline">Пора вернуть клиентов!</AccordionTrigger>
                 <AccordionContent className="text-lg text-muted-foreground pb-6">
-                  {t('faq.a4')}
+                  Yes — no long-term commitment. Cancel whenever you want.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -483,27 +474,30 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-5xl md:text-6xl font-bold">
-              {t('cta.title')}
+              Ready to bring back lost customers?
             </h2>
             <p className="text-xl text-muted-foreground">
-              {t('cta.subtitle')}
+              Start re-engaging in minutes. No technical skills needed.
             </p>
             <Button size="lg" className="h-16 text-lg px-12 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all" onClick={() => navigate("/auth")}>
-              {t('cta.button')}
+              Start Free Trial
             </Button>
+            <p className="text-sm text-muted-foreground">
+              No credit card needed · Cancel anytime
+            </p>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-16 pb-8 bg-muted relative z-10">
+      <footer className="py-32 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 mb-12">
               <div>
                 <div className="text-3xl font-bold mb-4 text-primary">SalemBot</div>
                 <p className="text-muted-foreground text-lg mb-6">
-                  {t('footer.tagline')}
+                  Built for businesses who grow through conversations.
                 </p>
                 <div className="flex gap-4">
                   <Button variant="outline" size="icon" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
@@ -520,26 +514,26 @@ const Index = () => {
               
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h3 className="font-semibold mb-4 text-lg">{t('footer.product')}</h3>
+                  <h3 className="font-semibold mb-4 text-lg">Product</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.features')}</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.pricing')}</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.faq')}</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-4 text-lg">{t('footer.company')}</h3>
+                  <h3 className="font-semibold mb-4 text-lg">Company</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.about')}</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.privacy')}</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">{t('footer.terms')}</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             
-            <div className="border-t pt-6 text-center text-muted-foreground">
-              <p>{t('footer.copyright')}</p>
+            <div className="border-t pt-8 text-center text-muted-foreground">
+              <p>&copy; 2025 SalemBot. All rights reserved.</p>
             </div>
           </div>
         </div>
