@@ -28,6 +28,9 @@ const translations = {
     'problem.point2': 'Past customers drift away silently',
     'problem.point3': 'Revenue opportunities constantly missed',
     'problem.mockup': 'Unread messages pile up...',
+    'problem.time1': '14 days ago',
+    'problem.time2': '20 days ago',
+    'problem.time3': '30+ days ago',
     
     // Solution Section
     'solution.title': 'SalemBot handles it automatically',
@@ -142,6 +145,9 @@ const translations = {
     'problem.point2': 'Прошлые клиенты тихо уходят',
     'problem.point3': 'Постоянно упускаются возможности заработка',
     'problem.mockup': 'Непрочитанные сообщения накапливаются...',
+    'problem.time1': '14 дней назад',
+    'problem.time2': '20 дней назад',
+    'problem.time3': '30+ дней назад',
     
     // Solution Section
     'solution.title': 'SalemBot все делает автоматически',

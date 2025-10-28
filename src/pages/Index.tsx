@@ -119,7 +119,7 @@ const Index = () => {
                           <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
                         </div>
                       </div>
-                      <span className="text-sm text-red-500/70 font-medium whitespace-nowrap">14 days ago</span>
+                      <span className="text-sm text-red-500/70 font-medium whitespace-nowrap">{t('problem.time1')}</span>
                     </div>
                     <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-500/70 opacity-70">
                       <div className="flex items-center gap-3 flex-1">
@@ -129,7 +129,7 @@ const Index = () => {
                           <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
                         </div>
                       </div>
-                      <span className="text-sm text-red-500/80 font-medium whitespace-nowrap">20 days ago</span>
+                      <span className="text-sm text-red-500/80 font-medium whitespace-nowrap">{t('problem.time2')}</span>
                     </div>
                     <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-600/80 opacity-80">
                       <div className="flex items-center gap-3 flex-1">
@@ -139,7 +139,7 @@ const Index = () => {
                           <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
                         </div>
                       </div>
-                      <span className="text-sm text-red-600/90 font-medium whitespace-nowrap">30+ days ago</span>
+                      <span className="text-sm text-red-600/90 font-medium whitespace-nowrap">{t('problem.time3')}</span>
                     </div>
                     <div className="text-center py-4 text-muted-foreground text-lg font-medium">
                       {t('problem.mockup')}
