@@ -111,26 +111,35 @@ const Index = () => {
               <div className="relative">
                 <Card className="border-2 p-8 bg-muted/50">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
-                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                      <div className="flex-1">
-                        <div className="h-3 bg-muted rounded w-3/4"></div>
-                        <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
+                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-400/60 opacity-60">
+                      <div className="flex items-center gap-3 flex-1">
+                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                        <div className="flex-1">
+                          <div className="h-3 bg-muted rounded w-3/4"></div>
+                          <div className="h-2 bg-muted rounded w-1/2 mt-2"></div>
+                        </div>
                       </div>
+                      <span className="text-sm text-red-500/70 font-medium whitespace-nowrap">14 days ago</span>
                     </div>
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-50">
-                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                      <div className="flex-1">
-                        <div className="h-3 bg-muted rounded w-2/3"></div>
-                        <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
+                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-500/70 opacity-70">
+                      <div className="flex items-center gap-3 flex-1">
+                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                        <div className="flex-1">
+                          <div className="h-3 bg-muted rounded w-2/3"></div>
+                          <div className="h-2 bg-muted rounded w-1/3 mt-2"></div>
+                        </div>
                       </div>
+                      <span className="text-sm text-red-500/80 font-medium whitespace-nowrap">20 days ago</span>
                     </div>
-                    <div className="flex items-center gap-3 p-4 bg-background rounded-lg border opacity-30">
-                      <MessageCircle className="w-5 h-5 text-muted-foreground" />
-                      <div className="flex-1">
-                        <div className="h-3 bg-muted rounded w-4/5"></div>
-                        <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
+                    <div className="flex items-center justify-between gap-3 p-4 bg-background rounded-lg border-2 border-red-600/80 opacity-80">
+                      <div className="flex items-center gap-3 flex-1">
+                        <MessageCircle className="w-5 h-5 text-muted-foreground" />
+                        <div className="flex-1">
+                          <div className="h-3 bg-muted rounded w-4/5"></div>
+                          <div className="h-2 bg-muted rounded w-2/5 mt-2"></div>
+                        </div>
                       </div>
+                      <span className="text-sm text-red-600/90 font-medium whitespace-nowrap">30+ days ago</span>
                     </div>
                     <div className="text-center py-4 text-muted-foreground text-lg font-medium">
                       {t('problem.mockup')}
