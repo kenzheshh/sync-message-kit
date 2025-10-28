@@ -72,6 +72,10 @@ const translations = {
     // Pricing
     'pricing.title': 'Simple, transparent pricing',
     'pricing.permonth': 'per month',
+    'pricing.feature.unlimited': 'Unlimited contacts',
+    'pricing.feature.templates': 'Templates',
+    'pricing.feature.analytics': 'Analytics',
+    'pricing.feature.support': 'Priority support',
     'pricing.starter.name': 'Starter',
     'pricing.starter.price': '$29',
     'pricing.starter.period': '/month',
@@ -190,6 +194,10 @@ const translations = {
     // Pricing
     'pricing.title': 'Простые, прозрачные цены',
     'pricing.permonth': 'в месяц',
+    'pricing.feature.unlimited': 'Неограниченные контакты',
+    'pricing.feature.templates': 'Шаблоны',
+    'pricing.feature.analytics': 'Аналитика',
+    'pricing.feature.support': 'Приоритетная поддержка',
     'pricing.starter.name': 'Стартовый',
     'pricing.starter.price': '$29',
     'pricing.starter.period': '/месяц',

@@ -403,19 +403,19 @@ const Index = () => {
               <ul className="space-y-4 text-left">
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">Unlimited contacts</span>
+                  <span className="text-lg">{t('pricing.feature.unlimited')}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">Templates</span>
+                  <span className="text-lg">{t('pricing.feature.templates')}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">Analytics</span>
+                  <span className="text-lg">{t('pricing.feature.analytics')}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">Priority support</span>
+                  <span className="text-lg">{t('pricing.feature.support')}</span>
                 </li>
               </ul>
 
