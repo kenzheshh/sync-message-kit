@@ -17,7 +17,7 @@ const translations = {
     'nav.signup': 'Sign up',
     
     // Hero Section
-    'hero.title': 'Re-engage customers automatically — no manual work',
+    'hero.title': 'Re-engage customers automatically – no manual work',
     'hero.subtitle': 'Connect your WhatsApp, segment contacts, and send personalized messages in seconds',
     'hero.cta': 'Start Free',
     
@@ -131,7 +131,7 @@ const translations = {
     'nav.signup': 'Регистрация',
     
     // Hero Section
-    'hero.title': 'Автоматически возвращайте клиентов — без ручной работы',
+    'hero.title': 'Автоматически возвращайте клиентов – без ручной работы',
     'hero.subtitle': 'Подключите WhatsApp, сегментируйте контакты и отправляйте персонализированные сообщения за секунды',
     'hero.cta': 'Начать бесплатно',
     
