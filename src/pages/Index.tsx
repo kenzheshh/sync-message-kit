@@ -43,7 +43,7 @@ const Index = () => {
 
       {/* Navigation */}
       <nav className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-3xl font-bold text-primary">SalemBot</div>
+        <div className="text-4xl font-bold text-primary">SalemBot</div>
         <div className="flex gap-4 items-center">
           <LanguageSwitch />
           <Button variant="ghost" onClick={() => navigate("/auth")}>{t('nav.login')}</Button>
