@@ -170,24 +170,24 @@ const Index = () => {
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   {t('solution.subtitle')}
                 </p>
-                <div className="flex flex-col gap-4 pt-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                <div className="flex flex-col gap-6 pt-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point1')}</p>
+                    <p className="font-medium text-lg">{t('solution.point1')}</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point2')}</p>
+                    <p className="font-medium text-lg">{t('solution.point2')}</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
-                    <p className="font-medium">{t('solution.point3')}</p>
+                    <p className="font-medium text-lg">{t('solution.point3')}</p>
                   </div>
                 </div>
                 <div className="pt-4">
