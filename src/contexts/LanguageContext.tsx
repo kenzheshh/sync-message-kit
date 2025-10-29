@@ -185,7 +185,7 @@ const translations = {
     'benefits.title': 'Почему клиенты любят SalemBot',
     'benefits.benefit1.title': 'Экономьте часы каждую неделю',
     'benefits.benefit1.desc': 'Никакой ручной рассылки. Настройте один раз, пусть автоматизация делает всё.',
-    'benefits.benefit2.title': 'Больше ответов и конверсий',
+    'benefits.benefit2.title': 'Вероятность блокировки меньше 1%',
     'benefits.benefit2.desc': 'Сообщения выглядят личными. Клиенты отвечают, потому что вы обратились вовремя.',
     'benefits.benefit3.title': 'Быстрая настройка',
     'benefits.benefit3.desc': 'Запуск менее чем за 2 минуты. Без сложных интеграций и технических навыков.',
