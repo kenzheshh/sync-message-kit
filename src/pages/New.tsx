@@ -34,7 +34,7 @@ const New = () => {
       {/* 1. HERO SECTION */}
       <section className="container mx-auto px-4 py-12 lg:py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
             Возвращаем всех, кто когда-либо писал вам в WhatsApp
           </h1>
           
