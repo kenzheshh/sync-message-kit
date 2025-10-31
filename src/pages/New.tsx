@@ -4,8 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone, Brain, ArrowRight, Tag } from "lucide-react";
 import networkVisual from "@/assets/network-visual.png";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
+
 const New = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   return <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 relative overflow-hidden">
       {/* Organic blob shapes */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] opacity-20 animate-blob">
@@ -27,7 +31,8 @@ const New = () => {
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
         <div className="flex gap-4 items-center">
-          <Button size="lg" onClick={() => navigate("/auth")} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full font-medium text-xl">Войти</Button>
+          <LanguageSwitch />
+          <Button size="lg" onClick={() => navigate("/auth")} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full font-medium text-xl">{t('new.nav.login')}</Button>
         </div>
       </nav>
 
@@ -35,15 +40,15 @@ const New = () => {
       <section className="container mx-auto px-4 py-12 lg:py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            Возвращаем всех, кто когда-либо писал вам в WhatsApp
+            {t('new.hero.title')}
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Продавайте тем, кто уже знает вас – без риска блокировок и дорогой рекламы.
+            {t('new.hero.subtitle')}
           </p>
           
           <div className="pt-6">
-            <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-[36px]">👉 Вернуть клиентов сейчас</Button>
+            <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-[36px]">{t('new.hero.cta')}</Button>
           </div>
           
           <div className="pt-12 relative">
@@ -59,7 +64,7 @@ const New = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Новые клиенты стоят в 10 раз дороже, чем те, кто уже был у вас.
+                {t('new.why.title')}
               </h2>
             </div>
 
@@ -69,9 +74,9 @@ const New = () => {
                   <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <CreditCard className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold">Дешевле, чем таргет</h3>
+                  <h3 className="text-2xl font-bold">{t('new.why.card1.title')}</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Не нужно тратить бюджет на холодную аудиторию.
+                    {t('new.why.card1.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -81,9 +86,9 @@ const New = () => {
                   <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <RefreshCw className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold">Повторные продажи</h3>
+                  <h3 className="text-2xl font-bold">{t('new.why.card2.title')}</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Возвращаем клиентов, о которых вы уже забыли.
+                    {t('new.why.card2.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -93,9 +98,9 @@ const New = () => {
                   <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <Shield className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold">Без блокировок</h3>
+                  <h3 className="text-2xl font-bold">{t('new.why.card3.title')}</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Пишем только тем, кто уже был в переписке – WhatsApp не жалуется.
+                    {t('new.why.card3.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -103,7 +108,7 @@ const New = () => {
 
             <div className="text-center mt-12">
               <p className="text-xl text-muted-foreground italic">
-                Ваши забытые чаты – это спящие деньги. Мы поможем их пробудить.
+                {t('new.why.tagline')}
               </p>
             </div>
           </div>
@@ -116,7 +121,7 @@ const New = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                4 шага, чтобы вернуть ваших клиентов
+                {t('new.steps.title')}
               </h2>
             </div>
 
@@ -129,9 +134,9 @@ const New = () => {
                   <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                     <Users className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold">Войдите в личный кабинет</h3>
+                  <h3 className="text-xl font-bold">{t('new.steps.step1.title')}</h3>
                   <p className="text-muted-foreground">
-                    Быстрая регистрация за 30 секунд
+                    {t('new.steps.step1.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -144,9 +149,9 @@ const New = () => {
                   <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold">Подключите рабочий WhatsApp</h3>
+                  <h3 className="text-xl font-bold">{t('new.steps.step2.title')}</h3>
                   <p className="text-muted-foreground">
-                    Безопасное подключение в один клик
+                    {t('new.steps.step2.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -159,9 +164,9 @@ const New = () => {
                   <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                     <TrendingUp className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold">Мы анализируем вашу базу</h3>
+                  <h3 className="text-xl font-bold">{t('new.steps.step3.title')}</h3>
                   <p className="text-muted-foreground">
-                    Находим всех забытых клиентов
+                    {t('new.steps.step3.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -174,9 +179,9 @@ const New = () => {
                   <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold">Запустите рассылку в 1 клик</h3>
+                  <h3 className="text-xl font-bold">{t('new.steps.step4.title')}</h3>
                   <p className="text-muted-foreground">
-                    Автоматическая персонализация
+                    {t('new.steps.step4.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -184,7 +189,7 @@ const New = () => {
 
             <div className="text-center mt-12">
               <p className="text-lg text-muted-foreground">
-                Больше никаких сложных интеграций – всё автоматизировано.
+                {t('new.steps.tagline')}
               </p>
             </div>
           </div>
@@ -197,10 +202,10 @@ const New = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                ИИ сегментирует вашу клиентскую базу
+                {t('new.ai.title')}
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Мы сканируем чаты в WhatsApp, определяем типы клиентов и автоматически создаём теги, чтобы вы могли запускать точные рассылки по каждому сегменту.
+                {t('new.ai.subtitle')}
               </p>
             </div>
 
@@ -213,33 +218,41 @@ const New = () => {
                     <CardContent className="p-6">
                       <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                         <MessageCircle className="w-5 h-5 text-primary" />
-                        Чаты WhatsApp
+                        {t('new.ai.chats')}
                       </h3>
                       <div className="space-y-3">
-                        {[{
-                        name: "Алия К.",
-                        message: "Спасибо за помощь!",
-                        time: "14:23"
-                      }, {
-                        name: "Марат Б.",
-                        message: "Когда доставка?",
-                        time: "13:45"
-                      }, {
-                        name: "Динара М.",
-                        message: "Заказываю второй раз 👍",
-                        time: "12:18"
-                      }, {
-                        name: "Асхат Т.",
-                        message: "Отличное качество",
-                        time: "11:07"
-                      }, {
-                        name: "Сауле Ж.",
-                        message: "Можно уточнить цену?",
-                        time: "Вчера"
-                      }].map((chat, i) => <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold" style={{
-                          backgroundColor: `hsl(${142 + i * 40}, 60%, 45%)`
-                        }}>
+                        {[
+                          {
+                            name: "Алия К.",
+                            message: t('new.ai.chat1.message'),
+                            time: "14:23"
+                          },
+                          {
+                            name: "Марат Б.",
+                            message: t('new.ai.chat2.message'),
+                            time: "13:45"
+                          },
+                          {
+                            name: "Динара М.",
+                            message: t('new.ai.chat3.message'),
+                            time: "12:18"
+                          },
+                          {
+                            name: "Асхат Т.",
+                            message: t('new.ai.chat4.message'),
+                            time: "11:07"
+                          },
+                          {
+                            name: "Сауле Ж.",
+                            message: t('new.ai.chat5.message'),
+                            time: "Вчера"
+                          }
+                        ].map((chat, i) => (
+                          <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                            <div 
+                              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold" 
+                              style={{ backgroundColor: `hsl(${142 + i * 40}, 60%, 45%)` }}
+                            >
                               {chat.name.charAt(0)}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -249,7 +262,8 @@ const New = () => {
                               </div>
                               <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
                             </div>
-                          </div>)}
+                          </div>
+                        ))}
                       </div>
                     </CardContent>
                   </Card>
@@ -270,7 +284,7 @@ const New = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl animate-pulse"></div>
                           <Brain className="w-12 h-12 text-primary relative z-10" />
                         </div>
-                        <p className="text-center font-bold mt-4">Сегментация</p>
+                        <p className="text-center font-bold mt-4">{t('new.ai.segmentation')}</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -289,8 +303,8 @@ const New = () => {
                         <Tag className="w-6 h-6 text-green-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg">Постоянные</h4>
-                        <p className="text-sm text-muted-foreground">Активные клиенты</p>
+                        <h4 className="font-bold text-lg">{t('new.ai.segment1.title')}</h4>
+                        <p className="text-sm text-muted-foreground">{t('new.ai.segment1.desc')}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -301,8 +315,8 @@ const New = () => {
                         <Tag className="w-6 h-6 text-orange-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg">Неактивные</h4>
-                        <p className="text-sm text-muted-foreground">Спящие клиенты</p>
+                        <h4 className="font-bold text-lg">{t('new.ai.segment2.title')}</h4>
+                        <p className="text-sm text-muted-foreground">{t('new.ai.segment2.desc')}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -313,8 +327,8 @@ const New = () => {
                         <Tag className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg">Новые</h4>
-                        <p className="text-sm text-muted-foreground">Недавние контакты</p>
+                        <h4 className="font-bold text-lg">{t('new.ai.segment3.title')}</h4>
+                        <p className="text-sm text-muted-foreground">{t('new.ai.segment3.desc')}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -335,14 +349,14 @@ const New = () => {
                   <TrendingUp className="w-10 h-10 text-primary" />
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold">
-                  У вас закопаны деньги в виде забытых чатов
+                  {t('new.money.title')}
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Каждое неотвеченное сообщение, старый клиент или пропавший контакт – это шанс на продажу, который можно вернуть. Мы просто делаем это за вас.
+                  {t('new.money.subtitle')}
                 </p>
                 <div className="pt-6 flex justify-center">
                   <Button size="lg" onClick={() => navigate("/auth")} className="h-14 md:h-16 text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-6 md:px-12">
-                    Начать возвращать клиентов
+                    {t('new.money.cta')}
                   </Button>
                 </div>
               </div>
@@ -357,40 +371,40 @@ const New = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                Реальные результаты наших клиентов
+                {t('new.cases.title')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Бизнесы, которые уже вернули своих клиентов
+                {t('new.cases.subtitle')}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">850K₸</div>
-                  <h3 className="text-xl font-bold">Сервисный центр</h3>
+                  <div className="text-5xl font-bold text-primary">{t('new.cases.case1.value')}</div>
+                  <h3 className="text-xl font-bold">{t('new.cases.case1.title')}</h3>
                   <p className="text-muted-foreground">
-                    Дополнительный доход за месяц от клиентов, которые давно не обращались за ремонтом.
+                    {t('new.cases.case1.desc')}
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">193 клиента</div>
-                  <h3 className="text-xl font-bold">Фитнес-клуб</h3>
+                  <div className="text-5xl font-bold text-primary">{t('new.cases.case2.value')}</div>
+                  <h3 className="text-xl font-bold">{t('new.cases.case2.title')}</h3>
                   <p className="text-muted-foreground">
-                    Вернулись за первый месяц после рассылки по неактивной базе.
+                    {t('new.cases.case2.desc')}
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">1.4M₸</div>
-                  <h3 className="text-xl font-bold">Цветочный магазин</h3>
+                  <div className="text-5xl font-bold text-primary">{t('new.cases.case3.value')}</div>
+                  <h3 className="text-xl font-bold">{t('new.cases.case3.title')}</h3>
                   <p className="text-muted-foreground">
-                    Продажи букетов клиентам, которые не заказывали более полугода — без затрат на рекламу.
+                    {t('new.cases.case3.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -405,10 +419,10 @@ const New = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                Простые и честные цены
+                {t('new.pricing.title')}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Платите только за результат. Без скрытых комиссий.
+                {t('new.pricing.subtitle')}
               </p>
             </div>
 
@@ -416,66 +430,66 @@ const New = () => {
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Старт</h3>
-                    <p className="text-muted-foreground">Попробуйте бесплатно</p>
+                    <h3 className="text-2xl font-bold mb-2">{t('new.pricing.starter.name')}</h3>
+                    <p className="text-muted-foreground">{t('new.pricing.starter.desc')}</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">₸0</div>
-                    <p className="text-muted-foreground">тестовые 10 сообщений</p>
+                    <div className="text-5xl font-bold">{t('new.pricing.starter.price')}</div>
+                    <p className="text-muted-foreground">{t('new.pricing.starter.period')}</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>До 10 сообщений бесплатно</span>
+                      <span>{t('new.pricing.starter.feature1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Автоматический анализ базы</span>
+                      <span>{t('new.pricing.starter.feature2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Базовая аналитика</span>
+                      <span>{t('new.pricing.starter.feature3')}</span>
                     </li>
                   </ul>
                   <Button onClick={() => navigate("/auth")} variant="outline" className="w-full h-12">
-                    Начать бесплатно
+                    {t('new.pricing.starter.cta')}
                   </Button>
                 </CardContent>
               </Card>
 
               <Card className="border-4 border-primary hover:shadow-2xl transition-all bg-background relative overflow-hidden">
                 <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
-                  Популярный
+                  {t('new.pricing.business.badge')}
                 </div>
                 <CardContent className="p-8 space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Бизнес</h3>
-                    <p className="text-muted-foreground">Для активных продаж</p>
+                    <h3 className="text-2xl font-bold mb-2">{t('new.pricing.business.name')}</h3>
+                    <p className="text-muted-foreground">{t('new.pricing.business.desc')}</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">50,000₸</div>
-                    <p className="text-muted-foreground">Безлимитные сообщения</p>
+                    <div className="text-5xl font-bold">{t('new.pricing.business.price')}</div>
+                    <p className="text-muted-foreground">{t('new.pricing.business.period')}</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Безлимитные сообщения</span>
+                      <span>{t('new.pricing.business.feature1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Умная персонализация</span>
+                      <span>{t('new.pricing.business.feature2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Расширенная аналитика</span>
+                      <span>{t('new.pricing.business.feature3')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Приоритетная поддержка</span>
+                      <span>{t('new.pricing.business.feature4')}</span>
                     </li>
                   </ul>
                   <Button onClick={() => navigate("/auth")} className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90">
-                    Выбрать план
+                    {t('new.pricing.business.cta')}
                   </Button>
                 </CardContent>
               </Card>
@@ -483,33 +497,33 @@ const New = () => {
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Про</h3>
-                    <p className="text-muted-foreground">Максимальный масштаб</p>
+                    <h3 className="text-2xl font-bold mb-2">{t('new.pricing.pro.name')}</h3>
+                    <p className="text-muted-foreground">{t('new.pricing.pro.desc')}</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">100,000₸</div>
-                    <p className="text-muted-foreground">безлимитные сообщения</p>
+                    <div className="text-5xl font-bold">{t('new.pricing.pro.price')}</div>
+                    <p className="text-muted-foreground">{t('new.pricing.pro.period')}</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Безлимитные сообщения</span>
+                      <span>{t('new.pricing.pro.feature1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>AI-помощник для текстов</span>
+                      <span>{t('new.pricing.pro.feature2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Мультиакаунт (до 5 номеров)</span>
+                      <span>{t('new.pricing.pro.feature3')}</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Выделенный менеджер</span>
+                      <span>{t('new.pricing.pro.feature4')}</span>
                     </li>
                   </ul>
                   <Button onClick={() => navigate("/auth")} variant="outline" className="w-full h-12">
-                    Выбрать план
+                    {t('new.pricing.pro.cta')}
                   </Button>
                 </CardContent>
               </Card>
@@ -524,53 +538,53 @@ const New = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                Частые вопросы
+                {t('new.faq.title')}
               </h2>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="border-2 rounded-2xl px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Это легально? WhatsApp не заблокирует?
+                  {t('new.faq.q1')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Да, это полностью легально. Мы отправляем сообщения только тем контактам, с которыми у вас уже был диалог в WhatsApp. Это не спам – это возвращение к существующим клиентам. Риск блокировки минимален.
+                  {t('new.faq.a1')}
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-2 rounded-2xl px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Как быстро я увижу результаты?
+                  {t('new.faq.q2')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Первые ответы приходят в течение нескольких часов после запуска рассылки. Обычно наши клиенты видят первые продажи в первые 24-48 часов.
+                  {t('new.faq.a2')}
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-2 rounded-2xl px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Нужно ли мне писать текст самому?
+                  {t('new.faq.q3')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Нет, наш AI-помощник создаст персонализированные сообщения автоматически. Вы можете редактировать их или использовать как есть.
+                  {t('new.faq.a3')}
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-2 rounded-2xl px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Сколько клиентов я смогу вернуть?
+                  {t('new.faq.q4')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Это зависит от размера вашей базы контактов в WhatsApp. В среднем наши клиенты возвращают 15-25% забытых контактов обратно в активные продажи.
+                  {t('new.faq.a4')}
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-5" className="border-2 rounded-2xl px-6 bg-background">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Можно ли попробовать бесплатно?
+                  {t('new.faq.q5')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Да! Мы даём 10 бесплатных сообщений, чтобы вы могли протестировать сервис без рисков и увидеть первые результаты.
+                  {t('new.faq.a5')}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -584,18 +598,18 @@ const New = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h3 className="text-3xl md:text-4xl font-bold animate-fade-in">
-              Готовы вернуть своих клиентов?
+              {t('new.footercta.title')}
             </h3>
             <p className="text-xl text-muted-foreground animate-fade-in" style={{
             animationDelay: '0.1s'
           }}>
-              Присоединяйтесь к сотням бизнесов, которые уже увеличили продажи с SalemBot
+              {t('new.footercta.subtitle')}
             </p>
             <div className="pt-4 animate-fade-in" style={{
             animationDelay: '0.2s'
           }}>
               <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105">
-                Начать бесплатно
+                {t('new.footercta.cta')}
               </Button>
             </div>
           </div>
@@ -609,38 +623,38 @@ const New = () => {
             <div className="space-y-4">
               <div className="text-3xl font-bold text-primary">SalemBot</div>
               <p className="text-muted-foreground">
-                Возвращаем клиентов через WhatsApp без блокировок и рисков
+                {t('new.footer.tagline')}
               </p>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-bold text-lg">Продукт</h4>
+              <h4 className="font-bold text-lg">{t('new.footer.product')}</h4>
               <ul className="space-y-2">
                 <li>
                   <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
-                    Возможности
+                    {t('new.footer.features')}
                   </a>
                 </li>
                 <li>
                   <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
-                    Цены
+                    {t('new.footer.pricing')}
                   </a>
                 </li>
                 <li>
                   <a href="#cases" className="text-muted-foreground hover:text-primary transition-colors">
-                    Кейсы
+                    {t('new.footer.cases')}
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-bold text-lg">Контакты</h4>
+              <h4 className="font-bold text-lg">{t('new.footer.contacts')}</h4>
               <ul className="space-y-3">
                 <li>
                   <a href="https://wa.me/+77064204638" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                     <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp поддержка</span>
+                    <span>{t('new.footer.whatsapp')}</span>
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-muted-foreground">
