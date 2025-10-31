@@ -51,7 +51,7 @@ const New = () => {
           
           <div className="pt-12 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-3xl opacity-50 animate-pulse-slow"></div>
-            <img src={networkVisual} alt="Визуализация возврата клиентов через WhatsApp" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full relative z-10" />
+            
           </div>
         </div>
       </section>
