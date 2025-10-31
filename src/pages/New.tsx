@@ -54,7 +54,7 @@ const New = () => {
       </section>
 
       {/* 2. ПОЧЕМУ ЭТО ВАЖНО */}
-      <section className="py-20 bg-muted relative z-10">
+      <section id="features" className="py-20 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -346,7 +346,7 @@ const New = () => {
       </section>
 
       {/* 5. CASES */}
-      <section className="py-20 relative z-10">
+      <section id="cases" className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -394,7 +394,7 @@ const New = () => {
       </section>
 
       {/* 6. PRICING */}
-      <section className="py-20 bg-muted relative z-10">
+      <section id="pricing" className="py-20 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -599,7 +599,7 @@ const New = () => {
       {/* Footer */}
       <footer className="bg-muted border-t relative z-10">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="space-y-4">
               <div className="text-3xl font-bold text-primary">SalemBot</div>
               <p className="text-muted-foreground">
@@ -611,40 +611,19 @@ const New = () => {
               <h4 className="font-bold text-lg">Продукт</h4>
               <ul className="space-y-2">
                 <li>
-                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
                     Возможности
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
                     Цены
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href="#cases" className="text-muted-foreground hover:text-primary transition-colors">
                     Кейсы
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-bold text-lg">Компания</h4>
-              <ul className="space-y-2">
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    О нас
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    Блог
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    Контакты
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
