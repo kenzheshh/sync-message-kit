@@ -439,7 +439,7 @@ const New = () => {
                   Можно ли попробовать бесплатно?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Да! Мы даём 100 бесплатных сообщений, чтобы вы могли протестировать сервис без рисков и увидеть первые результаты.
+                  Да! Мы даём 10 бесплатных сообщений, чтобы вы могли протестировать сервис без рисков и увидеть первые результаты.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
