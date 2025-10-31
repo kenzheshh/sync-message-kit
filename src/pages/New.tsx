@@ -341,7 +341,7 @@ const New = () => {
                   Каждое неотвеченное сообщение, старый клиент или пропавший контакт – это шанс на продажу, который можно вернуть. Мы просто делаем это за вас.
                 </p>
                 <div className="pt-6">
-                  <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12">
+                  <Button size="lg" onClick={() => navigate("/auth")} className="h-14 md:h-16 text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-6 md:px-12">
                     Начать возвращать клиентов
                   </Button>
                 </div>
