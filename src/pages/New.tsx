@@ -30,12 +30,12 @@ const New = () => {
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
         <div className="flex gap-4 items-center">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>Войти</Button>
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>Войти</Button>
         </div>
       </nav>
 
       {/* 1. HERO SECTION */}
-      <section className="container mx-auto px-4 py-20 lg:py-32 relative z-10">
+      <section className="container mx-auto px-4 py-12 lg:py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
             Возвращаем всех, кто когда-либо писал вам в WhatsApp
