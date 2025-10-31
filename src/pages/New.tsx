@@ -213,19 +213,38 @@ const New = () => {
                 {/* Левая часть - Хаотичная база клиентов */}
                 <div className="relative">
                   <Card className="border-2 bg-muted/50 backdrop-blur">
-                    <CardContent className="p-8">
-                      <h3 className="text-xl font-bold mb-6 text-center">Ваша база</h3>
-                      <div className="grid grid-cols-4 gap-3">
-                        {[...Array(16)].map((_, i) => (
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                        <MessageCircle className="w-5 h-5 text-primary" />
+                        Чаты WhatsApp
+                      </h3>
+                      <div className="space-y-3">
+                        {[
+                          { name: "Алия К.", message: "Спасибо за помощь!", time: "14:23" },
+                          { name: "Марат Б.", message: "Когда доставка?", time: "13:45" },
+                          { name: "Динара М.", message: "Заказываю второй раз 👍", time: "12:18" },
+                          { name: "Асхат Т.", message: "Отличное качество", time: "11:07" },
+                          { name: "Сауле Ж.", message: "Можно уточнить цену?", time: "Вчера" }
+                        ].map((chat, i) => (
                           <div
                             key={i}
-                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                            style={{
-                              backgroundColor: `hsl(${142 + (i * 15) % 60}, ${60 + (i * 5) % 30}%, ${40 + (i * 3) % 20}%)`,
-                              opacity: 0.6 + (i % 4) * 0.1
-                            }}
+                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
                           >
-                            <Users className="w-6 h-6 text-white" />
+                            <div
+                              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold"
+                              style={{
+                                backgroundColor: `hsl(${142 + (i * 40)}, 60%, 45%)`
+                              }}
+                            >
+                              {chat.name.charAt(0)}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex justify-between items-baseline">
+                                <p className="font-semibold text-sm truncate">{chat.name}</p>
+                                <span className="text-xs text-muted-foreground ml-2">{chat.time}</span>
+                              </div>
+                              <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
