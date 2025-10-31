@@ -267,7 +267,7 @@ const New = () => {
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl animate-pulse"></div>
                           <Brain className="w-12 h-12 text-primary relative z-10" />
                         </div>
-                        <p className="text-center font-bold mt-4">ИИ-анализ</p>
+                        <p className="text-center font-bold mt-4">Сегментация</p>
                       </CardContent>
                     </Card>
                   </div>
