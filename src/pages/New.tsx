@@ -543,9 +543,7 @@ const New = () => {
             </div>
           </div>
 
-          <div className="border-t pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 SalemBot. Все права защищены.</p>
-          </div>
+          
         </div>
       </footer>
     </div>;
