@@ -649,7 +649,7 @@ const New = () => {
                 </li>
                 <li className="flex items-center gap-2 text-muted-foreground">
                   <Phone className="w-4 h-4" />
-                  <span>+7 (706) 420-46-38</span>
+                  <a href="tel:+77064204638" className="hover:text-primary transition-colors">+7 (706) 420-46-38</a>
                 </li>
               </ul>
             </div>
