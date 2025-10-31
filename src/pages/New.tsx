@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone } from "lucide-react";
+import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone, Brain, ArrowRight, Tag } from "lucide-react";
 import networkVisual from "@/assets/network-visual.png";
 const New = () => {
   const navigate = useNavigate();
@@ -189,6 +189,115 @@ const New = () => {
               <p className="text-lg text-muted-foreground">
                 Больше никаких сложных интеграций – всё автоматизировано.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* СЕГМЕНТАЦИЯ КЛИЕНТСКОЙ БАЗЫ */}
+      <section className="py-32 bg-background relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                ИИ сегментирует вашу клиентскую базу
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Мы сканируем чаты в WhatsApp, определяем типы клиентов и автоматически создаём теги, чтобы вы могли запускать точные рассылки по каждому сегменту.
+              </p>
+            </div>
+
+            {/* Визуализация потока данных */}
+            <div className="relative">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                {/* Левая часть - Хаотичная база клиентов */}
+                <div className="relative">
+                  <Card className="border-2 bg-muted/50 backdrop-blur">
+                    <CardContent className="p-8">
+                      <h3 className="text-xl font-bold mb-6 text-center">Ваша база</h3>
+                      <div className="grid grid-cols-4 gap-3">
+                        {[...Array(16)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                            style={{
+                              backgroundColor: `hsl(${142 + (i * 15) % 60}, ${60 + (i * 5) % 30}%, ${40 + (i * 3) % 20}%)`,
+                              opacity: 0.6 + (i % 4) * 0.1
+                            }}
+                          >
+                            <Users className="w-6 h-6 text-white" />
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Центр - ИИ модуль */}
+                <div className="relative flex justify-center">
+                  {/* Стрелка слева */}
+                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12">
+                    <ArrowRight className="w-8 h-8 text-primary animate-pulse" />
+                  </div>
+                  
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
+                    <Card className="border-4 border-primary bg-background relative z-10">
+                      <CardContent className="p-8">
+                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl animate-pulse"></div>
+                          <Brain className="w-12 h-12 text-primary relative z-10" />
+                        </div>
+                        <p className="text-center font-bold mt-4">ИИ-анализ</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Стрелка справа */}
+                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-12">
+                    <ArrowRight className="w-8 h-8 text-primary animate-pulse" />
+                  </div>
+                </div>
+
+                {/* Правая часть - Сегменты */}
+                <div className="space-y-4">
+                  <Card className="border-2 bg-gradient-to-br from-green-500/10 to-green-600/5 hover:shadow-lg transition-all">
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Tag className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">Постоянные</h4>
+                        <p className="text-sm text-muted-foreground">Активные клиенты</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-2 bg-gradient-to-br from-orange-500/10 to-orange-600/5 hover:shadow-lg transition-all">
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Tag className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">Неактивные</h4>
+                        <p className="text-sm text-muted-foreground">Спящие клиенты</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-2 bg-gradient-to-br from-blue-500/10 to-blue-600/5 hover:shadow-lg transition-all">
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Tag className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg">Новые</h4>
+                        <p className="text-sm text-muted-foreground">Недавние контакты</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </div>
           </div>
         </div>
