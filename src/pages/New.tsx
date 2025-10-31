@@ -46,7 +46,7 @@ const New = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Продавайте тем, кто уже знает вас — без риска блокировок и дорогой рекламы.
+            Продавайте тем, кто уже знает вас – без риска блокировок и дорогой рекламы.
           </p>
           
           <div className="pt-6">
@@ -112,7 +112,7 @@ const New = () => {
                   </div>
                   <h3 className="text-2xl font-bold">Без блокировок</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Пишем только тем, кто уже был в переписке — WhatsApp не жалуется.
+                    Пишем только тем, кто уже был в переписке – WhatsApp не жалуется.
                   </p>
                 </CardContent>
               </Card>
@@ -120,7 +120,7 @@ const New = () => {
 
             <div className="text-center mt-12">
               <p className="text-xl text-muted-foreground italic">
-                Ваши забытые чаты — это спящие деньги. Мы поможем их пробудить.
+                Ваши забытые чаты – это спящие деньги. Мы поможем их пробудить.
               </p>
             </div>
           </div>
@@ -201,7 +201,7 @@ const New = () => {
 
             <div className="text-center mt-12">
               <p className="text-lg text-muted-foreground">
-                Больше никаких сложных интеграций — всё автоматизировано.
+                Больше никаких сложных интеграций – всё автоматизировано.
               </p>
             </div>
           </div>
@@ -221,7 +221,7 @@ const New = () => {
                   У вас закопаны деньги в виде забытых чатов
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Каждое неотвеченное сообщение, старый клиент или пропавший контакт — это шанс на продажу, который можно вернуть. Мы просто делаем это за вас.
+                  Каждое неотвеченное сообщение, старый клиент или пропавший контакт – это шанс на продажу, который можно вернуть. Мы просто делаем это за вас.
                 </p>
                 <div className="pt-6">
                   <Button 
@@ -432,7 +432,7 @@ const New = () => {
                   Это легально? WhatsApp не заблокирует?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                  Да, это полностью легально. Мы отправляем сообщения только тем контактам, с которыми у вас уже был диалог в WhatsApp. Это не спам — это возвращение к существующим клиентам. Риск блокировки минимален.
+                  Да, это полностью легально. Мы отправляем сообщения только тем контактам, с которыми у вас уже был диалог в WhatsApp. Это не спам – это возвращение к существующим клиентам. Риск блокировки минимален.
                 </AccordionContent>
               </AccordionItem>
 
