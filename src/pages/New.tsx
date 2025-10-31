@@ -223,29 +223,29 @@ const New = () => {
                       <div className="space-y-3">
                         {[
                           {
-                            name: "Алия К.",
+                            name: t('new.ai.chat1.name'),
                             message: t('new.ai.chat1.message'),
-                            time: "14:23"
+                            time: t('new.ai.chat1.time')
                           },
                           {
-                            name: "Марат Б.",
+                            name: t('new.ai.chat2.name'),
                             message: t('new.ai.chat2.message'),
-                            time: "13:45"
+                            time: t('new.ai.chat2.time')
                           },
                           {
-                            name: "Динара М.",
+                            name: t('new.ai.chat3.name'),
                             message: t('new.ai.chat3.message'),
-                            time: "12:18"
+                            time: t('new.ai.chat3.time')
                           },
                           {
-                            name: "Асхат Т.",
+                            name: t('new.ai.chat4.name'),
                             message: t('new.ai.chat4.message'),
-                            time: "11:07"
+                            time: t('new.ai.chat4.time')
                           },
                           {
-                            name: "Сауле Ж.",
+                            name: t('new.ai.chat5.name'),
                             message: t('new.ai.chat5.message'),
-                            time: "Вчера"
+                            time: t('new.ai.chat5.time')
                           }
                         ].map((chat, i) => (
                           <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
