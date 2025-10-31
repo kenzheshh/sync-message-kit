@@ -631,9 +631,11 @@ const New = () => {
             <div className="space-y-4">
               <h4 className="font-bold text-lg">Контакты</h4>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-muted-foreground">
-                  <MessageCircle className="w-4 h-4" />
-                  <span>WhatsApp поддержка</span>
+                <li>
+                  <a href="https://wa.me/+77064204638" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                    <MessageCircle className="w-4 h-4" />
+                    <span>WhatsApp поддержка</span>
+                  </a>
                 </li>
                 <li className="flex items-center gap-2 text-muted-foreground">
                   <Mail className="w-4 h-4" />
