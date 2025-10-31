@@ -22,7 +22,7 @@ const New = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 container mx-auto px-4 py-4 flex justify-between items-center">
+      <nav className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
@@ -32,7 +32,7 @@ const New = () => {
       </nav>
 
       {/* 1. HERO SECTION */}
-      <section className="container mx-auto px-4 py-8 lg:py-14 relative z-10">
+      <section className="container mx-auto px-4 py-11 lg:py-19 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
             Возвращаем всех, кто когда-либо писал вам в WhatsApp
@@ -54,7 +54,7 @@ const New = () => {
       </section>
 
       {/* 2. ПОЧЕМУ ЭТО ВАЖНО */}
-      <section className="py-22 bg-muted relative z-10">
+      <section className="py-30 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -111,7 +111,7 @@ const New = () => {
       </section>
 
       {/* 3. КАК ЭТО РАБОТАЕТ */}
-      <section className="py-22 relative z-10">
+      <section className="py-30 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -192,7 +192,7 @@ const New = () => {
       </section>
 
       {/* СЕГМЕНТАЦИЯ КЛИЕНТСКОЙ БАЗЫ */}
-      <section className="py-22 bg-background relative z-10">
+      <section className="py-30 bg-background relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -320,7 +320,7 @@ const New = () => {
       </section>
 
       {/* 4. СКРЫТЫЕ ДЕНЬГИ */}
-      <section className="py-22 bg-muted relative z-10">
+      <section className="py-30 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 shadow-2xl bg-background overflow-hidden">
@@ -346,7 +346,7 @@ const New = () => {
       </section>
 
       {/* 5. CASES */}
-      <section className="py-22 relative z-10">
+      <section className="py-30 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -394,7 +394,7 @@ const New = () => {
       </section>
 
       {/* 6. PRICING */}
-      <section className="py-22 bg-muted relative z-10">
+      <section className="py-30 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -513,7 +513,7 @@ const New = () => {
       </section>
 
       {/* 7. FAQ */}
-      <section className="py-22 relative z-10">
+      <section className="py-30 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
@@ -573,7 +573,7 @@ const New = () => {
       </section>
 
       {/* Footer CTA with Animation */}
-      <section className="py-14 relative z-10 overflow-hidden">
+      <section className="py-19 relative z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10 animate-pulse-slow"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
@@ -598,7 +598,7 @@ const New = () => {
 
       {/* Footer */}
       <footer className="bg-muted border-t relative z-10">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-11">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
               <div className="text-3xl font-bold text-primary">SalemBot</div>
