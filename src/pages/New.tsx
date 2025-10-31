@@ -30,7 +30,7 @@ const New = () => {
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
         <div className="flex gap-4 items-center">
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>Войти</Button>
+          <Button size="lg" onClick={() => navigate("/auth")} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full font-medium text-xl">Вход</Button>
         </div>
       </nav>
 
