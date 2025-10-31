@@ -359,19 +359,28 @@ const Index = () => {
             </Card>
 
             {/* Trust badges */}
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="space-y-2">
-                <div className="text-5xl font-bold">{t('social.metric1.value')}</div>
-                <p className="text-muted-foreground text-lg">{t('social.metric1.label')}</p>
-              </div>
-              <div className="space-y-2">
-                <div className="text-5xl font-bold">{t('social.metric2.value')}</div>
-                <p className="text-muted-foreground text-lg">{t('social.metric2.label')}</p>
-              </div>
-              <div className="space-y-2">
-                <div className="text-5xl font-bold">{t('social.metric3.value')}</div>
-                <p className="text-muted-foreground text-lg">{t('social.metric3.label')}</p>
-              </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="border-2 bg-background">
+                <CardContent className="p-8 space-y-3">
+                  <div className="text-5xl font-bold text-primary">{t('social.metric1.value')}</div>
+                  <p className="text-xl font-semibold">{t('social.metric1.label')}</p>
+                  <p className="text-muted-foreground">{t('social.result1.desc')}</p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 bg-background">
+                <CardContent className="p-8 space-y-3">
+                  <div className="text-5xl font-bold text-primary">{t('social.metric2.value')}</div>
+                  <p className="text-xl font-semibold">{t('social.metric2.label')}</p>
+                  <p className="text-muted-foreground">{t('social.result2.desc')}</p>
+                </CardContent>
+              </Card>
+              <Card className="border-2 bg-background">
+                <CardContent className="p-8 space-y-3">
+                  <div className="text-5xl font-bold text-primary">{t('social.metric3.value')}</div>
+                  <p className="text-xl font-semibold">{t('social.metric3.label')}</p>
+                  <p className="text-muted-foreground">{t('social.result3.desc')}</p>
+                </CardContent>
+              </Card>
             </div>
 
           </div>

@@ -68,12 +68,17 @@ const translations = {
     'social.testimonial.quote': 'We went from spending 4 hours a day on follow-ups to zero. SalemBot brought back 30% of our dormant customers in the first month.',
     'social.testimonial.author': 'Aisha K.',
     'social.testimonial.role': 'E-commerce Owner',
-    'social.metric1.value': '10K+',
-    'social.metric1.label': 'Contacts reached daily',
-    'social.metric2.value': '15-20%',
-    'social.metric2.label': 'Average conversion rate',
-    'social.metric3.value': '2 min',
-    'social.metric3.label': 'Setup time',
+    'social.metric1.value': '850K₸',
+    'social.metric1.label': 'Service Center',
+    'social.metric2.value': '193 clients',
+    'social.metric2.label': 'Fitness Club',
+    'social.metric3.value': '1.4M₸',
+    'social.metric3.label': 'Flower Shop',
+    
+    // Client Results Details
+    'social.result1.desc': 'Additional revenue for the month from clients who had not requested repairs for a long time.',
+    'social.result2.desc': 'Returned in the first month after mailing to the inactive database.',
+    'social.result3.desc': 'Bouquet sales to customers who have not ordered in over six months — with no advertising costs.',
     
     // Pricing
     'pricing.title': 'Simple, transparent pricing',
@@ -197,12 +202,17 @@ const translations = {
     'social.testimonial.quote': 'Мы перешли с 4 часов в день на напоминания к нулю. SalemBot вернул 30% наших неактивных клиентов в первый месяц.',
     'social.testimonial.author': 'Аиша К.',
     'social.testimonial.role': 'Владелица e-commerce',
-    'social.metric1.value': '10К+',
-    'social.metric1.label': 'Сообщений отправляется ежедневно',
-    'social.metric2.value': '15-20%',
-    'social.metric2.label': 'Средняя конверсия в ответ',
-    'social.metric3.value': '2 мин',
-    'social.metric3.label': 'Время настройки',
+    'social.metric1.value': '850K₸',
+    'social.metric1.label': 'Сервисный центр',
+    'social.metric2.value': '193 клиента',
+    'social.metric2.label': 'Фитнес-клуб',
+    'social.metric3.value': '1.4M₸',
+    'social.metric3.label': 'Цветочный магазин',
+    
+    // Client Results Details
+    'social.result1.desc': 'Дополнительный доход за месяц от клиентов, которые давно не обращались за ремонтом.',
+    'social.result2.desc': 'Вернулись за первый месяц после рассылки по неактивной базе.',
+    'social.result3.desc': 'Продажи букетов клиентам, которые не заказывали более полугода — без затрат на рекламу.',
     
     // Pricing
     'pricing.title': 'Простые, прозрачные цены',
