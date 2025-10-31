@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone } from "lucide-react";
 import networkVisual from "@/assets/network-visual.png";
 
 const New = () => {
@@ -237,26 +238,345 @@ const New = () => {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-20 relative z-10">
+      {/* 5. CASES */}
+      <section className="py-32 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h3 className="text-3xl md:text-4xl font-bold">
-              Готовы вернуть своих клиентов?
-            </h3>
-            <p className="text-xl text-muted-foreground">
-              Присоединяйтесь к сотням бизнесов, которые уже увеличили продажи с SalemBot
-            </p>
-            <Button 
-              size="lg" 
-              onClick={() => navigate("/auth")} 
-              className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12"
-            >
-              Начать бесплатно
-            </Button>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Реальные результаты наших клиентов
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Бизнесы, которые уже вернули своих клиентов
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="border-2 hover:shadow-xl transition-all bg-background">
+                <CardContent className="p-8 space-y-4">
+                  <div className="text-5xl font-bold text-primary">+127%</div>
+                  <h3 className="text-xl font-bold">Интернет-магазин одежды</h3>
+                  <p className="text-muted-foreground">
+                    Вернули 340 клиентов из старых чатов за первую неделю. Продажи выросли на 127%.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:shadow-xl transition-all bg-background">
+                <CardContent className="p-8 space-y-4">
+                  <div className="text-5xl font-bold text-primary">₸850K</div>
+                  <h3 className="text-xl font-bold">Студия красоты</h3>
+                  <p className="text-muted-foreground">
+                    Дополнительный доход за месяц от клиентов, которые не записывались больше полугода.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:shadow-xl transition-all bg-background">
+                <CardContent className="p-8 space-y-4">
+                  <div className="text-5xl font-bold text-primary">3.8x</div>
+                  <h3 className="text-xl font-bold">Онлайн-школа</h3>
+                  <p className="text-muted-foreground">
+                    Конверсия в продажу в 3.8 раза выше, чем с рекламы. Окупили затраты за 2 дня.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* 6. PRICING */}
+      <section className="py-32 bg-muted relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Простые и честные цены
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Платите только за результат. Без скрытых комиссий.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="border-2 hover:shadow-xl transition-all bg-background">
+                <CardContent className="p-8 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Старт</h3>
+                    <p className="text-muted-foreground">Попробуйте бесплатно</p>
+                  </div>
+                  <div>
+                    <div className="text-5xl font-bold">₸0</div>
+                    <p className="text-muted-foreground">первые 100 сообщений</p>
+                  </div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>До 100 сообщений бесплатно</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Автоматический анализ базы</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Базовая аналитика</span>
+                    </li>
+                  </ul>
+                  <Button 
+                    onClick={() => navigate("/auth")} 
+                    variant="outline" 
+                    className="w-full h-12"
+                  >
+                    Начать бесплатно
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="border-4 border-primary hover:shadow-2xl transition-all bg-background relative overflow-hidden">
+                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
+                  Популярный
+                </div>
+                <CardContent className="p-8 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Бизнес</h3>
+                    <p className="text-muted-foreground">Для активных продаж</p>
+                  </div>
+                  <div>
+                    <div className="text-5xl font-bold">₸29,990</div>
+                    <p className="text-muted-foreground">до 5000 сообщений/мес</p>
+                  </div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>До 5000 сообщений в месяц</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Умная персонализация</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Расширенная аналитика</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Приоритетная поддержка</span>
+                    </li>
+                  </ul>
+                  <Button 
+                    onClick={() => navigate("/auth")} 
+                    className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90"
+                  >
+                    Выбрать план
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 hover:shadow-xl transition-all bg-background">
+                <CardContent className="p-8 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Про</h3>
+                    <p className="text-muted-foreground">Максимальный масштаб</p>
+                  </div>
+                  <div>
+                    <div className="text-5xl font-bold">₸79,990</div>
+                    <p className="text-muted-foreground">безлимитные сообщения</p>
+                  </div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Безлимитные сообщения</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>AI-помощник для текстов</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Мультиакаунт (до 5 номеров)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Выделенный менеджер</span>
+                    </li>
+                  </ul>
+                  <Button 
+                    onClick={() => navigate("/auth")} 
+                    variant="outline" 
+                    className="w-full h-12"
+                  >
+                    Выбрать план
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ */}
+      <section className="py-32 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Частые вопросы
+              </h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="border-2 rounded-2xl px-6 bg-background">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Это легально? WhatsApp не заблокирует?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  Да, это полностью легально. Мы отправляем сообщения только тем контактам, с которыми у вас уже был диалог в WhatsApp. Это не спам — это возвращение к существующим клиентам. Риск блокировки минимален.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border-2 rounded-2xl px-6 bg-background">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Как быстро я увижу результаты?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  Первые ответы приходят в течение нескольких часов после запуска рассылки. Обычно наши клиенты видят первые продажи в первые 24-48 часов.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border-2 rounded-2xl px-6 bg-background">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Нужно ли мне писать текст самому?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  Нет, наш AI-помощник создаст персонализированные сообщения автоматически. Вы можете редактировать их или использовать как есть.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border-2 rounded-2xl px-6 bg-background">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Сколько клиентов я смогу вернуть?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  Это зависит от размера вашей базы контактов в WhatsApp. В среднем наши клиенты возвращают 15-25% забытых контактов обратно в активные продажи.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="border-2 rounded-2xl px-6 bg-background">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Можно ли попробовать бесплатно?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  Да! Мы даём 100 бесплатных сообщений, чтобы вы могли протестировать сервис без рисков и увидеть первые результаты.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer CTA with Animation */}
+      <section className="py-20 relative z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10 animate-pulse-slow"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h3 className="text-3xl md:text-4xl font-bold animate-fade-in">
+              Готовы вернуть своих клиентов?
+            </h3>
+            <p className="text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              Присоединяйтесь к сотням бизнесов, которые уже увеличили продажи с SalemBot
+            </p>
+            <div className="pt-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <Button 
+                size="lg" 
+                onClick={() => navigate("/auth")} 
+                className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105 animate-pulse-slow"
+              >
+                Начать бесплатно
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-muted border-t relative z-10">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div className="space-y-4">
+              <div className="text-3xl font-bold text-primary">SalemBot</div>
+              <p className="text-muted-foreground">
+                Возвращаем клиентов через WhatsApp без блокировок и рисков
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-lg">Продукт</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                    Возможности
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                    Цены
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors">
+                    Кейсы
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-lg">Компания</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
+                    О нас
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
+                    Блог
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
+                    Контакты
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-lg">Контакты</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp поддержка</span>
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="w-4 h-4" />
+                  <span>support@salembot.kz</span>
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Phone className="w-4 h-4" />
+                  <span>+7 (747) 123-45-67</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t pt-8 text-center text-muted-foreground">
+            <p>&copy; 2024 SalemBot. Все права защищены.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
