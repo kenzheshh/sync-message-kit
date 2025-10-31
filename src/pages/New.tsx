@@ -24,9 +24,6 @@ const New = () => {
       {/* Navigation */}
       <nav className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => navigate("/")}>
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
         <div className="flex gap-4 items-center">
