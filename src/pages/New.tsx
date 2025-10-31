@@ -293,7 +293,7 @@ const New = () => {
                   </div>
                   <div>
                     <div className="text-5xl font-bold">₸0</div>
-                    <p className="text-muted-foreground">первые 100 сообщений</p>
+                    <p className="text-muted-foreground">тестовые 10 сообщений</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
