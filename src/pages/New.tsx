@@ -326,12 +326,12 @@ const New = () => {
                   </div>
                   <div>
                     <div className="text-5xl font-bold">₸50,000</div>
-                    <p className="text-muted-foreground">до 5000 сообщений/мес</p>
+                    <p className="text-muted-foreground">Безлимитные сообщения</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>До 5000 сообщений в месяц</span>
+                      <span>Безлимитные сообщения</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
