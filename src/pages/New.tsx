@@ -54,7 +54,7 @@ const New = () => {
       </section>
 
       {/* 2. ПОЧЕМУ ЭТО ВАЖНО */}
-      <section className="py-32 bg-muted relative z-10">
+      <section className="py-20 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -111,7 +111,7 @@ const New = () => {
       </section>
 
       {/* 3. КАК ЭТО РАБОТАЕТ */}
-      <section className="py-32 relative z-10">
+      <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -192,7 +192,7 @@ const New = () => {
       </section>
 
       {/* СЕГМЕНТАЦИЯ КЛИЕНТСКОЙ БАЗЫ */}
-      <section className="py-32 bg-background relative z-10">
+      <section className="py-20 bg-background relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -320,7 +320,7 @@ const New = () => {
       </section>
 
       {/* 4. СКРЫТЫЕ ДЕНЬГИ */}
-      <section className="py-32 bg-muted relative z-10">
+      <section className="py-20 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 shadow-2xl bg-background overflow-hidden">
@@ -346,7 +346,7 @@ const New = () => {
       </section>
 
       {/* 5. CASES */}
-      <section className="py-32 relative z-10">
+      <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -394,7 +394,7 @@ const New = () => {
       </section>
 
       {/* 6. PRICING */}
-      <section className="py-32 bg-muted relative z-10">
+      <section className="py-20 bg-muted relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
@@ -513,7 +513,7 @@ const New = () => {
       </section>
 
       {/* 7. FAQ */}
-      <section className="py-32 relative z-10">
+      <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
