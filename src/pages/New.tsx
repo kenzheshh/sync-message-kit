@@ -599,53 +599,51 @@ const New = () => {
       {/* Footer */}
       <footer className="bg-muted border-t relative z-10">
         <div className="container mx-auto px-4 py-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="text-3xl font-bold text-primary mb-4">SalemBot</div>
-              <p className="text-muted-foreground max-w-md mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="space-y-4">
+              <div className="text-3xl font-bold text-primary">SalemBot</div>
+              <p className="text-muted-foreground">
                 Возвращаем клиентов через WhatsApp без блокировок и рисков
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 mb-8">
-              <div className="space-y-4 text-center md:text-left">
-                <h4 className="font-bold text-lg">Продукт</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
-                      Возможности
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
-                      Цены
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#cases" className="text-muted-foreground hover:text-primary transition-colors">
-                      Кейсы
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            <div className="space-y-4">
+              <h4 className="font-bold text-lg">Продукт</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
+                    Возможности
+                  </a>
+                </li>
+                <li>
+                  <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
+                    Цены
+                  </a>
+                </li>
+                <li>
+                  <a href="#cases" className="text-muted-foreground hover:text-primary transition-colors">
+                    Кейсы
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-              <div className="space-y-4 text-center md:text-left">
-                <h4 className="font-bold text-lg">Контакты</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-2 text-muted-foreground justify-center md:justify-start">
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp поддержка</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-muted-foreground justify-center md:justify-start">
-                    <Mail className="w-4 h-4" />
-                    <span>support@salembot.kz</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-muted-foreground justify-center md:justify-start">
-                    <Phone className="w-4 h-4" />
-                    <span>+7 (747) 123-45-67</span>
-                  </li>
-                </ul>
-              </div>
+            <div className="space-y-4">
+              <h4 className="font-bold text-lg">Контакты</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp поддержка</span>
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="w-4 h-4" />
+                  <span>support@salembot.kz</span>
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Phone className="w-4 h-4" />
+                  <span>+7 (747) 123-45-67</span>
+                </li>
+              </ul>
             </div>
           </div>
 
