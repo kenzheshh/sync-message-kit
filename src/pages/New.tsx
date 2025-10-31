@@ -4,19 +4,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone } from "lucide-react";
 import networkVisual from "@/assets/network-visual.png";
-
 const New = () => {
   const navigate = useNavigate();
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 relative overflow-hidden">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 relative overflow-hidden">
       {/* Organic blob shapes */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] opacity-20 animate-blob">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <path fill="hsl(142, 76%, 36%)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,39.8,76.8C25.8,84.6,8.8,87.6,-7.3,84.9C-23.4,82.2,-38.8,73.8,-52.4,63.2C-66,52.6,-77.8,39.8,-83.7,24.8C-89.6,9.8,-89.6,-7.4,-84.4,-22.9C-79.2,-38.4,-68.8,-52.2,-55.4,-59.6C-42,-67,-25.6,-68,-10.4,-70.4C4.8,-72.8,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
         </svg>
       </div>
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] opacity-25 animate-blob" style={{ animationDelay: '2s' }}>
+      <div className="absolute top-20 right-0 w-[500px] h-[500px] opacity-25 animate-blob" style={{
+      animationDelay: '2s'
+    }}>
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <path fill="hsl(142, 76%, 36%)" d="M39.5,-66.3C51.4,-58.5,61.3,-48.3,68.4,-36.2C75.5,-24.1,79.8,-10.1,80.1,4.2C80.4,18.5,76.7,33.1,68.5,45.2C60.3,57.3,47.6,66.9,33.6,72.8C19.6,78.7,4.3,80.9,-10.7,78.8C-25.7,76.7,-40.4,70.3,-53.2,61.2C-66,52.1,-76.9,40.3,-82.4,26.4C-87.9,12.5,-88,-3.5,-82.7,-17.4C-77.4,-31.3,-66.7,-43.1,-53.8,-50.5C-40.9,-57.9,-26.8,-60.9,-13.4,-64.1C0,-67.3,27.6,-74.1,39.5,-66.3Z" transform="translate(100 100)" />
         </svg>
@@ -50,22 +49,12 @@ const New = () => {
           </p>
           
           <div className="pt-6">
-            <Button 
-              size="lg" 
-              onClick={() => navigate("/auth")} 
-              className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12"
-            >
-              🟩 Вернуть клиентов сейчас
-            </Button>
+            <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-[36px]">👉 Вернуть клиентов сейчас</Button>
           </div>
           
           <div className="pt-12 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-3xl opacity-50 animate-pulse-slow"></div>
-            <img 
-              src={networkVisual} 
-              alt="Визуализация возврата клиентов через WhatsApp" 
-              className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full relative z-10" 
-            />
+            <img src={networkVisual} alt="Визуализация возврата клиентов через WhatsApp" className="rounded-3xl shadow-2xl border-2 border-border mx-auto max-w-4xl w-full relative z-10" />
           </div>
         </div>
       </section>
@@ -224,11 +213,7 @@ const New = () => {
                   Каждое неотвеченное сообщение, старый клиент или пропавший контакт – это шанс на продажу, который можно вернуть. Мы просто делаем это за вас.
                 </p>
                 <div className="pt-6">
-                  <Button 
-                    size="lg" 
-                    onClick={() => navigate("/auth")} 
-                    className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12"
-                  >
+                  <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12">
                     Начать возвращать клиентов
                   </Button>
                 </div>
@@ -324,11 +309,7 @@ const New = () => {
                       <span>Базовая аналитика</span>
                     </li>
                   </ul>
-                  <Button 
-                    onClick={() => navigate("/auth")} 
-                    variant="outline" 
-                    className="w-full h-12"
-                  >
+                  <Button onClick={() => navigate("/auth")} variant="outline" className="w-full h-12">
                     Начать бесплатно
                   </Button>
                 </CardContent>
@@ -365,10 +346,7 @@ const New = () => {
                       <span>Приоритетная поддержка</span>
                     </li>
                   </ul>
-                  <Button 
-                    onClick={() => navigate("/auth")} 
-                    className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
+                  <Button onClick={() => navigate("/auth")} className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90">
                     Выбрать план
                   </Button>
                 </CardContent>
@@ -402,11 +380,7 @@ const New = () => {
                       <span>Выделенный менеджер</span>
                     </li>
                   </ul>
-                  <Button 
-                    onClick={() => navigate("/auth")} 
-                    variant="outline" 
-                    className="w-full h-12"
-                  >
+                  <Button onClick={() => navigate("/auth")} variant="outline" className="w-full h-12">
                     Выбрать план
                   </Button>
                 </CardContent>
@@ -484,15 +458,15 @@ const New = () => {
             <h3 className="text-3xl md:text-4xl font-bold animate-fade-in">
               Готовы вернуть своих клиентов?
             </h3>
-            <p className="text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <p className="text-xl text-muted-foreground animate-fade-in" style={{
+            animationDelay: '0.1s'
+          }}>
               Присоединяйтесь к сотням бизнесов, которые уже увеличили продажи с SalemBot
             </p>
-            <div className="pt-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <Button 
-                size="lg" 
-                onClick={() => navigate("/auth")} 
-                className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105 animate-pulse-slow"
-              >
+            <div className="pt-4 animate-fade-in" style={{
+            animationDelay: '0.2s'
+          }}>
+              <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105 animate-pulse-slow">
                 Начать бесплатно
               </Button>
             </div>
@@ -577,8 +551,6 @@ const New = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default New;
