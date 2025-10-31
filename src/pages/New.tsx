@@ -216,23 +216,30 @@ const New = () => {
                         Чаты WhatsApp
                       </h3>
                       <div className="space-y-3">
-                        {[
-                          { name: "Алия К.", message: "Спасибо за помощь!", time: "14:23" },
-                          { name: "Марат Б.", message: "Когда доставка?", time: "13:45" },
-                          { name: "Динара М.", message: "Заказываю второй раз 👍", time: "12:18" },
-                          { name: "Асхат Т.", message: "Отличное качество", time: "11:07" },
-                          { name: "Сауле Ж.", message: "Можно уточнить цену?", time: "Вчера" }
-                        ].map((chat, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <div
-                              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold"
-                              style={{
-                                backgroundColor: `hsl(${142 + (i * 40)}, 60%, 45%)`
-                              }}
-                            >
+                        {[{
+                        name: "Алия К.",
+                        message: "Спасибо за помощь!",
+                        time: "14:23"
+                      }, {
+                        name: "Марат Б.",
+                        message: "Когда доставка?",
+                        time: "13:45"
+                      }, {
+                        name: "Динара М.",
+                        message: "Заказываю второй раз 👍",
+                        time: "12:18"
+                      }, {
+                        name: "Асхат Т.",
+                        message: "Отличное качество",
+                        time: "11:07"
+                      }, {
+                        name: "Сауле Ж.",
+                        message: "Можно уточнить цену?",
+                        time: "Вчера"
+                      }].map((chat, i) => <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold" style={{
+                          backgroundColor: `hsl(${142 + i * 40}, 60%, 45%)`
+                        }}>
                               {chat.name.charAt(0)}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -242,8 +249,7 @@ const New = () => {
                               </div>
                               <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
                             </div>
-                          </div>
-                        ))}
+                          </div>)}
                       </div>
                     </CardContent>
                   </Card>
@@ -628,26 +634,7 @@ const New = () => {
               </ul>
             </div>
 
-            <div className="space-y-4">
-              <h4 className="font-bold text-lg">Компания</h4>
-              <ul className="space-y-2">
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    О нас
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    Блог
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-primary transition-colors">
-                    Контакты
-                  </button>
-                </li>
-              </ul>
-            </div>
+            
 
             <div className="space-y-4">
               <h4 className="font-bold text-lg">Контакты</h4>
