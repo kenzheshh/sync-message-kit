@@ -216,23 +216,30 @@ const New = () => {
                         Чаты WhatsApp
                       </h3>
                       <div className="space-y-3">
-                        {[
-                          { name: "Алия К.", message: "Спасибо за помощь!", time: "14:23" },
-                          { name: "Марат Б.", message: "Когда доставка?", time: "13:45" },
-                          { name: "Динара М.", message: "Заказываю второй раз 👍", time: "12:18" },
-                          { name: "Асхат Т.", message: "Отличное качество", time: "11:07" },
-                          { name: "Сауле Ж.", message: "Можно уточнить цену?", time: "Вчера" }
-                        ].map((chat, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <div
-                              className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold"
-                              style={{
-                                backgroundColor: `hsl(${142 + (i * 40)}, 60%, 45%)`
-                              }}
-                            >
+                        {[{
+                        name: "Алия К.",
+                        message: "Спасибо за помощь!",
+                        time: "14:23"
+                      }, {
+                        name: "Марат Б.",
+                        message: "Когда доставка?",
+                        time: "13:45"
+                      }, {
+                        name: "Динара М.",
+                        message: "Заказываю второй раз 👍",
+                        time: "12:18"
+                      }, {
+                        name: "Асхат Т.",
+                        message: "Отличное качество",
+                        time: "11:07"
+                      }, {
+                        name: "Сауле Ж.",
+                        message: "Можно уточнить цену?",
+                        time: "Вчера"
+                      }].map((chat, i) => <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold" style={{
+                          backgroundColor: `hsl(${142 + i * 40}, 60%, 45%)`
+                        }}>
                               {chat.name.charAt(0)}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -242,8 +249,7 @@ const New = () => {
                               </div>
                               <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
                             </div>
-                          </div>
-                        ))}
+                          </div>)}
                       </div>
                     </CardContent>
                   </Card>
@@ -643,7 +649,7 @@ const New = () => {
                 </li>
                 <li className="flex items-center gap-2 text-muted-foreground">
                   <Phone className="w-4 h-4" />
-                  <span>+7 (747) 123-45-67</span>
+                  <span>+7 (706) 420-46-38</span>
                 </li>
               </ul>
             </div>
