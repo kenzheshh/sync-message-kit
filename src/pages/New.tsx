@@ -364,30 +364,30 @@ const New = () => {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">+127%</div>
-                  <h3 className="text-xl font-bold">Интернет-магазин одежды</h3>
+                  <div className="text-5xl font-bold text-primary">850K₸</div>
+                  <h3 className="text-xl font-bold">Сервисный центр</h3>
                   <p className="text-muted-foreground">
-                    Вернули 340 клиентов из старых чатов за первую неделю. Продажи выросли на 127%.
+                    Дополнительный доход за месяц от клиентов, которые давно не обращались за ремонтом.
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">₸850K</div>
-                  <h3 className="text-xl font-bold">Студия красоты</h3>
+                  <div className="text-5xl font-bold text-primary">193 клиента</div>
+                  <h3 className="text-xl font-bold">Фитнес-клуб</h3>
                   <p className="text-muted-foreground">
-                    Дополнительный доход за месяц от клиентов, которые не записывались больше полугода.
+                    Вернулись за первый месяц после рассылки по неактивной базе.
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-4">
-                  <div className="text-5xl font-bold text-primary">3.8x</div>
-                  <h3 className="text-xl font-bold">Онлайн-школа</h3>
+                  <div className="text-5xl font-bold text-primary">1.4M₸</div>
+                  <h3 className="text-xl font-bold">Цветочный магазин</h3>
                   <p className="text-muted-foreground">
-                    Конверсия в продажу в 3.8 раза выше, чем с рекламы. Окупили затраты за 2 дня.
+                    Продажи букетов клиентам, которые не заказывали более полугода — без затрат на рекламу.
                   </p>
                 </CardContent>
               </Card>
@@ -450,7 +450,7 @@ const New = () => {
                     <p className="text-muted-foreground">Для активных продаж</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">₸50,000</div>
+                    <div className="text-5xl font-bold">50,000₸</div>
                     <p className="text-muted-foreground">Безлимитные сообщения</p>
                   </div>
                   <ul className="space-y-3">
@@ -484,7 +484,7 @@ const New = () => {
                     <p className="text-muted-foreground">Максимальный масштаб</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">₸100,000</div>
+                    <div className="text-5xl font-bold">100,000₸</div>
                     <p className="text-muted-foreground">безлимитные сообщения</p>
                   </div>
                   <ul className="space-y-3">
