@@ -30,10 +30,7 @@ const New = () => {
           <div className="text-4xl font-bold text-primary">SalemBot</div>
         </div>
         <div className="flex gap-4 items-center">
-          <Button variant="ghost" onClick={() => navigate("/auth")}>Войти</Button>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>
-            Регистрация
-          </Button>
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full" onClick={() => navigate("/auth")}>Войти</Button>
         </div>
       </nav>
 
@@ -466,7 +463,7 @@ const New = () => {
             <div className="pt-4 animate-fade-in" style={{
             animationDelay: '0.2s'
           }}>
-              <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105 animate-pulse-slow">
+              <Button size="lg" onClick={() => navigate("/auth")} className="h-16 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full shadow-xl hover:shadow-2xl transition-all px-12 hover:scale-105">
                 Начать бесплатно
               </Button>
             </div>
