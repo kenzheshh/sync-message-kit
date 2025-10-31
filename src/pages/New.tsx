@@ -359,7 +359,7 @@ const New = () => {
                     <p className="text-muted-foreground">Максимальный масштаб</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">₸79,990</div>
+                    <div className="text-5xl font-bold">₸100,000</div>
                     <p className="text-muted-foreground">безлимитные сообщения</p>
                   </div>
                   <ul className="space-y-3">
