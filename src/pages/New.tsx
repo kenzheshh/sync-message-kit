@@ -325,7 +325,7 @@ const New = () => {
                     <p className="text-muted-foreground">Для активных продаж</p>
                   </div>
                   <div>
-                    <div className="text-5xl font-bold">₸29,990</div>
+                    <div className="text-5xl font-bold">₸50,000</div>
                     <p className="text-muted-foreground">до 5000 сообщений/мес</p>
                   </div>
                   <ul className="space-y-3">
