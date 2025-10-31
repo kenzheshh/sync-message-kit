@@ -255,7 +255,7 @@ const New = () => {
                 {/* Центр - ИИ модуль */}
                 <div className="relative flex justify-center">
                   {/* Стрелка слева */}
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4">
+                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 translate-x-2">
                     <ArrowRight className="w-8 h-8 text-primary animate-pulse" />
                   </div>
                   
@@ -273,7 +273,7 @@ const New = () => {
                   </div>
 
                   {/* Стрелка справа */}
-                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-4">
+                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2">
                     <ArrowRight className="w-8 h-8 text-primary animate-pulse" />
                   </div>
                 </div>
