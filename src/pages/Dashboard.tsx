@@ -207,7 +207,7 @@ const Dashboard = () => {
                 🔗 Подключите рабочий WhatsApp
               </DialogTitle>
               <DialogDescription className="text-base pt-2">
-                Этот номер нужен, чтобы связать SalemBot с вашим рабочим WhatsApp, с которого вы пишете клиентам.
+                👉 Введите номер, чтобы связать <span className="font-semibold">SalemBot</span> с вашим <span className="font-semibold">рабочим WhatsApp</span>, через который вы общаетесь с клиентами
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
