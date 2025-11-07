@@ -19,11 +19,23 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 
 const Dashboard = () => {
   const { toast } = useToast();
   const [connectionCode] = useState("WXYZ");
   const [isConnected, setIsConnected] = useState(false);
+  const [showConnectionDialog, setShowConnectionDialog] = useState(false);
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [showQRCode, setShowQRCode] = useState(false);
   const [blacklistNumber, setBlacklistNumber] = useState("");
   const [blacklist, setBlacklist] = useState<string[]>([]);
   
@@ -47,8 +59,24 @@ const Dashboard = () => {
     });
   };
 
+  const handleStartConnection = () => {
+    setShowConnectionDialog(true);
+  };
+
+  const handleSubmitNumber = () => {
+    if (whatsappNumber) {
+      setShowConnectionDialog(false);
+      setShowQRCode(true);
+      toast({
+        title: "Номер принят",
+        description: "Теперь подключите ваш WhatsApp аккаунт",
+      });
+    }
+  };
+
   const handleConnect = () => {
     setIsConnected(true);
+    setShowQRCode(false);
     toast({
       title: "WhatsApp Connected!",
       description: "Your account is now ready to send messages.",
@@ -131,7 +159,17 @@ const Dashboard = () => {
             <h2 className="text-xl font-semibold">WhatsApp Connection</h2>
           </div>
           
-          {!isConnected ? (
+          {!isConnected && !showQRCode ? (
+            <div className="text-center py-8">
+              <p className="text-lg mb-4">Добро пожаловать!</p>
+              <p className="text-muted-foreground mb-6">
+                Создайте подключение WhatsApp и авторизуйте его, чтобы синхронизировать номер.
+              </p>
+              <Button onClick={handleStartConnection} className="w-full max-w-md">
+                Создать подключение
+              </Button>
+            </div>
+          ) : !isConnected && showQRCode ? (
             <>
               <div className="text-center py-8 space-y-4">
                 <div className="inline-block bg-accent p-6 rounded-lg">
@@ -160,6 +198,43 @@ const Dashboard = () => {
             </div>
           )}
         </Card>
+
+        {/* WhatsApp Connection Dialog */}
+        <Dialog open={showConnectionDialog} onOpenChange={setShowConnectionDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-xl">
+                🔗 Подключите рабочий WhatsApp
+              </DialogTitle>
+              <DialogDescription className="text-base pt-2">
+                Этот номер нужен не для входа, а для подключения вашего рабочего WhatsApp-аккаунта.
+                SalemBot будет использовать его, чтобы синхронизировать клиентов и сообщения.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="whatsapp-number" className="text-sm font-medium">
+                  Номер телефона WhatsApp (тот, с которого вы общаетесь с клиентами)
+                </Label>
+                <Input
+                  id="whatsapp-number"
+                  placeholder="+7 771 234 5678"
+                  value={whatsappNumber}
+                  onChange={(e) => setWhatsappNumber(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+            </div>
+            <DialogFooter className="flex-col gap-3 sm:flex-col">
+              <Button onClick={handleSubmitNumber} className="w-full">
+                Подключить аккаунт
+              </Button>
+              <p className="text-xs text-muted-foreground text-center">
+                Вы уже вошли как пользователь, теперь подключите WhatsApp, с которым работает ваш бизнес.
+              </p>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
         {/* Contacts Database */}
         <Card className="p-6">
