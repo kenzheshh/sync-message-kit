@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle } from "lucide-react";
+import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import confetti from "canvas-confetti";
@@ -14,6 +14,11 @@ const Onboarding = () => {
   const [isPhoneEditable, setIsPhoneEditable] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sentMessages, setSentMessages] = useState<number[]>([]);
+  const [showReplies, setShowReplies] = useState<number[]>([]);
+  const [moneyCollected, setMoneyCollected] = useState(false);
+  const [totalEarned, setTotalEarned] = useState(0);
+  const [showFinalCTA, setShowFinalCTA] = useState(false);
   const navigate = useNavigate();
   const {
     toast
@@ -94,16 +99,74 @@ const Onboarding = () => {
     setTimeout(() => {
       setIsLoading(false);
       setStep(4);
-      // Big confetti celebration
-      confetti({
-        particleCount: 200,
-        spread: 100,
-        origin: {
-          y: 0.6
-        },
-        colors: ['#10B981', '#FBBF24', '#3B82F6']
-      });
     }, 2000);
+  };
+
+  const handleSendMessage = (messageNum: number) => {
+    if (sentMessages.includes(messageNum)) return;
+    
+    setSentMessages([...sentMessages, messageNum]);
+    
+    // Show reply after delay
+    setTimeout(() => {
+      setShowReplies([...showReplies, messageNum]);
+      
+      // Trigger coin animation
+      const coinCount = messageNum === 1 ? 1 : messageNum === 2 ? 2 : 5;
+      for (let i = 0; i < coinCount; i++) {
+        setTimeout(() => {
+          confetti({
+            particleCount: 3,
+            angle: 60 + Math.random() * 60,
+            spread: 30,
+            origin: { x: 0.7, y: 0.6 },
+            colors: ['#FBBF24', '#F59E0B'],
+            gravity: 1.5,
+            scalar: 0.8
+          });
+        }, i * 100);
+      }
+      
+      // Show money stack after all messages
+      if (messageNum === 3) {
+        setTimeout(() => {
+          // Stack appears - no auto-collection
+        }, 800);
+      }
+    }, 800);
+  };
+
+  const handleCollectMoney = () => {
+    if (moneyCollected) return;
+    
+    setMoneyCollected(true);
+    
+    // Big coin explosion
+    confetti({
+      particleCount: 50,
+      spread: 100,
+      origin: { x: 0.7, y: 0.8 },
+      colors: ['#FBBF24', '#F59E0B', '#10B981'],
+      gravity: 0.8
+    });
+    
+    // Animate counter
+    let current = 0;
+    const target = 50;
+    const increment = target / 20;
+    const interval = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+        
+        // Show final CTA after counter finishes
+        setTimeout(() => {
+          setShowFinalCTA(true);
+        }, 500);
+      }
+      setTotalEarned(Math.floor(current));
+    }, 50);
   };
   const handleConnectWhatsApp = () => {
     navigate("/dashboard");
@@ -239,35 +302,168 @@ const Onboarding = () => {
             </Button>
           </div>}
 
-        {/* Frame 4 - Success */}
-        {step === 4 && <div className="text-center space-y-6 py-8 animate-scale-in">
-            <div className="flex justify-center">
-              <div className="bg-success/10 rounded-full p-8 animate-glow-pulse">
-                <CheckCircle2 className="w-20 h-20 text-success" />
+        {/* Frame 4 - Chat-to-Cash Game */}
+        {step === 4 && <div className="space-y-6 animate-fade-in">
+            {/* Header */}
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="bg-primary/10 rounded-full p-3">
+                  <MessageCircle className="w-8 h-8 text-primary" />
+                </div>
+                <span className="text-sm font-medium text-muted-foreground">SalemBot says:</span>
               </div>
-            </div>
-            <h1 className="text-4xl font-bold text-foreground">
-              🔥 You just reactivated your first clients!
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-              Connect your real WhatsApp account to start bringing real customers back.
-            </p>
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 max-w-md mx-auto">
-              <div className="text-3xl font-bold text-primary mb-2">
-                ✅ Campaign sent to 5 demo clients
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Imagine this at scale with your real customer base
+              <h2 className="text-2xl font-bold text-foreground">
+                Let's earn some cash!
+              </h2>
+              <p className="text-muted-foreground">
+                Try sending these messages — see how Salem turns conversations into revenue.
               </p>
             </div>
-            <div className="flex flex-col gap-3 pt-4">
-              <Button onClick={handleConnectWhatsApp} size="lg" className="text-lg font-medium hover:scale-105 transition-transform">
-                Connect WhatsApp Business
-              </Button>
-              <Button onClick={handleSkip} variant="ghost" size="lg" className="text-muted-foreground">
-                I'll do it later
-              </Button>
+
+            {/* Money Counter */}
+            {totalEarned > 0 && (
+              <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold animate-scale-in">
+                +${totalEarned}
+              </div>
+            )}
+
+            {/* Chat Container */}
+            <div className="max-w-md mx-auto">
+              <div className="bg-gradient-to-b from-muted/30 to-muted/10 border border-border rounded-3xl p-4 space-y-3 min-h-[400px] shadow-lg">
+                
+                {/* Message 1 */}
+                <div className="space-y-2">
+                  {!sentMessages.includes(1) ? (
+                    <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
+                      <span className="text-sm flex-1">Hi Anna 👋 how have you been?</span>
+                      <Button 
+                        size="sm" 
+                        onClick={() => handleSendMessage(1)}
+                        className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
+                      >
+                        Send
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
+                      <p className="text-sm">Hi Anna 👋 how have you been?</p>
+                    </div>
+                  )}
+                  
+                  {showReplies.includes(1) && (
+                    <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
+                      <p className="text-sm">Hey! Long time. Sounds interesting 😍</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Message 2 */}
+                {sentMessages.includes(1) && (
+                  <div className="space-y-2">
+                    {!sentMessages.includes(2) ? (
+                      <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
+                        <span className="text-sm flex-1">We've got new offers just for you.</span>
+                        <Button 
+                          size="sm" 
+                          onClick={() => handleSendMessage(2)}
+                          className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
+                        >
+                          Send
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
+                        <p className="text-sm">We've got new offers just for you.</p>
+                      </div>
+                    )}
+                    
+                    {showReplies.includes(2) && (
+                      <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
+                        <p className="text-sm">Tell me more! 🤩</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Message 3 */}
+                {sentMessages.includes(2) && (
+                  <div className="space-y-2">
+                    {!sentMessages.includes(3) ? (
+                      <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
+                        <span className="text-sm flex-1">Click below to grab your discount.</span>
+                        <Button 
+                          size="sm" 
+                          onClick={() => handleSendMessage(3)}
+                          className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
+                        >
+                          Send
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
+                        <p className="text-sm">Click below to grab your discount.</p>
+                      </div>
+                    )}
+                    
+                    {showReplies.includes(3) && (
+                      <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
+                        <p className="text-sm">I'm in! Here's my order. 💳</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Money Stack */}
+                {showReplies.includes(3) && !moneyCollected && (
+                  <div className="flex justify-center pt-4 animate-scale-in">
+                    <button
+                      onClick={handleCollectMoney}
+                      className="group relative"
+                    >
+                      <div className="bg-gradient-to-br from-[#FBBF24] to-[#F59E0B] rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-110 animate-glow-pulse">
+                        <DollarSign className="w-12 h-12 text-white" />
+                      </div>
+                      <p className="text-xs font-medium text-muted-foreground mt-2 group-hover:text-foreground transition-colors">
+                        Tap to collect 💰
+                      </p>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Final CTA */}
+            {showFinalCTA && (
+              <div className="space-y-4 animate-fade-in pt-4">
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-md mx-auto">
+                  <p className="text-sm text-foreground text-center">
+                    <span className="font-bold">That's exactly what I do for your real clients</span> — automate chats that bring you money.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Button 
+                    onClick={handleConnectWhatsApp} 
+                    size="lg" 
+                    className="text-lg font-medium hover:scale-105 transition-transform"
+                  >
+                    Connect WhatsApp Business and start earning for real
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      setSentMessages([]);
+                      setShowReplies([]);
+                      setMoneyCollected(false);
+                      setTotalEarned(0);
+                      setShowFinalCTA(false);
+                    }} 
+                    variant="ghost" 
+                    size="lg"
+                  >
+                    Replay demo
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>}
       </Card>
     </div>;
