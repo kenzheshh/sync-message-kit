@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import confetti from "canvas-confetti";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
+  const [showTooltip, setShowTooltip] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("+7 999 123-45-67");
   const [isPhoneEditable, setIsPhoneEditable] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState("");
@@ -31,6 +32,16 @@ const Onboarding = () => {
     preview: "Как вам наш сервис? Поделитесь отзывом и получите бонус!"
   }];
   const progress = step / 4 * 100;
+  
+  useEffect(() => {
+    if (step === 1) {
+      const timer = setTimeout(() => {
+        setShowTooltip(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
+
   const handleShowDemo = () => {
     setStep(2);
   };
@@ -119,7 +130,7 @@ const Onboarding = () => {
             </div>
             <h1 className="text-4xl font-bold text-foreground">
               <TooltipProvider>
-                <Tooltip>
+                <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
                   <TooltipTrigger asChild>
                     <span className="inline-flex items-center gap-1 cursor-help">
                       Salem
@@ -131,7 +142,7 @@ const Onboarding = () => {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              !  Boost your revenue via best retention tool
+              {" "} Boost your revenue via best retention tool
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto">
               I'll help you wake up sleeping clients and bring them back — it takes less than 2 minutes to see how.
