@@ -9,7 +9,8 @@ import confetti from "canvas-confetti";
 
 const Onboarding = () => {
   const [step, setStep] = useState(1);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("+7 999 123-45-67");
+  const [isPhoneEditable, setIsPhoneEditable] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -18,31 +19,25 @@ const Onboarding = () => {
   const messageTemplates = [
     {
       id: "welcome-back",
-      title: "We miss you 💚 here's a small thank-you discount.",
+      title: "We miss you 💚 here's a thank-you discount.",
       preview: "Привет! Давно не виделись. У нас для вас специальная скидка 15%!",
     },
     {
-      id: "new-collection",
-      title: "New collection just dropped – check it out!",
+      id: "new-arrivals",
+      title: "New arrivals are here — take a look!",
       preview: "🔥 Новая коллекция уже в наличии! Посмотрите первыми.",
     },
     {
       id: "feedback",
-      title: "Tell us how we did! Your feedback matters.",
+      title: "Your feedback matters — tell us how we did.",
       preview: "Как вам наш сервис? Поделитесь отзывом и получите бонус!",
     },
   ];
 
-  const progress = (step / 5) * 100;
+  const progress = (step / 4) * 100;
 
   const handleShowDemo = () => {
     setStep(2);
-    setIsLoading(true);
-    // Simulate bot setup
-    setTimeout(() => {
-      setIsLoading(false);
-      setStep(3);
-    }, 3000);
   };
 
   const validatePhoneNumber = (phone: string) => {
@@ -73,8 +68,8 @@ const Onboarding = () => {
         title: "Message sent! 👀",
         description: "Check your WhatsApp",
       });
-      setTimeout(() => setStep(4), 1000);
-    }, 1500);
+      setTimeout(() => setStep(3), 2000);
+    }, 500);
   };
 
   const handleSendCampaign = () => {
@@ -91,7 +86,7 @@ const Onboarding = () => {
     // Simulate campaign send
     setTimeout(() => {
       setIsLoading(false);
-      setStep(5);
+      setStep(4);
       // Big confetti celebration
       confetti({
         particleCount: 200,
@@ -115,15 +110,27 @@ const Onboarding = () => {
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="h-2 bg-muted rounded-full overflow-hidden">
-            <div
-              className="h-full bg-primary transition-all duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
+          <div className="flex items-center gap-2">
+            {[1, 2, 3, 4].map((stepNum) => (
+              <div
+                key={stepNum}
+                className="flex-1 flex flex-col items-center gap-2"
+              >
+                <div
+                  className={`w-full h-2 rounded-full transition-all duration-500 ${
+                    step >= stepNum ? "bg-primary" : "bg-muted"
+                  }`}
+                />
+                <span
+                  className={`text-xs transition-colors ${
+                    step >= stepNum ? "text-primary font-medium" : "text-muted-foreground"
+                  }`}
+                >
+                  Step {stepNum}
+                </span>
+              </div>
+            ))}
           </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center">
-            {Math.round(progress)}% complete
-          </p>
         </div>
 
         {/* Frame 1 - Welcome */}
@@ -160,74 +167,88 @@ const Onboarding = () => {
           </div>
         )}
 
-        {/* Frame 2 - Loading */}
+        {/* Frame 2 - Magic Moment */}
         {step === 2 && (
-          <div className="text-center space-y-6 py-12 animate-fade-in">
-            <div className="flex justify-center">
-              <div className="relative">
-                <Loader2 className="w-20 h-20 text-primary animate-spin" />
-                <Sparkles className="w-8 h-8 text-warning absolute top-0 right-0 animate-pulse" />
-              </div>
-            </div>
-            <h2 className="text-3xl font-bold text-foreground">
-              Setting up your demo WhatsApp bot…
-            </h2>
-            <p className="text-muted-foreground">It takes ~10 seconds.</p>
-            <div className="max-w-md mx-auto">
-              <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-primary animate-pulse w-3/4" />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Frame 3 - Magic Moment */}
-        {step === 3 && (
           <div className="space-y-6 animate-scale-in">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                Want to see how your bot talks to clients?
+                See how your bot talks to clients.
               </h2>
               <p className="text-muted-foreground">
-                Enter your WhatsApp number — I'll send you a test message.
+                This message will be sent from your personal bot to your WhatsApp number.
               </p>
             </div>
+            
             <div className="space-y-4 max-w-md mx-auto">
-              <Input
-                type="tel"
-                placeholder="+7 771 234 5678"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="text-lg h-12 font-mono"
-              />
-              <Button
-                onClick={handleSendTestMessage}
-                disabled={isLoading}
-                className="w-full h-12 text-lg font-medium"
-                size="lg"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  "Send me the message"
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
+                  Your WhatsApp number
+                </label>
+                <Input
+                  type="tel"
+                  placeholder="+7 999 123-45-67"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  disabled={!isPhoneEditable}
+                  className="text-lg h-12 font-mono"
+                />
+                {!isPhoneEditable && (
+                  <button
+                    onClick={() => setIsPhoneEditable(true)}
+                    className="text-sm text-primary hover:underline"
+                  >
+                    Use a different number
+                  </button>
                 )}
-              </Button>
+              </div>
+
+              {/* Message Preview Box */}
+              <div className="bg-muted/50 border border-border rounded-lg p-4 space-y-2">
+                <p className="text-xs text-muted-foreground font-medium">Message preview:</p>
+                <p className="text-sm text-foreground">
+                  Hi [Name], this is your SalemBot 👋<br />
+                  Just showing how your business can re-engage clients automatically.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <Button
+                  onClick={handleSendTestMessage}
+                  disabled={isLoading}
+                  className="w-full h-12 text-lg font-medium"
+                  size="lg"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message to WhatsApp"
+                  )}
+                </Button>
+                <Button
+                  onClick={() => setStep(3)}
+                  variant="ghost"
+                  size="lg"
+                  className="text-muted-foreground"
+                >
+                  Skip this step
+                </Button>
+              </div>
             </div>
           </div>
         )}
 
-        {/* Frame 4 - Campaign Selection */}
-        {step === 4 && (
+        {/* Frame 3 - Campaign Selection */}
+        {step === 3 && (
           <div className="space-y-6 animate-fade-in">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                Now let's try sending a message to clients.
+                Now try a message campaign.
               </h2>
               <p className="text-muted-foreground">
-                Choose one of these ready-made templates and see how it looks.
+                Pick one template to see how easy it is.
               </p>
             </div>
             <div className="space-y-3">
@@ -283,8 +304,8 @@ const Onboarding = () => {
           </div>
         )}
 
-        {/* Frame 5 - Success */}
-        {step === 5 && (
+        {/* Frame 4 - Success */}
+        {step === 4 && (
           <div className="text-center space-y-6 py-8 animate-scale-in">
             <div className="flex justify-center">
               <div className="bg-success/10 rounded-full p-8 animate-glow-pulse">
@@ -295,7 +316,7 @@ const Onboarding = () => {
               🔥 You just reactivated your first clients!
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-              That's how Salem helps you bring back real customers — automatically.
+              Connect your real WhatsApp account to start bringing real customers back.
             </p>
             <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 max-w-md mx-auto">
               <div className="text-3xl font-bold text-primary mb-2">
@@ -311,7 +332,7 @@ const Onboarding = () => {
                 size="lg"
                 className="text-lg font-medium hover:scale-105 transition-transform"
               >
-                Connect your real WhatsApp account
+                Connect WhatsApp Business
               </Button>
               <Button
                 onClick={handleSkip}
