@@ -35,10 +35,18 @@ const Onboarding = () => {
   
   useEffect(() => {
     if (step === 1) {
-      const timer = setTimeout(() => {
+      const showTimer = setTimeout(() => {
         setShowTooltip(true);
-      }, 2000);
-      return () => clearTimeout(timer);
+      }, 4000);
+      
+      const hideTimer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 7000);
+      
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     }
   }, [step]);
 
