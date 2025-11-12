@@ -185,7 +185,7 @@ const Onboarding = () => {
               <div className="bg-muted/50 border border-border rounded-lg p-4 space-y-2">
                 <p className="text-xs text-muted-foreground font-medium">Message preview:</p>
                 <p className="text-sm text-foreground">
-                  Hi [Name], this is your SalemBot 👋<br />
+                  Salem, this is your SalemBot 👋<br />
                   Just showing how your business can re-engage clients automatically.
                 </p>
               </div>
