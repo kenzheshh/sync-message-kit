@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, Loader2, CheckCircle2, Sparkles } from "lucide-react";
+import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import confetti from "canvas-confetti";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
@@ -116,7 +117,22 @@ const Onboarding = () => {
                 <MessageCircle className="w-20 h-20 text-primary" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-foreground">Salem!  Boost your revenue via best retention tool</h1>
+            <h1 className="text-4xl font-bold text-foreground">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center gap-1 cursor-help">
+                      Salem
+                      <HelpCircle className="w-5 h-5 text-muted-foreground" />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Salem means Hi in Kazakh</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              !  Boost your revenue via best retention tool
+            </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto">
               I'll help you wake up sleeping clients and bring them back — it takes less than 2 minutes to see how.
             </p>
