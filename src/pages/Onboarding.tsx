@@ -167,7 +167,7 @@ const Onboarding = () => {
               <h2 className="text-3xl font-bold text-foreground">
                 See how your bot talks to clients.
               </h2>
-              <p className="text-muted-foreground">This message will be sent from Salembot to your WhatsApp number.</p>
+              <p className="text-muted-foreground">This message will be sent from SalemBot to your WhatsApp number.</p>
             </div>
             
             <div className="space-y-4 max-w-md mx-auto">
