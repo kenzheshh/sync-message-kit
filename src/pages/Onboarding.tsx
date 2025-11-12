@@ -12,7 +12,8 @@ const Onboarding = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("+7 999 123-45-67");
   const [isPhoneEditable, setIsPhoneEditable] = useState(false);
-  const [selectedTemplate, setSelectedTemplate] = useState("");
+  const [businessType, setBusinessType] = useState("");
+  const [businessName, setBusinessName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sentMessages, setSentMessages] = useState<number[]>([]);
   const [showReplies, setShowReplies] = useState<number[]>([]);
@@ -23,19 +24,14 @@ const Onboarding = () => {
   const {
     toast
   } = useToast();
-  const messageTemplates = [{
-    id: "welcome-back",
-    title: "We miss you 💚 here's a thank-you discount.",
-    preview: "Привет! Давно не виделись. У нас для вас специальная скидка 15%!"
-  }, {
-    id: "new-arrivals",
-    title: "New arrivals are here — take a look!",
-    preview: "🔥 Новая коллекция уже в наличии! Посмотрите первыми."
-  }, {
-    id: "feedback",
-    title: "Your feedback matters — tell us how we did.",
-    preview: "Как вам наш сервис? Поделитесь отзывом и получите бонус!"
-  }];
+  const businessCategories = [
+    "Beauty & wellness",
+    "Retail / eCommerce",
+    "Food & delivery",
+    "Real estate",
+    "Education / courses",
+    "Services (repairs, cleaning, etc.)"
+  ];
   const progress = step / 4 * 100;
   useEffect(() => {
     if (step === 1) {
@@ -85,21 +81,20 @@ const Onboarding = () => {
       setTimeout(() => setStep(3), 2000);
     }, 500);
   };
-  const handleSendCampaign = () => {
-    if (!selectedTemplate) {
+  const handleBusinessSetup = () => {
+    if (!businessType.trim()) {
       toast({
-        title: "Select a template",
-        description: "Please choose one of the message templates",
+        title: "Business type required",
+        description: "Please tell us what type of business you have",
         variant: "destructive"
       });
       return;
     }
     setIsLoading(true);
-    // Simulate campaign send
     setTimeout(() => {
       setIsLoading(false);
       setStep(4);
-    }, 2000);
+    }, 500);
   };
 
   const handleSendMessage = (messageNum: number) => {
@@ -267,39 +262,73 @@ const Onboarding = () => {
             </div>
           </div>}
 
-        {/* Frame 3 - Campaign Selection */}
-        {step === 3 && <div className="space-y-6 animate-fade-in">
+        {/* Frame 3 - Business Setup */}
+        {step === 3 && <div className="space-y-6 animate-fade-in max-w-md mx-auto">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                Now try a message campaign.
+                Who's Salem helping today?
               </h2>
               <p className="text-muted-foreground">
-                Pick one template to see how easy it is.
+                I'll tailor messages for your business type.
               </p>
             </div>
-            <div className="space-y-3">
-              {messageTemplates.map(template => <Card key={template.id} className={`p-4 cursor-pointer transition-all hover:shadow-md ${selectedTemplate === template.id ? "ring-2 ring-primary bg-primary/5" : "hover:bg-accent/50"}`} onClick={() => setSelectedTemplate(template.id)}>
-                  <div className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center ${selectedTemplate === template.id ? "border-primary bg-primary" : "border-muted-foreground"}`}>
-                      {selectedTemplate === template.id && <CheckCircle2 className="w-3 h-3 text-primary-foreground" />}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-medium text-foreground mb-2">
-                        {template.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
-                        {template.preview}
-                      </p>
-                    </div>
-                  </div>
-                </Card>)}
+            
+            <div className="space-y-5">
+              {/* Business Type Input */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
+                  What type of business do you have? <span className="text-destructive">*</span>
+                </label>
+                <Input 
+                  type="text" 
+                  placeholder="Example: beauty salon, car service, online store…" 
+                  value={businessType}
+                  onChange={(e) => setBusinessType(e.target.value)}
+                  className="h-12"
+                  list="business-categories"
+                />
+                <datalist id="business-categories">
+                  {businessCategories.map((category) => (
+                    <option key={category} value={category} />
+                  ))}
+                </datalist>
+              </div>
+
+              {/* Business Name Input */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
+                  Business name <span className="text-muted-foreground">(optional)</span>
+                </label>
+                <Input 
+                  type="text" 
+                  placeholder="Your brand or company name" 
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  className="h-12"
+                />
+              </div>
             </div>
-            <Button onClick={handleSendCampaign} disabled={isLoading} className="w-full h-12 text-lg font-medium" size="lg">
-              {isLoading ? <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Sending Campaign...
-                </> : "Send Test Campaign"}
-            </Button>
+
+            <div className="space-y-2">
+              <Button 
+                onClick={handleBusinessSetup} 
+                disabled={isLoading}
+                className="w-full h-12 text-lg font-medium" 
+                size="lg"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Setting up...
+                  </>
+                ) : (
+                  "Next"
+                )}
+              </Button>
+              <p className="text-xs text-center text-muted-foreground">
+                Takes less than 10 seconds.
+              </p>
+            </div>
           </div>}
 
         {/* Frame 4 - Chat-to-Cash Game */}
