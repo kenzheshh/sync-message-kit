@@ -32,24 +32,20 @@ const Onboarding = () => {
     preview: "Как вам наш сервис? Поделитесь отзывом и получите бонус!"
   }];
   const progress = step / 4 * 100;
-  
   useEffect(() => {
     if (step === 1) {
       const showTimer = setTimeout(() => {
         setShowTooltip(true);
       }, 4000);
-      
       const hideTimer = setTimeout(() => {
         setShowTooltip(false);
       }, 7000);
-      
       return () => {
         clearTimeout(showTimer);
         clearTimeout(hideTimer);
       };
     }
   }, [step]);
-
   const handleShowDemo = () => {
     setStep(2);
   };
@@ -171,9 +167,7 @@ const Onboarding = () => {
               <h2 className="text-3xl font-bold text-foreground">
                 See how your bot talks to clients.
               </h2>
-              <p className="text-muted-foreground">
-                This message will be sent from your personal bot to your WhatsApp number.
-              </p>
+              <p className="text-muted-foreground">This message will be sent from Salembot to your WhatsApp number.</p>
             </div>
             
             <div className="space-y-4 max-w-md mx-auto">
