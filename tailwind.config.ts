@@ -111,10 +111,12 @@ export default {
           }
         },
         "slide-point": {
-          "0%": { transform: "translateX(0)", opacity: "0" },
-          "10%": { opacity: "1" },
+          "0%": { transform: "translateY(10px) scale(1)", opacity: "0" },
+          "15%": { opacity: "1" },
+          "30%, 50%, 70%": { transform: "translateY(-5px) scale(0.9)" },
+          "40%, 60%, 80%": { transform: "translateY(-5px) scale(1.1)" },
           "90%": { opacity: "1" },
-          "100%": { transform: "translateX(60px)", opacity: "0" }
+          "100%": { transform: "translateY(-10px) scale(1)", opacity: "0" }
         }
       },
       animation: {
