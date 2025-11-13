@@ -111,12 +111,8 @@ export default {
           }
         },
         "slide-point": {
-          "0%": { transform: "translateY(10px) scale(1)", opacity: "0" },
-          "15%": { opacity: "1" },
-          "30%, 50%, 70%": { transform: "translateY(-5px) scale(0.9)" },
-          "40%, 60%, 80%": { transform: "translateY(-5px) scale(1.1)" },
-          "90%": { opacity: "1" },
-          "100%": { transform: "translateY(-10px) scale(1)", opacity: "0" }
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(0.85)" }
         }
       },
       animation: {
@@ -124,7 +120,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
         "blob": "blob 20s ease-in-out infinite",
-        "slide-point": "slide-point 5s ease-out"
+        "slide-point": "slide-point 0.6s ease-in-out infinite"
       },
     },
   },
