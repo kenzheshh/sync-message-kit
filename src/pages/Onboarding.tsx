@@ -423,7 +423,7 @@ const Onboarding = () => {
                             <DollarSign className="w-5 h-5 text-primary" />
                             {respondedChats[0] === chat.id && (
                               <>
-                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none z-10">
+                                <span className="absolute -right-3 top-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none z-10">
                                   👆
                                 </span>
                                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 pointer-events-none">
