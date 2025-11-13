@@ -15,11 +15,21 @@ const Onboarding = () => {
   const [businessType, setBusinessType] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [sentMessages, setSentMessages] = useState<number[]>([]);
-  const [showReplies, setShowReplies] = useState<number[]>([]);
-  const [moneyCollected, setMoneyCollected] = useState(false);
+  const [remindersSent, setRemindersSent] = useState(false);
+  const [respondedChats, setRespondedChats] = useState<number[]>([]);
+  const [collectedChats, setCollectedChats] = useState<number[]>([]);
   const [totalEarned, setTotalEarned] = useState(0);
   const [showFinalCTA, setShowFinalCTA] = useState(false);
+
+  const chatList = [
+    { id: 1, name: "Anna K.", lastMessage: "Thanks for last time!", timestamp: "1 week ago", avatar: "👩" },
+    { id: 2, name: "Mike S.", lastMessage: "Great service", timestamp: "2 weeks ago", avatar: "👨" },
+    { id: 3, name: "Sarah L.", lastMessage: "Will come back", timestamp: "3 weeks ago", avatar: "👱‍♀️" },
+    { id: 4, name: "John D.", lastMessage: "Amazing!", timestamp: "30+ days ago", avatar: "🧔" },
+    { id: 5, name: "Emma W.", lastMessage: "Loved it", timestamp: "30+ days ago", avatar: "👩‍🦰" }
+  ];
+
+  const respondingChatIds = [1, 2, 4]; // Only these 3 will respond
   const navigate = useNavigate();
   const {
     toast
@@ -97,71 +107,70 @@ const Onboarding = () => {
     }, 500);
   };
 
-  const handleSendMessage = (messageNum: number) => {
-    if (sentMessages.includes(messageNum)) return;
+  const handleSendReminders = () => {
+    if (remindersSent) return;
     
-    setSentMessages([...sentMessages, messageNum]);
+    setIsLoading(true);
+    setRemindersSent(true);
     
-    // Show reply after delay
+    // Simulate sending and show responses after delay
     setTimeout(() => {
-      setShowReplies([...showReplies, messageNum]);
+      setIsLoading(false);
       
-      // Trigger coin animation
-      const coinCount = messageNum === 1 ? 1 : messageNum === 2 ? 2 : 5;
-      for (let i = 0; i < coinCount; i++) {
+      // Show responses from 3 clients one by one
+      respondingChatIds.forEach((chatId, index) => {
         setTimeout(() => {
+          setRespondedChats(prev => [...prev, chatId]);
+          
+          // Small coin animation for each response
           confetti({
-            particleCount: 3,
+            particleCount: 5,
             angle: 60 + Math.random() * 60,
-            spread: 30,
-            origin: { x: 0.7, y: 0.6 },
+            spread: 40,
+            origin: { x: 0.5, y: 0.5 },
             colors: ['#FBBF24', '#F59E0B'],
-            gravity: 1.5,
-            scalar: 0.8
+            gravity: 1.2,
+            scalar: 0.7
           });
-        }, i * 100);
-      }
-      
-      // Show money stack after all messages
-      if (messageNum === 3) {
-        setTimeout(() => {
-          // Stack appears - no auto-collection
-        }, 800);
-      }
-    }, 800);
+        }, index * 800);
+      });
+    }, 1000);
   };
 
-  const handleCollectMoney = () => {
-    if (moneyCollected) return;
+  const handleCollectFromChat = (chatId: number) => {
+    if (collectedChats.includes(chatId)) return;
     
-    setMoneyCollected(true);
+    setCollectedChats(prev => [...prev, chatId]);
     
-    // Big coin explosion
+    // Coin explosion
     confetti({
-      particleCount: 50,
-      spread: 100,
-      origin: { x: 0.7, y: 0.8 },
+      particleCount: 30,
+      spread: 70,
+      origin: { x: 0.5, y: 0.6 },
       colors: ['#FBBF24', '#F59E0B', '#10B981'],
-      gravity: 0.8
+      gravity: 0.9
     });
     
     // Animate counter
-    let current = 0;
-    const target = 50;
-    const increment = target / 20;
+    const earnAmount = 15;
+    let current = totalEarned;
+    const target = totalEarned + earnAmount;
+    const increment = earnAmount / 15;
     const interval = setInterval(() => {
       current += increment;
       if (current >= target) {
         current = target;
         clearInterval(interval);
         
-        // Show final CTA after counter finishes
-        setTimeout(() => {
-          setShowFinalCTA(true);
-        }, 500);
+        // Show final CTA after collecting all 3
+        if (collectedChats.length + 1 === respondingChatIds.length) {
+          setTimeout(() => {
+            setShowFinalCTA(true);
+          }, 500);
+        }
       }
       setTotalEarned(Math.floor(current));
-    }, 50);
+    }, 40);
   };
   const handleConnectWhatsApp = () => {
     navigate("/dashboard");
@@ -342,10 +351,10 @@ const Onboarding = () => {
                 <span className="text-sm font-medium text-muted-foreground">SalemBot says:</span>
               </div>
               <h2 className="text-2xl font-bold text-foreground">
-                Let's earn some cash!
+                Let's wake up sleeping clients!
               </h2>
               <p className="text-muted-foreground">
-                Try sending these messages — see how Salem turns conversations into revenue.
+                You have clients who haven't visited in a while. Send them a quick reminder.
               </p>
             </div>
 
@@ -356,109 +365,80 @@ const Onboarding = () => {
               </div>
             )}
 
-            {/* Chat Container */}
-            <div className="max-w-md mx-auto">
-              <div className="bg-gradient-to-b from-muted/30 to-muted/10 border border-border rounded-3xl p-4 space-y-3 min-h-[400px] shadow-lg">
-                
-                {/* Message 1 */}
-                <div className="space-y-2">
-                  {!sentMessages.includes(1) ? (
-                    <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
-                      <span className="text-sm flex-1">Hi Anna 👋 how have you been?</span>
-                      <Button 
-                        size="sm" 
-                        onClick={() => handleSendMessage(1)}
-                        className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
-                      >
-                        Send
-                      </Button>
-                    </div>
+            {/* Chat List */}
+            <div className="max-w-md mx-auto space-y-4">
+              {/* Send Reminders Button */}
+              {!remindersSent && (
+                <Button 
+                  onClick={handleSendReminders}
+                  disabled={isLoading}
+                  className="w-full h-12 text-lg font-medium"
+                  size="lg"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Sending reminders...
+                    </>
                   ) : (
-                    <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
-                      <p className="text-sm">Hi Anna 👋 how have you been?</p>
-                    </div>
+                    <>Send reminder to all</>
                   )}
+                </Button>
+              )}
+
+              {/* Chat List Items */}
+              <div className="space-y-2">
+                {chatList.map((chat) => {
+                  const hasResponded = respondedChats.includes(chat.id);
+                  const isCollected = collectedChats.includes(chat.id);
                   
-                  {showReplies.includes(1) && (
-                    <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
-                      <p className="text-sm">Hey! Long time. Sounds interesting 😍</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Message 2 */}
-                {sentMessages.includes(1) && (
-                  <div className="space-y-2">
-                    {!sentMessages.includes(2) ? (
-                      <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
-                        <span className="text-sm flex-1">We've got new offers just for you.</span>
-                        <Button 
-                          size="sm" 
-                          onClick={() => handleSendMessage(2)}
-                          className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
-                        >
-                          Send
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
-                        <p className="text-sm">We've got new offers just for you.</p>
-                      </div>
-                    )}
-                    
-                    {showReplies.includes(2) && (
-                      <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
-                        <p className="text-sm">Tell me more! 🤩</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Message 3 */}
-                {sentMessages.includes(2) && (
-                  <div className="space-y-2">
-                    {!sentMessages.includes(3) ? (
-                      <div className="flex items-center gap-2 bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%]">
-                        <span className="text-sm flex-1">Click below to grab your discount.</span>
-                        <Button 
-                          size="sm" 
-                          onClick={() => handleSendMessage(3)}
-                          className="h-7 px-3 text-xs bg-primary hover:bg-primary/90"
-                        >
-                          Send
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="bg-[#DCF8C6] p-3 rounded-2xl rounded-br-sm ml-auto max-w-[80%] animate-slide-in-right">
-                        <p className="text-sm">Click below to grab your discount.</p>
-                      </div>
-                    )}
-                    
-                    {showReplies.includes(3) && (
-                      <div className="bg-background p-3 rounded-2xl rounded-bl-sm mr-auto max-w-[80%] animate-scale-in border border-border">
-                        <p className="text-sm">I'm in! Here's my order. 💳</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Money Stack */}
-                {showReplies.includes(3) && !moneyCollected && (
-                  <div className="flex justify-center pt-4 animate-scale-in">
-                    <button
-                      onClick={handleCollectMoney}
-                      className="group relative"
+                  return (
+                    <div
+                      key={chat.id}
+                      className={`bg-background border border-border rounded-lg p-4 transition-all ${
+                        hasResponded && !isCollected 
+                          ? 'ring-2 ring-primary cursor-pointer hover:shadow-lg animate-scale-in' 
+                          : ''
+                      } ${isCollected ? 'opacity-50' : ''}`}
+                      onClick={() => hasResponded && !isCollected && handleCollectFromChat(chat.id)}
                     >
-                      <div className="bg-gradient-to-br from-[#FBBF24] to-[#F59E0B] rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-110 animate-glow-pulse">
-                        <DollarSign className="w-12 h-12 text-white" />
+                      <div className="flex items-center gap-3">
+                        <div className="text-3xl">{chat.avatar}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="font-medium text-foreground truncate">{chat.name}</p>
+                            <span className="text-xs text-muted-foreground whitespace-nowrap">{chat.timestamp}</span>
+                          </div>
+                          <p className="text-sm text-muted-foreground truncate">
+                            {hasResponded && !isCollected 
+                              ? "💰 I'm interested! Tell me more" 
+                              : isCollected
+                              ? "✅ Order placed!"
+                              : chat.lastMessage
+                            }
+                          </p>
+                        </div>
+                        {hasResponded && !isCollected && (
+                          <div className="bg-primary/10 rounded-full p-2 animate-glow-pulse">
+                            <DollarSign className="w-5 h-5 text-primary" />
+                          </div>
+                        )}
+                        {isCollected && (
+                          <CheckCircle2 className="w-5 h-5 text-primary" />
+                        )}
                       </div>
-                      <p className="text-xs font-medium text-muted-foreground mt-2 group-hover:text-foreground transition-colors">
-                        Tap to collect 💰
-                      </p>
-                    </button>
-                  </div>
-                )}
+                    </div>
+                  );
+                })}
               </div>
+
+              {remindersSent && respondedChats.length > 0 && !showFinalCTA && (
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 animate-fade-in">
+                  <p className="text-sm text-foreground text-center">
+                    💡 <span className="font-semibold">Tap on chats with 💰 to collect revenue</span>
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Final CTA */}
@@ -466,7 +446,7 @@ const Onboarding = () => {
               <div className="space-y-4 animate-fade-in pt-4">
                 <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-md mx-auto">
                   <p className="text-sm text-foreground text-center">
-                    <span className="font-bold">That's exactly what I do for your real clients</span> — automate chats that bring you money.
+                    <span className="font-bold">That's exactly what I do for your real clients</span> — automate reminders that bring you money.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3">
@@ -479,9 +459,9 @@ const Onboarding = () => {
                   </Button>
                   <Button 
                     onClick={() => {
-                      setSentMessages([]);
-                      setShowReplies([]);
-                      setMoneyCollected(false);
+                      setRemindersSent(false);
+                      setRespondedChats([]);
+                      setCollectedChats([]);
                       setTotalEarned(0);
                       setShowFinalCTA(false);
                     }} 
