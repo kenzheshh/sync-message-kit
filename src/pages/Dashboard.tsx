@@ -28,7 +28,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import whatsappPattern from "@/assets/whatsapp-pattern.png";
+import customDoodlePattern from "@/assets/custom-doodle-pattern.png";
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -101,7 +101,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background animate-fade-in relative" style={{
-      backgroundImage: `url(${whatsappPattern})`,
+      backgroundImage: `url(${customDoodlePattern})`,
       backgroundRepeat: 'repeat',
       backgroundSize: '400px'
     }}>

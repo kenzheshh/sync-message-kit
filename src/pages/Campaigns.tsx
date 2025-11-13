@@ -37,7 +37,7 @@ import {
   XCircle
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import whatsappPattern from "@/assets/whatsapp-pattern.png";
+import customDoodlePattern from "@/assets/custom-doodle-pattern.png";
 
 interface Campaign {
   id: string;
@@ -219,7 +219,7 @@ const Campaigns = () => {
 
   return (
     <div className="min-h-screen bg-background animate-fade-in pb-20 relative" style={{
-      backgroundImage: `url(${whatsappPattern})`,
+      backgroundImage: `url(${customDoodlePattern})`,
       backgroundRepeat: 'repeat',
       backgroundSize: '400px'
     }}>
