@@ -184,7 +184,7 @@ const Onboarding = () => {
       backgroundRepeat: 'repeat',
       backgroundSize: '400px'
     }}>
-      <div className="absolute inset-0 bg-background/95" />
+      <div className="absolute inset-0 bg-background/60" />
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in relative z-10">
         {/* Progress Bar */}
         <div className="mb-8">
