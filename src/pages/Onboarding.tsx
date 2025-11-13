@@ -419,8 +419,11 @@ const Onboarding = () => {
                           </p>
                         </div>
                         {hasResponded && !isCollected && (
-                          <div className="bg-primary/10 rounded-full p-2 animate-glow-pulse">
-                            <DollarSign className="w-5 h-5 text-primary" />
+                          <div className="flex items-center gap-2">
+                            <div className="bg-primary/10 rounded-full p-2 animate-glow-pulse">
+                              <DollarSign className="w-5 h-5 text-primary" />
+                            </div>
+                            <span className="text-2xl animate-bounce">👆</span>
                           </div>
                         )}
                         {isCollected && (
