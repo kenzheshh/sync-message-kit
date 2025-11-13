@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
@@ -20,7 +21,7 @@ const Onboarding = () => {
   const [respondedChats, setRespondedChats] = useState<number[]>([]);
   const [collectedChats, setCollectedChats] = useState<number[]>([]);
   const [totalEarned, setTotalEarned] = useState(0);
-  const [showFinalCTA, setShowFinalCTA] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const chatList = [
     { id: 1, name: "Anna K.", lastMessage: "Thanks for last time!", timestamp: "1 week ago", avatar: "👩" },
@@ -163,10 +164,17 @@ const Onboarding = () => {
         current = target;
         clearInterval(interval);
         
-        // Show final CTA after collecting all 3
+        // Show success dialog after collecting all 3
         if (collectedChats.length + 1 === respondingChatIds.length) {
           setTimeout(() => {
-            setShowFinalCTA(true);
+            setShowSuccessDialog(true);
+            // Big confetti celebration
+            confetti({
+              particleCount: 150,
+              spread: 100,
+              origin: { y: 0.6 },
+              colors: ['#FBBF24', '#F59E0B', '#10B981', '#3B82F6']
+            });
           }, 500);
         }
       }
@@ -457,40 +465,29 @@ const Onboarding = () => {
 
             </div>
 
-            {/* Final CTA */}
-            {showFinalCTA && (
-              <div className="space-y-4 animate-fade-in pt-4">
-                <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-md mx-auto">
-                  <p className="text-sm text-foreground text-center">
-                    <span className="font-bold">That's exactly what I do for your real clients</span> — automate reminders that bring you money.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Button 
-                    onClick={handleConnectWhatsApp} 
-                    size="lg" 
-                    className="text-lg font-medium hover:scale-105 transition-transform"
-                  >
-                    Connect WhatsApp Business and start earning for real
-                  </Button>
-                  <Button 
-                    onClick={() => {
-                      setRemindersSent(false);
-                      setRespondedChats([]);
-                      setCollectedChats([]);
-                      setTotalEarned(0);
-                      setShowFinalCTA(false);
-                    }} 
-                    variant="ghost" 
-                    size="lg"
-                  >
-                    Replay demo
-                  </Button>
-                </div>
-              </div>
-            )}
           </div>}
       </Card>
+
+      {/* Success Dialog */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">Success!</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 py-4">
+            <p className="text-center text-lg text-foreground">
+              Even a gentle reminder can lead to repeating purchase
+            </p>
+            <Button 
+              onClick={handleConnectWhatsApp} 
+              size="lg" 
+              className="w-full text-lg font-medium hover:scale-105 transition-transform"
+            >
+              Start returning your clients
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>;
 };
 export default Onboarding;
