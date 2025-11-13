@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
@@ -21,7 +20,6 @@ const Onboarding = () => {
   const [respondedChats, setRespondedChats] = useState<number[]>([]);
   const [collectedChats, setCollectedChats] = useState<number[]>([]);
   const [totalEarned, setTotalEarned] = useState(0);
-  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const chatList = [
     { id: 1, name: "Anna K.", lastMessage: "Thanks for last time!", timestamp: "1 week ago", avatar: "👩" },
@@ -44,7 +42,6 @@ const Onboarding = () => {
     "Education / courses",
     "Services (repairs, cleaning, etc.)"
   ];
-  const progress = step / 4 * 100;
   useEffect(() => {
     if (step === 1) {
       const showTimer = setTimeout(() => {
@@ -184,14 +181,18 @@ const Onboarding = () => {
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in relative z-10">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex items-center gap-2">
-            {[1, 2, 3, 4].map(stepNum => <div key={stepNum} className="flex-1 flex flex-col items-center gap-2">
-                <div className={`w-full h-2 rounded-full transition-all duration-500 ${step >= stepNum ? "bg-primary" : "bg-muted"}`} />
-                <span className={`text-xs transition-colors ${step >= stepNum ? "text-primary font-medium" : "text-muted-foreground"}`}>
-                  Step {stepNum}
-                </span>
-              </div>)}
-          </div>
+          {step === 5 ? (
+            <div className="w-full h-2 bg-primary rounded-full transition-all duration-500" />
+          ) : (
+            <div className="flex items-center gap-2">
+              {[1, 2, 3, 4].map(stepNum => <div key={stepNum} className="flex-1 flex flex-col items-center gap-2">
+                  <div className={`w-full h-2 rounded-full transition-all duration-500 ${step >= stepNum ? "bg-primary" : "bg-muted"}`} />
+                  <span className={`text-xs transition-colors ${step >= stepNum ? "text-primary font-medium" : "text-muted-foreground"}`}>
+                    Step {stepNum}
+                  </span>
+                </div>)}
+            </div>
+          )}
         </div>
 
         {/* Frame 1 - Welcome */}
@@ -397,10 +398,10 @@ const Onboarding = () => {
                       setTimeout(() => {
                         runningTotal = handleCollectFromChat(chatId, runningTotal);
                         
-                        // Show success dialog after last collection
+                        // Move to step 5 after last collection
                         if (index === respondingChatIds.length - 1) {
                           setTimeout(() => {
-                            setShowSuccessDialog(true);
+                            setStep(5);
                             // Big confetti celebration
                             confetti({
                               particleCount: 150,
@@ -469,28 +470,41 @@ const Onboarding = () => {
             </div>
 
           </div>}
-      </Card>
 
-      {/* Success Dialog */}
-      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-center">Success!</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-6 py-4">
-            <p className="text-center text-lg text-foreground">
+        {/* Frame 5 - Success */}
+        {step === 5 && <div className="text-center space-y-6 animate-scale-in">
+            <div className="flex justify-center mb-4">
+              <div className="bg-primary/10 rounded-full p-8 animate-glow-pulse">
+                <CheckCircle2 className="w-20 h-20 text-primary" />
+              </div>
+            </div>
+            <h1 className="text-4xl font-bold text-foreground">
+              Success!
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-lg mx-auto">
               Even a gentle reminder can lead to repeating purchase
             </p>
-            <Button 
-              onClick={handleConnectWhatsApp} 
-              size="lg" 
-              className="w-full text-lg font-medium hover:scale-105 transition-transform"
-            >
-              Start returning your clients
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+            <div className="flex flex-col gap-3 pt-4">
+              <Button onClick={handleConnectWhatsApp} size="lg" className="text-lg font-medium hover:scale-105 transition-transform">
+                Start returning your clients
+              </Button>
+              <Button 
+                onClick={() => {
+                  setStep(4);
+                  setRemindersSent(false);
+                  setRespondedChats([]);
+                  setCollectedChats([]);
+                  setTotalEarned(0);
+                }} 
+                variant="ghost" 
+                size="lg" 
+                className="text-muted-foreground"
+              >
+                Replay demo
+              </Button>
+            </div>
+          </div>}
+      </Card>
     </div>;
 };
 export default Onboarding;
