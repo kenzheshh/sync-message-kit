@@ -422,9 +422,23 @@ const Onboarding = () => {
                           <div className="relative bg-primary/10 rounded-full p-2 animate-glow-pulse">
                             <DollarSign className="w-5 h-5 text-primary" />
                             {respondedChats[0] === chat.id && (
-                              <span className="absolute -right-6 top-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite]">
-                                👆
-                              </span>
+                              <>
+                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none z-10">
+                                  👆
+                                </span>
+                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 pointer-events-none">
+                                  <span className="absolute inset-0 animate-[click-ripple_0.6s_ease-out_infinite]">
+                                    <span className="absolute left-1/2 top-0 w-0.5 h-3 -ml-px bg-primary"></span>
+                                    <span className="absolute left-1/2 bottom-0 w-0.5 h-3 -ml-px bg-primary"></span>
+                                    <span className="absolute left-0 top-1/2 w-3 h-0.5 -mt-px bg-primary"></span>
+                                    <span className="absolute right-0 top-1/2 w-3 h-0.5 -mt-px bg-primary"></span>
+                                    <span className="absolute left-[15%] top-[15%] w-0.5 h-2 bg-primary rotate-45"></span>
+                                    <span className="absolute right-[15%] top-[15%] w-0.5 h-2 bg-primary -rotate-45"></span>
+                                    <span className="absolute left-[15%] bottom-[15%] w-0.5 h-2 bg-primary -rotate-45"></span>
+                                    <span className="absolute right-[15%] bottom-[15%] w-0.5 h-2 bg-primary rotate-45"></span>
+                                  </span>
+                                </span>
+                              </>
                             )}
                           </div>
                         )}
