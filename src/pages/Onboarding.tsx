@@ -422,29 +422,9 @@ const Onboarding = () => {
                           <div className="relative bg-primary/10 rounded-full p-2 animate-glow-pulse">
                             <DollarSign className="w-5 h-5 text-primary" />
                             {respondedChats[0] === chat.id && (
-                              <div className="absolute -right-3 top-1/2 -translate-y-1/2 animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none">
-                                <span className="text-4xl relative z-10">
-                                  👆
-                                </span>
-                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 animate-[click-ripple_0.6s_ease-out_infinite]">
-                                  {/* Top */}
-                                  <span className="absolute left-1/2 top-0 w-1 h-4 -ml-0.5 bg-primary rounded-full"></span>
-                                  {/* Bottom */}
-                                  <span className="absolute left-1/2 bottom-0 w-1 h-4 -ml-0.5 bg-primary rounded-full"></span>
-                                  {/* Left */}
-                                  <span className="absolute left-0 top-1/2 w-4 h-1 -mt-0.5 bg-primary rounded-full"></span>
-                                  {/* Right */}
-                                  <span className="absolute right-0 top-1/2 w-4 h-1 -mt-0.5 bg-primary rounded-full"></span>
-                                  {/* Top-left diagonal */}
-                                  <span className="absolute left-[18%] top-[18%] w-1 h-3.5 bg-primary rounded-full rotate-45 origin-center"></span>
-                                  {/* Top-right diagonal */}
-                                  <span className="absolute right-[18%] top-[18%] w-1 h-3.5 bg-primary rounded-full -rotate-45 origin-center"></span>
-                                  {/* Bottom-left diagonal */}
-                                  <span className="absolute left-[18%] bottom-[18%] w-1 h-3.5 bg-primary rounded-full -rotate-45 origin-center"></span>
-                                  {/* Bottom-right diagonal */}
-                                  <span className="absolute right-[18%] bottom-[18%] w-1 h-3.5 bg-primary rounded-full rotate-45 origin-center"></span>
-                                </span>
-                              </div>
+                              <span className="absolute -right-3 top-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none">
+                                👆
+                              </span>
                             )}
                           </div>
                         )}
