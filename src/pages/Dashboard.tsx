@@ -28,6 +28,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import whatsappPattern from "@/assets/whatsapp-pattern.png";
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -99,9 +100,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background animate-fade-in">
+    <div className="min-h-screen bg-background animate-fade-in relative" style={{
+      backgroundImage: `url(${whatsappPattern})`,
+      backgroundRepeat: 'repeat',
+      backgroundSize: '400px'
+    }}>
+      <div className="absolute inset-0 bg-background/95" />
       {/* Header with active number and dropdown */}
-      <header className="sticky top-0 z-50 bg-background border-b">
+      <header className="sticky top-0 z-50 bg-background border-b relative">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-primary rounded-full p-2">
@@ -145,7 +151,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto p-4 pb-20 space-y-6">
+      <div className="max-w-4xl mx-auto p-4 pb-20 space-y-6 relative">
         {/* Page Title */}
         <div>
           <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
