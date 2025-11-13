@@ -139,8 +139,8 @@ const Onboarding = () => {
     }, 1000);
   };
 
-  const handleCollectFromChat = (chatId: number) => {
-    if (collectedChats.includes(chatId)) return;
+  const handleCollectFromChat = (chatId: number, currentTotal: number) => {
+    if (collectedChats.includes(chatId)) return currentTotal;
     
     setCollectedChats(prev => [...prev, chatId]);
     
@@ -155,31 +155,19 @@ const Onboarding = () => {
     
     // Animate counter
     const earnAmount = 15;
-    let current = totalEarned;
-    const target = totalEarned + earnAmount;
+    let current = currentTotal;
+    const target = currentTotal + earnAmount;
     const increment = earnAmount / 15;
     const interval = setInterval(() => {
       current += increment;
       if (current >= target) {
         current = target;
         clearInterval(interval);
-        
-        // Show success dialog after collecting all 3
-        if (collectedChats.length + 1 === respondingChatIds.length) {
-          setTimeout(() => {
-            setShowSuccessDialog(true);
-            // Big confetti celebration
-            confetti({
-              particleCount: 150,
-              spread: 100,
-              origin: { y: 0.6 },
-              colors: ['#FBBF24', '#F59E0B', '#10B981', '#3B82F6']
-            });
-          }, 500);
-        }
       }
       setTotalEarned(Math.floor(current));
     }, 40);
+    
+    return target;
   };
   const handleConnectWhatsApp = () => {
     navigate("/dashboard");
@@ -404,9 +392,24 @@ const Onboarding = () => {
               {remindersSent && respondedChats.length > 0 && collectedChats.length === 0 && (
                 <Button 
                   onClick={() => {
+                    let runningTotal = totalEarned;
                     respondingChatIds.forEach((chatId, index) => {
                       setTimeout(() => {
-                        handleCollectFromChat(chatId);
+                        runningTotal = handleCollectFromChat(chatId, runningTotal);
+                        
+                        // Show success dialog after last collection
+                        if (index === respondingChatIds.length - 1) {
+                          setTimeout(() => {
+                            setShowSuccessDialog(true);
+                            // Big confetti celebration
+                            confetti({
+                              particleCount: 150,
+                              spread: 100,
+                              origin: { y: 0.6 },
+                              colors: ['#FBBF24', '#F59E0B', '#10B981', '#3B82F6']
+                            });
+                          }, 700);
+                        }
                       }, index * 600);
                     });
                   }}
@@ -431,7 +434,7 @@ const Onboarding = () => {
                           ? 'ring-2 ring-primary cursor-pointer hover:shadow-lg animate-scale-in' 
                           : ''
                       } ${isCollected ? 'opacity-50' : ''}`}
-                      onClick={() => hasResponded && !isCollected && handleCollectFromChat(chat.id)}
+                      onClick={() => hasResponded && !isCollected && handleCollectFromChat(chat.id, totalEarned)}
                     >
                       <div className="flex items-center gap-3">
                         <div className="text-3xl">{chat.avatar}</div>
