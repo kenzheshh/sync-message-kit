@@ -28,7 +28,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import customDoodlePattern from "@/assets/custom-doodle-pattern.png";
+import whatsappPattern from "@/assets/whatsapp-pattern.png";
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -101,11 +101,11 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background animate-fade-in relative" style={{
-      backgroundImage: `url(${customDoodlePattern})`,
+      backgroundImage: `url(${whatsappPattern})`,
       backgroundRepeat: 'repeat',
       backgroundSize: '400px'
     }}>
-      <div className="absolute inset-0 bg-background/60" />
+      <div className="absolute inset-0 bg-background/95" />
       {/* Header with active number and dropdown */}
       <header className="sticky top-0 z-50 bg-background border-b relative">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">

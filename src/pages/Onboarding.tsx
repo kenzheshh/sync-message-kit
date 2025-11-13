@@ -7,7 +7,7 @@ import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign 
 import { useToast } from "@/hooks/use-toast";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import confetti from "canvas-confetti";
-import customDoodlePattern from "@/assets/custom-doodle-pattern.png";
+import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -180,11 +180,11 @@ const Onboarding = () => {
     navigate("/dashboard");
   };
   return <div className="min-h-screen bg-muted flex items-center justify-center p-4 relative" style={{
-      backgroundImage: `url(${customDoodlePattern})`,
+      backgroundImage: `url(${whatsappPattern})`,
       backgroundRepeat: 'repeat',
       backgroundSize: '400px'
     }}>
-      <div className="absolute inset-0 bg-background/60" />
+      <div className="absolute inset-0 bg-background/95" />
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in relative z-10">
         {/* Progress Bar */}
         <div className="mb-8">
