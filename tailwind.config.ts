@@ -111,16 +111,20 @@ export default {
           }
         },
         "slide-point": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(0.85)" }
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(0.85)", opacity: "0.8" }
         },
         "click-ripple": {
           "0%": { 
-            transform: "scale(0.8)",
+            transform: "scale(0.5)",
+            opacity: "0"
+          },
+          "50%": {
+            transform: "scale(1)",
             opacity: "1"
           },
           "100%": { 
-            transform: "scale(1.5)",
+            transform: "scale(1)",
             opacity: "0"
           }
         }

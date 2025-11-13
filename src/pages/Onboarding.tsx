@@ -422,23 +422,29 @@ const Onboarding = () => {
                           <div className="relative bg-primary/10 rounded-full p-2 animate-glow-pulse">
                             <DollarSign className="w-5 h-5 text-primary" />
                             {respondedChats[0] === chat.id && (
-                              <>
-                                <span className="absolute -right-3 top-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none z-10">
+                              <div className="absolute -right-3 top-1/2 -translate-y-1/2 animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none">
+                                <span className="text-4xl relative z-10">
                                   👆
                                 </span>
-                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 pointer-events-none">
-                                  <span className="absolute inset-0 animate-[click-ripple_0.6s_ease-out_infinite]">
-                                    <span className="absolute left-1/2 top-0 w-0.5 h-3 -ml-px bg-primary"></span>
-                                    <span className="absolute left-1/2 bottom-0 w-0.5 h-3 -ml-px bg-primary"></span>
-                                    <span className="absolute left-0 top-1/2 w-3 h-0.5 -mt-px bg-primary"></span>
-                                    <span className="absolute right-0 top-1/2 w-3 h-0.5 -mt-px bg-primary"></span>
-                                    <span className="absolute left-[15%] top-[15%] w-0.5 h-2 bg-primary rotate-45"></span>
-                                    <span className="absolute right-[15%] top-[15%] w-0.5 h-2 bg-primary -rotate-45"></span>
-                                    <span className="absolute left-[15%] bottom-[15%] w-0.5 h-2 bg-primary -rotate-45"></span>
-                                    <span className="absolute right-[15%] bottom-[15%] w-0.5 h-2 bg-primary rotate-45"></span>
-                                  </span>
+                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 animate-[click-ripple_0.6s_ease-out_infinite]">
+                                  {/* Top */}
+                                  <span className="absolute left-1/2 top-0 w-1 h-4 -ml-0.5 bg-primary rounded-full"></span>
+                                  {/* Bottom */}
+                                  <span className="absolute left-1/2 bottom-0 w-1 h-4 -ml-0.5 bg-primary rounded-full"></span>
+                                  {/* Left */}
+                                  <span className="absolute left-0 top-1/2 w-4 h-1 -mt-0.5 bg-primary rounded-full"></span>
+                                  {/* Right */}
+                                  <span className="absolute right-0 top-1/2 w-4 h-1 -mt-0.5 bg-primary rounded-full"></span>
+                                  {/* Top-left diagonal */}
+                                  <span className="absolute left-[18%] top-[18%] w-1 h-3.5 bg-primary rounded-full rotate-45 origin-center"></span>
+                                  {/* Top-right diagonal */}
+                                  <span className="absolute right-[18%] top-[18%] w-1 h-3.5 bg-primary rounded-full -rotate-45 origin-center"></span>
+                                  {/* Bottom-left diagonal */}
+                                  <span className="absolute left-[18%] bottom-[18%] w-1 h-3.5 bg-primary rounded-full -rotate-45 origin-center"></span>
+                                  {/* Bottom-right diagonal */}
+                                  <span className="absolute right-[18%] bottom-[18%] w-1 h-3.5 bg-primary rounded-full rotate-45 origin-center"></span>
                                 </span>
-                              </>
+                              </div>
                             )}
                           </div>
                         )}
