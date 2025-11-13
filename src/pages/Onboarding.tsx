@@ -392,6 +392,23 @@ const Onboarding = () => {
                 </Button>
               )}
 
+              {/* Collect Money Button */}
+              {remindersSent && respondedChats.length > 0 && collectedChats.length === 0 && (
+                <Button 
+                  onClick={() => {
+                    respondingChatIds.forEach((chatId, index) => {
+                      setTimeout(() => {
+                        handleCollectFromChat(chatId);
+                      }, index * 600);
+                    });
+                  }}
+                  className="w-full h-12 text-lg font-medium"
+                  size="lg"
+                >
+                  Collect money from returning clients
+                </Button>
+              )}
+
               {/* Chat List Items */}
               <div className="space-y-2">
                 {chatList.map((chat) => {
@@ -425,13 +442,8 @@ const Onboarding = () => {
                           </p>
                         </div>
                         {hasResponded && !isCollected && (
-                          <div className="relative bg-primary/10 rounded-full p-2 animate-glow-pulse">
+                          <div className="bg-primary/10 rounded-full p-2 animate-glow-pulse">
                             <DollarSign className="w-5 h-5 text-primary" />
-                            {respondedChats[0] === chat.id && (
-                              <span className="absolute -right-3 top-1/2 -translate-y-1/2 text-4xl animate-[slide-point_0.6s_ease-in-out_infinite] pointer-events-none">
-                                👆
-                              </span>
-                            )}
                           </div>
                         )}
                         {isCollected && (
@@ -443,13 +455,6 @@ const Onboarding = () => {
                 })}
               </div>
 
-              {remindersSent && respondedChats.length > 0 && !showFinalCTA && (
-                <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 animate-fade-in">
-                  <p className="text-sm text-foreground text-center">
-                    💡 <span className="font-semibold">Tap on chats with 💰 to collect revenue</span>
-                  </p>
-                </div>
-              )}
             </div>
 
             {/* Final CTA */}
