@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
@@ -222,19 +222,17 @@ const Onboarding = () => {
               </div>
             </div>
             <h1 className="text-4xl font-bold text-foreground">
-              <TooltipProvider>
-                <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
-                  <TooltipTrigger asChild>
-                    <span className="inline-flex items-center gap-1 cursor-help">
-                      Salem
-                      <HelpCircle className="w-5 h-5 text-muted-foreground" />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Salem means Hi in Kazakh</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Popover open={showTooltip} onOpenChange={setShowTooltip}>
+                <PopoverTrigger asChild>
+                  <span className="inline-flex items-center gap-1 cursor-pointer">
+                    Salem
+                    <HelpCircle className="w-5 h-5 text-muted-foreground" />
+                  </span>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-2">
+                  <p className="text-sm">Salem means Hi in Kazakh</p>
+                </PopoverContent>
+              </Popover>
               {" "} Boost your revenue via best retention tool
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto">
