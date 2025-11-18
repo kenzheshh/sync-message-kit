@@ -185,9 +185,28 @@ const Onboarding = () => {
             <div className="w-full h-2 bg-primary rounded-full transition-all duration-500" />
           ) : (
             <div className="flex items-center gap-2">
-              {[1, 2, 3, 4].map(stepNum => <div key={stepNum} className="flex-1 flex flex-col items-center gap-2">
-                  <div className={`w-full h-2 rounded-full transition-all duration-500 ${step >= stepNum ? "bg-primary" : "bg-muted"}`} />
-                  <span className={`text-xs transition-colors ${step >= stepNum ? "text-primary font-medium" : "text-muted-foreground"}`}>
+              {[1, 2, 3, 4].map(stepNum => <div 
+                  key={stepNum} 
+                  className="flex-1 flex flex-col items-center gap-2"
+                  onClick={() => {
+                    if (stepNum < step) {
+                      setStep(stepNum);
+                      // Reset step 4 state if going back
+                      if (stepNum < 4) {
+                        setRemindersSent(false);
+                        setRespondedChats([]);
+                        setCollectedChats([]);
+                        setTotalEarned(0);
+                      }
+                    }
+                  }}
+                >
+                  <div className={`w-full h-2 rounded-full transition-all duration-500 ${
+                    step >= stepNum ? "bg-primary" : "bg-muted"
+                  } ${stepNum < step ? "cursor-pointer hover:opacity-80" : ""}`} />
+                  <span className={`text-xs transition-colors ${
+                    step >= stepNum ? "text-primary font-medium" : "text-muted-foreground"
+                  } ${stepNum < step ? "cursor-pointer hover:underline" : ""}`}>
                     Step {stepNum}
                   </span>
                 </div>)}
