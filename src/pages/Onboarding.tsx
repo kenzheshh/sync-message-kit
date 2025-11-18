@@ -229,7 +229,7 @@ const Onboarding = () => {
                     <HelpCircle className="w-5 h-5 text-muted-foreground" />
                   </span>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-2">
+                <PopoverContent side="top" className="w-auto p-2">
                   <p className="text-sm">Salem means Hi in Kazakh</p>
                 </PopoverContent>
               </Popover>
