@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { Loader2, CheckCircle2, UserCheck, Star, Send, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
@@ -142,25 +142,37 @@ const Onboarding = () => {
                 onClick={() => handleGoalSelect("Return your old clients")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
+                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
               >
-                Return your old clients
+                <span className="flex items-center gap-3">
+                  <UserCheck className="w-6 h-6 text-primary" />
+                  Return your old clients
+                </span>
+                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </Button>
               <Button 
                 onClick={() => handleGoalSelect("Increase reviews on maps")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
+                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
               >
-                Increase reviews on maps
+                <span className="flex items-center gap-3">
+                  <Star className="w-6 h-6 text-primary" />
+                  Increase reviews on maps
+                </span>
+                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </Button>
               <Button 
                 onClick={() => handleGoalSelect("Send bulk messages")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
+                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
               >
-                Send bulk messages
+                <span className="flex items-center gap-3">
+                  <Send className="w-6 h-6 text-primary" />
+                  Send bulk messages
+                </span>
+                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </Button>
             </div>
 
