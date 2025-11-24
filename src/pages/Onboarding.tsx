@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Loader2, CheckCircle2, UserCheck, Star, Send } from "lucide-react";
+import { Loader2, CheckCircle2, UserCheck, Star, Send, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
@@ -333,7 +333,7 @@ const Onboarding = () => {
                       size="lg"
                       className="shrink-0"
                     >
-                      {codeCopied ? <CheckCircle2 className="w-5 h-5" /> : "Copy"}
+                      {codeCopied ? <CheckCircle2 className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                     </Button>
                   </div>
                 </div>
