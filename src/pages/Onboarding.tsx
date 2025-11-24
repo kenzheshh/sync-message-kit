@@ -3,33 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MessageCircle, Loader2, CheckCircle2, Sparkles, HelpCircle, DollarSign } from "lucide-react";
+import { Loader2, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("+7 999 123-45-67");
-  const [isPhoneEditable, setIsPhoneEditable] = useState(false);
+  const [selectedGoal, setSelectedGoal] = useState("");
   const [businessType, setBusinessType] = useState("");
-  const [businessName, setBusinessName] = useState("");
+  const [revenue, setRevenue] = useState("");
+  const [averageCheck, setAverageCheck] = useState("");
+  const [whatsappCode] = useState("A1B2C3D4");
   const [isLoading, setIsLoading] = useState(false);
-  const [remindersSent, setRemindersSent] = useState(false);
-  const [respondedChats, setRespondedChats] = useState<number[]>([]);
-  const [collectedChats, setCollectedChats] = useState<number[]>([]);
-  const [totalEarned, setTotalEarned] = useState(0);
-
-  const chatList = [
-    { id: 1, name: "Anna K.", lastMessage: "Thanks for last time!", timestamp: "1 week ago", avatar: "👩" },
-    { id: 2, name: "Mike S.", lastMessage: "Great service", timestamp: "2 weeks ago", avatar: "👨" },
-    { id: 3, name: "Sarah L.", lastMessage: "Will come back", timestamp: "3 weeks ago", avatar: "👱‍♀️" },
-    { id: 4, name: "John D.", lastMessage: "Amazing!", timestamp: "30+ days ago", avatar: "🧔" },
-    { id: 5, name: "Emma W.", lastMessage: "Loved it", timestamp: "30+ days ago", avatar: "👩‍🦰" }
-  ];
-
-  const respondingChatIds = [1, 2, 4]; // Only these 3 will respond
+  const [codeCopied, setCodeCopied] = useState(false);
   const navigate = useNavigate();
   const {
     toast
@@ -42,54 +28,28 @@ const Onboarding = () => {
     "Education / courses",
     "Services (repairs, cleaning, etc.)"
   ];
-  useEffect(() => {
-    if (step === 1) {
-      const showTimer = setTimeout(() => {
-        setShowTooltip(true);
-      }, 4000);
-      const hideTimer = setTimeout(() => {
-        setShowTooltip(false);
-      }, 7000);
-      return () => {
-        clearTimeout(showTimer);
-        clearTimeout(hideTimer);
-      };
-    }
-  }, [step]);
-  const handleShowDemo = () => {
-    setStep(2);
+
+  const revenueOptions = [
+    "Less than $10k/month",
+    "$10k - $50k/month",
+    "$50k - $100k/month",
+    "$100k - $500k/month",
+    "More than $500k/month"
+  ];
+
+  const averageCheckOptions = [
+    "Less than $10",
+    "$10 - $50",
+    "$50 - $100",
+    "$100 - $500",
+    "More than $500"
+  ];
+
+  const handleGoalSelect = (goal: string) => {
+    setSelectedGoal(goal);
+    setTimeout(() => setStep(2), 300);
   };
-  const validatePhoneNumber = (phone: string) => {
-    const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ""));
-  };
-  const handleSendTestMessage = () => {
-    if (!validatePhoneNumber(phoneNumber)) {
-      toast({
-        title: "Invalid phone number",
-        description: "Please enter a valid phone number with country code",
-        variant: "destructive"
-      });
-      return;
-    }
-    setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {
-          y: 0.6
-        }
-      });
-      toast({
-        title: "Message sent! 👀",
-        description: "Check your WhatsApp"
-      });
-      setTimeout(() => setStep(3), 2000);
-    }, 500);
-  };
+
   const handleBusinessSetup = () => {
     if (!businessType.trim()) {
       toast({
@@ -102,69 +62,31 @@ const Onboarding = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      setStep(4);
+      setStep(3);
     }, 500);
   };
 
-  const handleSendReminders = () => {
-    if (remindersSent) return;
-    
-    setIsLoading(true);
-    setRemindersSent(true);
-    
-    // Simulate sending and show responses after delay
-    setTimeout(() => {
-      setIsLoading(false);
-      
-      // Show responses from 3 clients one by one
-      respondingChatIds.forEach((chatId, index) => {
-        setTimeout(() => {
-          setRespondedChats(prev => [...prev, chatId]);
-          
-          // Small coin animation for each response
-          confetti({
-            particleCount: 5,
-            angle: 60 + Math.random() * 60,
-            spread: 40,
-            origin: { x: 0.5, y: 0.5 },
-            colors: ['#FBBF24', '#F59E0B'],
-            gravity: 1.2,
-            scalar: 0.7
-          });
-        }, index * 800);
-      });
-    }, 1000);
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(whatsappCode);
+    setCodeCopied(true);
+    toast({
+      title: "Code copied!",
+      description: "Paste it in WhatsApp to continue"
+    });
+    setTimeout(() => setCodeCopied(false), 2000);
   };
 
-  const handleCollectFromChat = (chatId: number, currentTotal: number) => {
-    if (collectedChats.includes(chatId)) return currentTotal;
-    
-    setCollectedChats(prev => [...prev, chatId]);
-    
-    // Coin explosion
-    confetti({
-      particleCount: 30,
-      spread: 70,
-      origin: { x: 0.5, y: 0.6 },
-      colors: ['#FBBF24', '#F59E0B', '#10B981'],
-      gravity: 0.9
-    });
-    
-    // Animate counter
-    const earnAmount = 15;
-    let current = currentTotal;
-    const target = currentTotal + earnAmount;
-    const increment = earnAmount / 15;
-    const interval = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(interval);
-      }
-      setTotalEarned(Math.floor(current));
-    }, 40);
-    
-    return target;
+  const handleWhatsAppConnect = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+      setStep(4);
+    }, 1000);
   };
   const handleConnectWhatsApp = () => {
     navigate("/dashboard");
@@ -181,23 +103,16 @@ const Onboarding = () => {
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in relative z-10">
         {/* Progress Bar */}
         <div className="mb-8">
-          {step === 5 ? (
+          {step === 4 ? (
             <div className="w-full h-2 bg-primary rounded-full transition-all duration-500" />
           ) : (
             <div className="flex items-center gap-2">
-              {[1, 2, 3, 4].map(stepNum => <div 
+              {[1, 2, 3].map(stepNum => <div 
                   key={stepNum} 
                   className="flex-1 flex flex-col items-center gap-2"
                   onClick={() => {
                     if (stepNum < step) {
                       setStep(stepNum);
-                      // Reset step 4 state if going back
-                      if (stepNum < 4) {
-                        setRemindersSent(false);
-                        setRespondedChats([]);
-                        setCollectedChats([]);
-                        setTotalEarned(0);
-                      }
                     }
                   }}
                 >
@@ -214,92 +129,54 @@ const Onboarding = () => {
           )}
         </div>
 
-        {/* Frame 1 - Welcome */}
-        {step === 1 && <div className="text-center space-y-6 animate-slide-up-reveal">
-            <div className="flex justify-center mb-4">
-              <div className="bg-primary/10 rounded-full p-8 animate-glow-pulse">
-                <MessageCircle className="w-20 h-20 text-primary" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold text-foreground">
-              <Popover open={showTooltip} onOpenChange={setShowTooltip}>
-                <PopoverTrigger asChild>
-                  <span className="inline-flex items-center gap-1 cursor-pointer">
-                    Salem
-                    <HelpCircle className="w-5 h-5 text-muted-foreground" />
-                  </span>
-                </PopoverTrigger>
-                <PopoverContent side="top" className="w-auto p-2">
-                  <p className="text-sm">Salem means Hi in Kazakh</p>
-                </PopoverContent>
-              </Popover>
-              {" "} Boost your revenue via best retention tool
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-              I'll help you wake up sleeping clients and bring them back — it takes less than 2 minutes to see how.
-            </p>
-            <div className="flex flex-col gap-3 pt-4">
-              <Button onClick={handleShowDemo} size="lg" className="text-lg font-medium hover:scale-105 transition-transform">
-                Show me how it works
-              </Button>
-              <Button onClick={handleSkip} variant="ghost" size="lg" className="text-muted-foreground">
-                Skip (I'll explore myself)
-              </Button>
-            </div>
-          </div>}
-
-        {/* Frame 2 - Magic Moment */}
-        {step === 2 && <div className="space-y-6 animate-scale-in">
+        {/* Frame 1 - Choose Goal */}
+        {step === 1 && <div className="space-y-6 animate-fade-in">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                See how your bot talks to clients.
+                Choose your goal
               </h2>
-              <p className="text-muted-foreground">This message will be sent from SalemBot to your WhatsApp number.</p>
             </div>
             
-            <div className="space-y-4 max-w-md mx-auto">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
-                  Your WhatsApp number
-                </label>
-                <Input type="tel" placeholder="+7 999 123-45-67" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} disabled={!isPhoneEditable} className="text-lg h-12 font-mono" />
-                {!isPhoneEditable && <button onClick={() => setIsPhoneEditable(true)} className="text-sm text-primary hover:underline">
-                    Use a different number
-                  </button>}
-              </div>
+            <div className="space-y-3 max-w-md mx-auto">
+              <Button 
+                onClick={() => handleGoalSelect("Return your old clients")}
+                variant="outline"
+                size="lg"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+              >
+                Return your old clients
+              </Button>
+              <Button 
+                onClick={() => handleGoalSelect("Increase reviews on maps")}
+                variant="outline"
+                size="lg"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+              >
+                Increase reviews on maps
+              </Button>
+              <Button 
+                onClick={() => handleGoalSelect("Send bulk messages")}
+                variant="outline"
+                size="lg"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+              >
+                Send bulk messages
+              </Button>
+            </div>
 
-              {/* Message Preview Box */}
-              <div className="bg-muted/50 border border-border rounded-lg p-4 space-y-2">
-                <p className="text-xs text-muted-foreground font-medium">Message preview:</p>
-                <p className="text-sm text-foreground">
-                  Salem, this is your SalemBot 👋<br />
-                  Just showing how your business can re-engage clients automatically.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <Button onClick={handleSendTestMessage} disabled={isLoading} className="w-full h-12 text-lg font-medium" size="lg">
-                  {isLoading ? <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Sending...
-                    </> : "Send Message to WhatsApp"}
-                </Button>
-                <Button onClick={() => setStep(3)} variant="ghost" size="lg" className="text-muted-foreground">
-                  Skip this step
-                </Button>
-              </div>
+            <div className="text-center pt-4">
+              <Button onClick={handleSkip} variant="ghost" size="lg" className="text-muted-foreground">
+                Skip onboarding
+              </Button>
             </div>
           </div>}
 
-        {/* Frame 3 - Business Setup */}
-        {step === 3 && <div className="space-y-6 animate-fade-in max-w-md mx-auto">
+        {/* Frame 2 - About Your Business */}
+        {step === 2 && <div className="space-y-6 animate-fade-in max-w-md mx-auto">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                Who's Salem helping today?
+                About your business
               </h2>
-              <p className="text-muted-foreground">
-                I'll tailor messages for your business type.
-              </p>
             </div>
             
             <div className="space-y-5">
@@ -323,173 +200,131 @@ const Onboarding = () => {
                 </datalist>
               </div>
 
-              {/* Business Name Input */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
-                  Business name <span className="text-muted-foreground">(optional)</span>
-                </label>
-                <Input 
-                  type="text" 
-                  placeholder="Your brand or company name" 
-                  value={businessName}
-                  onChange={(e) => setBusinessName(e.target.value)}
-                  className="h-12"
-                />
+              {/* Revenue and Average Check Row */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground">
+                    Revenue
+                  </label>
+                  <select
+                    value={revenue}
+                    onChange={(e) => setRevenue(e.target.value)}
+                    className="w-full h-12 px-3 rounded-md border border-input bg-background text-foreground"
+                  >
+                    <option value="">Select...</option>
+                    {revenueOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground">
+                    Average check
+                  </label>
+                  <select
+                    value={averageCheck}
+                    onChange={(e) => setAverageCheck(e.target.value)}
+                    className="w-full h-12 px-3 rounded-md border border-input bg-background text-foreground"
+                  >
+                    <option value="">Select...</option>
+                    {averageCheckOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Button 
-                onClick={handleBusinessSetup} 
-                disabled={isLoading}
-                className="w-full h-12 text-lg font-medium" 
-                size="lg"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Setting up...
-                  </>
-                ) : (
-                  "Next"
-                )}
-              </Button>
-              <p className="text-xs text-center text-muted-foreground">
-                Takes less than 10 seconds.
-              </p>
-            </div>
+            <Button 
+              onClick={handleBusinessSetup} 
+              disabled={isLoading}
+              className="w-full h-12 text-lg font-medium" 
+              size="lg"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Setting up...
+                </>
+              ) : (
+                "Next"
+              )}
+            </Button>
           </div>}
 
-        {/* Frame 4 - Chat-to-Cash Game */}
-        {step === 4 && <div className="space-y-6 animate-fade-in">
-            {/* Header */}
-            <div className="text-center space-y-2">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <div className="bg-primary/10 rounded-full p-3">
-                  <MessageCircle className="w-8 h-8 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-muted-foreground">SalemBot says:</span>
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                Let's wake up sleeping clients!
+        {/* Frame 3 - WhatsApp Authorization */}
+        {step === 3 && <div className="space-y-6 animate-fade-in max-w-lg mx-auto">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold text-foreground">
+                WhatsApp Authorization
               </h2>
               <p className="text-muted-foreground">
-                You have clients who haven't visited in a while. Send them a quick reminder.
+                To use our service, connect your WhatsApp using this code
               </p>
             </div>
 
-            {/* Money Counter */}
-            {totalEarned > 0 && (
-              <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold animate-scale-in">
-                +${totalEarned}
-              </div>
-            )}
-
-            {/* Chat List */}
-            <div className="max-w-md mx-auto space-y-4">
-              {/* Send Reminders Button */}
-              {!remindersSent && (
-                <Button 
-                  onClick={handleSendReminders}
-                  disabled={isLoading}
-                  className="w-full h-12 text-lg font-medium"
-                  size="lg"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Sending reminders...
-                    </>
-                  ) : (
-                    <>Send reminder to all</>
-                  )}
-                </Button>
-              )}
-
-              {/* Collect Money Button */}
-              {remindersSent && respondedChats.length > 0 && collectedChats.length === 0 && (
-                <Button 
-                  onClick={() => {
-                    let runningTotal = totalEarned;
-                    respondingChatIds.forEach((chatId, index) => {
-                      setTimeout(() => {
-                        runningTotal = handleCollectFromChat(chatId, runningTotal);
-                        
-                        // Move to step 5 after last collection
-                        if (index === respondingChatIds.length - 1) {
-                          setTimeout(() => {
-                            setStep(5);
-                            // Big confetti celebration
-                            confetti({
-                              particleCount: 150,
-                              spread: 100,
-                              origin: { y: 0.6 },
-                              colors: ['#FBBF24', '#F59E0B', '#10B981', '#3B82F6']
-                            });
-                          }, 700);
-                        }
-                      }, index * 600);
-                    });
-                  }}
-                  className="w-full h-12 text-lg font-medium"
-                  size="lg"
-                >
-                  Collect money from returning clients
-                </Button>
-              )}
-
-              {/* Chat List Items */}
-              <div className="space-y-2">
-                {chatList.map((chat) => {
-                  const hasResponded = respondedChats.includes(chat.id);
-                  const isCollected = collectedChats.includes(chat.id);
-                  
-                  return (
-                    <div
-                      key={chat.id}
-                      className={`bg-background border border-border rounded-lg p-4 transition-all ${
-                        hasResponded && !isCollected 
-                          ? 'ring-2 ring-primary cursor-pointer hover:shadow-lg animate-scale-in' 
-                          : ''
-                      } ${isCollected ? 'opacity-50' : ''}`}
-                      onClick={() => hasResponded && !isCollected && handleCollectFromChat(chat.id, totalEarned)}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="text-3xl">{chat.avatar}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="font-medium text-foreground truncate">{chat.name}</p>
-                            <span className="text-xs text-muted-foreground whitespace-nowrap">{chat.timestamp}</span>
-                          </div>
-                          <p className="text-sm text-muted-foreground truncate">
-                            {hasResponded && !isCollected 
-                              ? "💰 I'm interested! Tell me more" 
-                              : isCollected
-                              ? "✅ Order placed!"
-                              : chat.lastMessage
-                            }
-                          </p>
-                        </div>
-                        {hasResponded && !isCollected && (
-                          <div className="bg-primary/10 rounded-full p-2 animate-glow-pulse">
-                            <DollarSign className="w-5 h-5 text-primary" />
-                          </div>
-                        )}
-                        {isCollected && (
-                          <CheckCircle2 className="w-5 h-5 text-primary" />
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
+            {/* Video Instruction Placeholder */}
+            <div className="bg-muted rounded-lg aspect-video flex items-center justify-center border border-border">
+              <p className="text-muted-foreground">Video instruction</p>
             </div>
 
+            {/* Code Display */}
+            <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-6">
+              <div className="flex items-center justify-between gap-4">
+                <div className="font-mono text-3xl font-bold text-foreground tracking-widest">
+                  {whatsappCode}
+                </div>
+                <Button 
+                  onClick={handleCopyCode}
+                  variant="outline"
+                  size="lg"
+                  className="shrink-0"
+                >
+                  {codeCopied ? <CheckCircle2 className="w-5 h-5" /> : "Copy"}
+                </Button>
+              </div>
+            </div>
+
+            {/* Instructions */}
+            <div className="space-y-3 text-left">
+              <div className="flex gap-3">
+                <span className="text-xl">①</span>
+                <p className="text-foreground">Open WhatsApp on your phone</p>
+              </div>
+              <div className="flex gap-3">
+                <span className="text-xl">②</span>
+                <p className="text-foreground">On Android tap Menu ⋮ · On iPhone tap Settings ⚙️</p>
+              </div>
+              <div className="flex gap-3">
+                <span className="text-xl">③</span>
+                <p className="text-foreground">Tap Linked Devices, then Link a Device</p>
+              </div>
+              <div className="flex gap-3">
+                <span className="text-xl">④</span>
+                <p className="text-foreground">Tap "Link with Phone Number" and enter this code</p>
+              </div>
+            </div>
+
+            <Button 
+              onClick={handleWhatsAppConnect}
+              disabled={isLoading}
+              className="w-full h-12 text-lg font-medium" 
+              size="lg"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Connecting...
+                </>
+              ) : (
+                "I've connected WhatsApp"
+              )}
+            </Button>
           </div>}
 
-        {/* Frame 5 - Success */}
-        {step === 5 && <div className="text-center space-y-6 animate-scale-in">
+        {/* Frame 4 - Success */}
+        {step === 4 && <div className="text-center space-y-6 animate-scale-in">
             <div className="flex justify-center mb-4">
               <div className="bg-primary/10 rounded-full p-8 animate-glow-pulse">
                 <CheckCircle2 className="w-20 h-20 text-primary" />
@@ -499,25 +334,11 @@ const Onboarding = () => {
               Success!
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-              Even a gentle reminder can lead to repeating purchase
+              Your WhatsApp is connected and ready to help grow your business
             </p>
             <div className="flex flex-col gap-3 pt-4">
               <Button onClick={handleConnectWhatsApp} size="lg" className="text-lg font-medium hover:scale-105 transition-transform">
-                Start returning your clients
-              </Button>
-              <Button 
-                onClick={() => {
-                  setStep(4);
-                  setRemindersSent(false);
-                  setRespondedChats([]);
-                  setCollectedChats([]);
-                  setTotalEarned(0);
-                }} 
-                variant="ghost" 
-                size="lg" 
-                className="text-muted-foreground"
-              >
-                Replay demo
+                Go to Dashboard
               </Button>
             </div>
           </div>}
