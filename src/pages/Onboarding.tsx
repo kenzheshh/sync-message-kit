@@ -317,7 +317,7 @@ const Onboarding = () => {
             </div>
 
             {/* Video Instruction Placeholder */}
-            <div className="bg-muted rounded-lg aspect-video flex items-center justify-center border border-border">
+            <div className="bg-muted rounded-lg aspect-[9/16] max-w-[280px] mx-auto flex items-center justify-center border border-border">
               <p className="text-muted-foreground">Video instruction</p>
             </div>
 
