@@ -242,7 +242,7 @@ const Onboarding = () => {
                   placeholder="Example: beauty salon, car service, online store…" 
                   value={businessType}
                   onChange={(e) => setBusinessType(e.target.value)}
-                  className="h-12"
+                  className="h-16"
                   list="business-categories"
                 />
                 <datalist id="business-categories">
