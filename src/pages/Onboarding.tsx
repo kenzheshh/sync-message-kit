@@ -7,7 +7,7 @@ import { Loader2, CheckCircle2, UserCheck, Star, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
-import whatsappPattern from "@/assets/whatsapp-pattern.png";
+import whatsappPattern from "@/assets/new-pattern.png";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
