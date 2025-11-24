@@ -242,7 +242,7 @@ const Onboarding = () => {
                   placeholder="Example: beauty salon, car service, online store…" 
                   value={businessType}
                   onChange={(e) => setBusinessType(e.target.value)}
-                  className="h-16"
+                  className="h-16 border-2 border-muted-foreground/30"
                   list="business-categories"
                 />
                 <datalist id="business-categories">
@@ -261,7 +261,7 @@ const Onboarding = () => {
                   <select
                     value={revenue}
                     onChange={(e) => setRevenue(e.target.value)}
-                    className="w-full h-12 px-3 rounded-md border border-input bg-background text-foreground"
+                    className="w-full h-12 px-3 rounded-md border-2 border-muted-foreground/30 bg-background text-foreground"
                   >
                     <option value="">Select...</option>
                     {revenueOptions.map((option) => (
@@ -277,7 +277,7 @@ const Onboarding = () => {
                   <select
                     value={averageCheck}
                     onChange={(e) => setAverageCheck(e.target.value)}
-                    className="w-full h-12 px-3 rounded-md border border-input bg-background text-foreground"
+                    className="w-full h-12 px-3 rounded-md border-2 border-muted-foreground/30 bg-background text-foreground"
                   >
                     <option value="">Select...</option>
                     {averageCheckOptions.map((option) => (
