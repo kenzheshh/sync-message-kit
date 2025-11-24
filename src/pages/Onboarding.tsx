@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/new-pattern.png";
+import whatsappInstructionGif from "@/assets/whatsapp-instruction.gif";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
@@ -316,45 +317,55 @@ const Onboarding = () => {
               </p>
             </div>
 
-            {/* Video Instruction Placeholder */}
-            <div className="bg-muted rounded-lg aspect-[9/16] max-w-[280px] mx-auto flex items-center justify-center border border-border">
-              <p className="text-muted-foreground">Video instruction</p>
-            </div>
-
-            {/* Code Display */}
-            <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div className="font-mono text-3xl font-bold text-foreground tracking-widest">
-                  {whatsappCode}
+            {/* Two Column Layout */}
+            <div className="grid md:grid-cols-2 gap-6 items-start">
+              {/* Left Side - Code and Instructions */}
+              <div className="space-y-6 flex flex-col h-full">
+                {/* Code Display */}
+                <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="font-mono text-3xl font-bold text-foreground tracking-widest">
+                      {whatsappCode}
+                    </div>
+                    <Button 
+                      onClick={handleCopyCode}
+                      variant="outline"
+                      size="lg"
+                      className="shrink-0"
+                    >
+                      {codeCopied ? <CheckCircle2 className="w-5 h-5" /> : "Copy"}
+                    </Button>
+                  </div>
                 </div>
-                <Button 
-                  onClick={handleCopyCode}
-                  variant="outline"
-                  size="lg"
-                  className="shrink-0"
-                >
-                  {codeCopied ? <CheckCircle2 className="w-5 h-5" /> : "Copy"}
-                </Button>
-              </div>
-            </div>
 
-            {/* Instructions */}
-            <div className="space-y-3 text-left">
-              <div className="flex gap-3">
-                <span className="text-xl">①</span>
-                <p className="text-foreground">Open WhatsApp on your phone</p>
+                {/* Instructions */}
+                <div className="space-y-3 text-left flex-1">
+                  <div className="flex gap-3">
+                    <span className="text-xl">①</span>
+                    <p className="text-foreground">Open WhatsApp on your phone</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="text-xl">②</span>
+                    <p className="text-foreground">On Android tap Menu ⋮ · On iPhone tap Settings ⚙️</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="text-xl">③</span>
+                    <p className="text-foreground">Tap Linked Devices, then Link a Device</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="text-xl">④</span>
+                    <p className="text-foreground">Tap "Link with Phone Number" and enter this code</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-xl">②</span>
-                <p className="text-foreground">On Android tap Menu ⋮ · On iPhone tap Settings ⚙️</p>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-xl">③</span>
-                <p className="text-foreground">Tap Linked Devices, then Link a Device</p>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-xl">④</span>
-                <p className="text-foreground">Tap "Link with Phone Number" and enter this code</p>
+
+              {/* Right Side - GIF */}
+              <div className="flex items-center justify-center h-full">
+                <img 
+                  src={whatsappInstructionGif} 
+                  alt="WhatsApp connection instructions" 
+                  className="rounded-lg border border-border w-full max-w-[320px] object-contain"
+                />
               </div>
             </div>
 
