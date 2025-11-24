@@ -142,7 +142,7 @@ const Onboarding = () => {
                 onClick={() => handleGoalSelect("Return your old clients")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
               >
                 Return your old clients
               </Button>
@@ -150,7 +150,7 @@ const Onboarding = () => {
                 onClick={() => handleGoalSelect("Increase reviews on maps")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
               >
                 Increase reviews on maps
               </Button>
@@ -158,7 +158,7 @@ const Onboarding = () => {
                 onClick={() => handleGoalSelect("Send bulk messages")}
                 variant="outline"
                 size="lg"
-                className="w-full h-16 text-lg font-medium justify-start hover:bg-primary/5 hover:border-primary transition-all"
+                className="w-full h-16 text-lg font-medium justify-start hover:bg-accent transition-all"
               >
                 Send bulk messages
               </Button>
