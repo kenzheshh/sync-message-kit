@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Loader2, CheckCircle2, UserCheck, Star, Send, ChevronRight } from "lucide-react";
+import { Loader2, CheckCircle2, UserCheck, Star, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/whatsapp-pattern.png";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
-  const [selectedGoal, setSelectedGoal] = useState("");
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
   const [businessType, setBusinessType] = useState("");
   const [revenue, setRevenue] = useState("");
   const [averageCheck, setAverageCheck] = useState("");
@@ -45,9 +46,24 @@ const Onboarding = () => {
     "More than $500"
   ];
 
-  const handleGoalSelect = (goal: string) => {
-    setSelectedGoal(goal);
-    setTimeout(() => setStep(2), 300);
+  const handleGoalToggle = (goal: string) => {
+    setSelectedGoals(prev => 
+      prev.includes(goal) 
+        ? prev.filter(g => g !== goal)
+        : [...prev, goal]
+    );
+  };
+
+  const handleGoalsNext = () => {
+    if (selectedGoals.length === 0) {
+      toast({
+        title: "Please select at least one goal",
+        description: "Choose what you want to achieve",
+        variant: "destructive"
+      });
+      return;
+    }
+    setStep(2);
   };
 
   const handleBusinessSetup = () => {
@@ -138,41 +154,65 @@ const Onboarding = () => {
             </div>
             
             <div className="space-y-3 max-w-md mx-auto">
-              <Button 
-                onClick={() => handleGoalSelect("Return your old clients")}
-                variant="outline"
-                size="lg"
-                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
+              <div 
+                onClick={() => handleGoalToggle("Return your old clients")}
+                className={`flex items-center gap-4 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-accent ${
+                  selectedGoals.includes("Return your old clients") 
+                    ? "border-primary bg-primary/5" 
+                    : "border-border"
+                }`}
               >
-                <span className="flex items-center gap-3">
-                  <UserCheck className="w-6 h-6 text-primary" />
-                  Return your old clients
-                </span>
-                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </Button>
-              <Button 
-                onClick={() => handleGoalSelect("Increase reviews on maps")}
-                variant="outline"
-                size="lg"
-                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
+                <Checkbox 
+                  checked={selectedGoals.includes("Return your old clients")}
+                  onCheckedChange={() => handleGoalToggle("Return your old clients")}
+                  className="pointer-events-none"
+                />
+                <UserCheck className="w-6 h-6 text-primary" />
+                <span className="text-lg font-medium flex-1">Return your old clients</span>
+              </div>
+
+              <div 
+                onClick={() => handleGoalToggle("Increase reviews on maps")}
+                className={`flex items-center gap-4 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-accent ${
+                  selectedGoals.includes("Increase reviews on maps") 
+                    ? "border-primary bg-primary/5" 
+                    : "border-border"
+                }`}
               >
-                <span className="flex items-center gap-3">
-                  <Star className="w-6 h-6 text-primary" />
-                  Increase reviews on maps
-                </span>
-                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </Button>
-              <Button 
-                onClick={() => handleGoalSelect("Send bulk messages")}
-                variant="outline"
-                size="lg"
-                className="w-full h-16 text-lg font-medium justify-between hover:bg-accent hover:scale-[1.02] hover:shadow-md transition-all group"
+                <Checkbox 
+                  checked={selectedGoals.includes("Increase reviews on maps")}
+                  onCheckedChange={() => handleGoalToggle("Increase reviews on maps")}
+                  className="pointer-events-none"
+                />
+                <Star className="w-6 h-6 text-primary" />
+                <span className="text-lg font-medium flex-1">Increase reviews on maps</span>
+              </div>
+
+              <div 
+                onClick={() => handleGoalToggle("Send bulk messages")}
+                className={`flex items-center gap-4 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-accent ${
+                  selectedGoals.includes("Send bulk messages") 
+                    ? "border-primary bg-primary/5" 
+                    : "border-border"
+                }`}
               >
-                <span className="flex items-center gap-3">
-                  <Send className="w-6 h-6 text-primary" />
-                  Send bulk messages
-                </span>
-                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <Checkbox 
+                  checked={selectedGoals.includes("Send bulk messages")}
+                  onCheckedChange={() => handleGoalToggle("Send bulk messages")}
+                  className="pointer-events-none"
+                />
+                <Send className="w-6 h-6 text-primary" />
+                <span className="text-lg font-medium flex-1">Send bulk messages</span>
+              </div>
+            </div>
+
+            <div className="max-w-md mx-auto pt-4">
+              <Button 
+                onClick={handleGoalsNext}
+                size="lg"
+                className="w-full h-12 text-lg font-medium"
+              >
+                Continue
               </Button>
             </div>
 
