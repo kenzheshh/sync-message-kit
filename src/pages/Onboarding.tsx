@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Loader2, CheckCircle2, UserCheck, Star, Send, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
 import confetti from "canvas-confetti";
 import whatsappPattern from "@/assets/new-pattern.png";
 import whatsappInstructionGif from "@/assets/whatsapp-instruction.gif";
@@ -19,27 +22,31 @@ const Onboarding = () => {
   const [whatsappCode] = useState("A1B2C3D4");
   const [isLoading, setIsLoading] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
+  
+  // Bulk message fields
+  const [bulkName, setBulkName] = useState("Spring Sale Promotion");
+  const [bulkMessage, setBulkMessage] = useState("Hi! We're launching a special offer this week – 20% off for returning clients. Want to book a slot?");
+  
+  // Return automation fields
+  const [returnMessage, setReturnMessage] = useState("Hi! It's been a while since your last visit. We'd love to see you again – feel free to book your next appointment whenever it's convenient.");
+  const [returnPeriod, setReturnPeriod] = useState("30");
+  
+  // Review automation fields
+  const [reviewMessage, setReviewMessage] = useState("How would you rate your recent visit from 1 to 5? Your feedback helps us improve!");
+  const [minRating, setMinRating] = useState("4");
+  const [reviewLink, setReviewLink] = useState("https://g.page/your-business/review");
+  const [badReviewText, setBadReviewText] = useState("Thank you for your feedback. We're sorry to hear about your experience. We'd love to make it right – please reach out to us directly.");
+  const [goodReviewText, setGoodReviewText] = useState("Thank you so much! We'd really appreciate if you could share your experience here: https://g.page/your-business/review");
+  
   const navigate = useNavigate();
   const {
     toast
   } = useToast();
 
-  const goalDemos = {
-    "Return your old clients": {
-      title: "Client Return Automation",
-      explanation: "We automatically remind your clients to come back. You choose the interval (e.g., after 30, 60, or 90 days), and the system sends a friendly message that brings them back.",
-      message: "Hi Anna! It's been a while since your last visit. We'd love to see you again – feel free to book your next appointment whenever it's convenient."
-    },
-    "Increase reviews on maps": {
-      title: "Review Collection Automation",
-      explanation: "After each visit, your client receives a simple message asking for a rating. If they select 5 – they're asked to leave a public review. If they select 1–4 – the feedback stays private.",
-      message: "How would you rate your recent visit from 1 to 5? Your feedback helps us improve!"
-    },
-    "Send bulk messages": {
-      title: "Safe Mass Messaging",
-      explanation: "You can send promotional messages to your entire contact list safely. Your number stays protected and messages reach clients without being flagged as spam.",
-      message: "Hi! We're launching a special offer this week – 20% off for returning clients. Want to book a slot?"
-    }
+  const goalTagMap: Record<string, string> = {
+    "Return your old clients": "Return clients",
+    "Increase reviews on maps": "Increase Reviews",
+    "Send bulk messages": "Bulk Messages"
   };
   const businessCategories = [
     "Beauty & wellness",
@@ -87,10 +94,11 @@ const Onboarding = () => {
     setStep(2);
   };
 
-  const handleSendExample = () => {
+  const handleSendDemo = () => {
+    const currentGoal = selectedGoals[currentDemoIndex];
     toast({
-      title: "Example sent!",
-      description: "Check your WhatsApp for the demo message"
+      title: "Demo sent!",
+      description: `Check your WhatsApp to see how "${goalTagMap[currentGoal]}" works`
     });
   };
 
@@ -265,74 +273,213 @@ const Onboarding = () => {
             </div>
           </div>}
 
-        {/* Frame 2 - Demo of Selected Goals */}
+        {/* Frame 2 - Interactive Demo Configuration */}
         {step === 2 && (
           <div className="space-y-6 animate-fade-in max-w-2xl mx-auto">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
-                Here's how your goals work in practice
+                Create your first automation
               </h2>
+              <p className="text-muted-foreground">
+                Configure and test it yourself – we'll send it to your WhatsApp
+              </p>
             </div>
+
+            {/* Goal Tags Navigation (if multiple selected) */}
+            {selectedGoals.length > 1 && (
+              <div className="flex justify-center gap-2 flex-wrap">
+                {selectedGoals.map((goal, index) => (
+                  <Badge
+                    key={goal}
+                    variant={currentDemoIndex === index ? "default" : "outline"}
+                    className="cursor-pointer px-4 py-2 text-sm"
+                    onClick={() => setCurrentDemoIndex(index)}
+                  >
+                    {goalTagMap[goal]}
+                  </Badge>
+                ))}
+              </div>
+            )}
 
             {selectedGoals.length > 0 && (
               <div className="space-y-6">
-                {/* Demo Card */}
-                <div className="bg-muted/30 rounded-xl p-6 space-y-4 border-2 border-border">
-                  <h3 className="text-xl font-bold text-foreground">
-                    {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].title}
-                  </h3>
-                  
-                  <p className="text-foreground/80">
-                    {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].explanation}
-                  </p>
+                {/* Bulk Messages Demo */}
+                {selectedGoals[currentDemoIndex] === "Send bulk messages" && (
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="bulk-name">Campaign Name</Label>
+                      <Input
+                        id="bulk-name"
+                        value={bulkName}
+                        onChange={(e) => setBulkName(e.target.value)}
+                        placeholder="e.g., Spring Sale Promotion"
+                      />
+                    </div>
 
-                  {/* WhatsApp Message Preview */}
-                  <div className="bg-background rounded-lg p-4 border border-border">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        Preview
+                    <div className="space-y-2">
+                      <Label htmlFor="bulk-message">Message Text</Label>
+                      <Textarea
+                        id="bulk-message"
+                        value={bulkMessage}
+                        onChange={(e) => setBulkMessage(e.target.value)}
+                        rows={4}
+                        placeholder="Your promotional message..."
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Send to</Label>
+                      <div className="p-3 bg-muted rounded-md text-sm text-muted-foreground">
+                        Yourself (for testing)
                       </div>
                     </div>
-                    <div className="bg-[#DCF8C6] dark:bg-[#005C4B] rounded-lg rounded-tl-none p-3 max-w-[85%]">
-                      <p className="text-sm text-foreground">
-                        {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].message}
+
+                    <div className="space-y-2">
+                      <Label>When to send</Label>
+                      <div className="p-3 bg-muted rounded-md text-sm text-muted-foreground">
+                        Right now
+                      </div>
+                    </div>
+
+                    <Button onClick={handleSendDemo} className="w-full" size="lg">
+                      Send Test Message
+                    </Button>
+                  </div>
+                )}
+
+                {/* Return Automation Demo */}
+                {selectedGoals[currentDemoIndex] === "Return your old clients" && (
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="return-message">Message Text</Label>
+                      <Textarea
+                        id="return-message"
+                        value={returnMessage}
+                        onChange={(e) => setReturnMessage(e.target.value)}
+                        rows={4}
+                        placeholder="Your return message..."
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="return-period">Send every (days)</Label>
+                      <Input
+                        id="return-period"
+                        type="number"
+                        value={returnPeriod}
+                        onChange={(e) => setReturnPeriod(e.target.value)}
+                        placeholder="30"
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        This message will be automatically sent to clients every {returnPeriod} days after their last visit, gently reminding them about your business.
                       </p>
                     </div>
-                  </div>
 
-                  <Button 
-                    onClick={handleSendExample}
+                    <Button onClick={handleSendDemo} className="w-full" size="lg">
+                      Send Test Message
+                    </Button>
+                  </div>
+                )}
+
+                {/* Reviews Automation Demo */}
+                {selectedGoals[currentDemoIndex] === "Increase reviews on maps" && (
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="review-message">Initial Rating Request</Label>
+                      <Textarea
+                        id="review-message"
+                        value={reviewMessage}
+                        onChange={(e) => setReviewMessage(e.target.value)}
+                        rows={3}
+                        placeholder="Ask for rating..."
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="min-rating">Minimum rating to send review link</Label>
+                      <Input
+                        id="min-rating"
+                        type="number"
+                        min="1"
+                        max="5"
+                        value={minRating}
+                        onChange={(e) => setMinRating(e.target.value)}
+                        placeholder="4"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="review-link">Review Link (Google Maps or other platform)</Label>
+                      <Input
+                        id="review-link"
+                        value={reviewLink}
+                        onChange={(e) => setReviewLink(e.target.value)}
+                        placeholder="https://g.page/your-business/review"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="bad-review">Response for low ratings (1-{parseInt(minRating) - 1})</Label>
+                      <Textarea
+                        id="bad-review"
+                        value={badReviewText}
+                        onChange={(e) => setBadReviewText(e.target.value)}
+                        rows={3}
+                        placeholder="Response for feedback..."
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="good-review">Response for high ratings ({minRating}-5)</Label>
+                      <Textarea
+                        id="good-review"
+                        value={goodReviewText}
+                        onChange={(e) => setGoodReviewText(e.target.value)}
+                        rows={3}
+                        placeholder="Thank you message with review link..."
+                      />
+                    </div>
+
+                    <div className="p-3 bg-primary/10 border border-primary/20 rounded-lg text-sm text-foreground">
+                      💡 After sending, reply with a number from 1 to 5 to see how the automation responds
+                    </div>
+
+                    <Button onClick={handleSendDemo} className="w-full" size="lg">
+                      Send Test Message
+                    </Button>
+                  </div>
+                )}
+
+                {/* Navigation */}
+                {selectedGoals.length > 1 && (
+                  <div className="flex items-center justify-between gap-4 pt-4">
+                    <Button
+                      onClick={handlePrevDemo}
+                      variant="outline"
+                      disabled={currentDemoIndex === 0}
+                      className="flex-1"
+                    >
+                      Previous
+                    </Button>
+                    
+                    <Button
+                      onClick={handleNextDemo}
+                      className="flex-1"
+                    >
+                      {currentDemoIndex === selectedGoals.length - 1 ? "Continue to Next Step" : "Next Automation"}
+                    </Button>
+                  </div>
+                )}
+
+                {selectedGoals.length === 1 && (
+                  <Button
+                    onClick={() => setStep(3)}
                     variant="outline"
                     className="w-full"
                   >
-                    Send example to my WhatsApp
+                    Continue to Next Step
                   </Button>
-                </div>
-
-                {/* Navigation */}
-                <div className="flex items-center justify-between gap-4">
-                  <Button
-                    onClick={handlePrevDemo}
-                    variant="outline"
-                    disabled={currentDemoIndex === 0}
-                    className="flex-1"
-                  >
-                    Previous
-                  </Button>
-                  
-                  {selectedGoals.length > 1 && (
-                    <div className="text-sm text-muted-foreground">
-                      {currentDemoIndex + 1} / {selectedGoals.length}
-                    </div>
-                  )}
-                  
-                  <Button
-                    onClick={handleNextDemo}
-                    className="flex-1"
-                  >
-                    {currentDemoIndex === selectedGoals.length - 1 ? "Continue" : "Next"}
-                  </Button>
-                </div>
+                )}
               </div>
             )}
           </div>
