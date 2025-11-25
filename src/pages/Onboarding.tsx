@@ -12,6 +12,7 @@ import whatsappInstructionGif from "@/assets/whatsapp-instruction.gif";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+  const [currentDemoIndex, setCurrentDemoIndex] = useState(0);
   const [businessType, setBusinessType] = useState("");
   const [revenue, setRevenue] = useState("");
   const [averageCheck, setAverageCheck] = useState("");
@@ -22,6 +23,24 @@ const Onboarding = () => {
   const {
     toast
   } = useToast();
+
+  const goalDemos = {
+    "Return your old clients": {
+      title: "Client Return Automation",
+      explanation: "We automatically remind your clients to come back. You choose the interval (e.g., after 30, 60, or 90 days), and the system sends a friendly message that brings them back.",
+      message: "Hi Anna! It's been a while since your last visit. We'd love to see you again – feel free to book your next appointment whenever it's convenient."
+    },
+    "Increase reviews on maps": {
+      title: "Review Collection Automation",
+      explanation: "After each visit, your client receives a simple message asking for a rating. If they select 5 – they're asked to leave a public review. If they select 1–4 – the feedback stays private.",
+      message: "How would you rate your recent visit from 1 to 5? Your feedback helps us improve!"
+    },
+    "Send bulk messages": {
+      title: "Safe Mass Messaging",
+      explanation: "You can send promotional messages to your entire contact list safely. Your number stays protected and messages reach clients without being flagged as spam.",
+      message: "Hi! We're launching a special offer this week – 20% off for returning clients. Want to book a slot?"
+    }
+  };
   const businessCategories = [
     "Beauty & wellness",
     "Retail / eCommerce",
@@ -64,7 +83,29 @@ const Onboarding = () => {
       });
       return;
     }
+    setCurrentDemoIndex(0);
     setStep(2);
+  };
+
+  const handleSendExample = () => {
+    toast({
+      title: "Example sent!",
+      description: "Check your WhatsApp for the demo message"
+    });
+  };
+
+  const handleNextDemo = () => {
+    if (currentDemoIndex < selectedGoals.length - 1) {
+      setCurrentDemoIndex(currentDemoIndex + 1);
+    } else {
+      setStep(3);
+    }
+  };
+
+  const handlePrevDemo = () => {
+    if (currentDemoIndex > 0) {
+      setCurrentDemoIndex(currentDemoIndex - 1);
+    }
   };
 
   const handleBusinessSetup = () => {
@@ -79,7 +120,7 @@ const Onboarding = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      setStep(3);
+      setStep(4);
     }, 500);
   };
 
@@ -102,7 +143,7 @@ const Onboarding = () => {
         spread: 100,
         origin: { y: 0.6 }
       });
-      setStep(4);
+      setStep(5);
     }, 1000);
   };
   const handleConnectWhatsApp = () => {
@@ -120,11 +161,11 @@ const Onboarding = () => {
       <Card className="w-full max-w-2xl p-8 shadow-xl animate-fade-in relative z-10">
         {/* Progress Bar */}
         <div className="mb-8">
-          {step === 4 ? (
+          {step === 5 ? (
             <div className="w-full h-2 bg-primary rounded-full transition-all duration-500" />
           ) : (
             <div className="flex items-center gap-2">
-              {[1, 2, 3].map(stepNum => <div 
+              {[1, 2, 3, 4].map(stepNum => <div 
                   key={stepNum} 
                   className="flex-1 flex flex-col items-center gap-2"
                   onClick={() => {
@@ -224,8 +265,81 @@ const Onboarding = () => {
             </div>
           </div>}
 
-        {/* Frame 2 - About Your Business */}
-        {step === 2 && <div className="space-y-6 animate-fade-in max-w-md mx-auto">
+        {/* Frame 2 - Demo of Selected Goals */}
+        {step === 2 && (
+          <div className="space-y-6 animate-fade-in max-w-2xl mx-auto">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold text-foreground">
+                Here's how your goals work in practice
+              </h2>
+            </div>
+
+            {selectedGoals.length > 0 && (
+              <div className="space-y-6">
+                {/* Demo Card */}
+                <div className="bg-muted/30 rounded-xl p-6 space-y-4 border-2 border-border">
+                  <h3 className="text-xl font-bold text-foreground">
+                    {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].title}
+                  </h3>
+                  
+                  <p className="text-foreground/80">
+                    {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].explanation}
+                  </p>
+
+                  {/* WhatsApp Message Preview */}
+                  <div className="bg-background rounded-lg p-4 border border-border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                        Preview
+                      </div>
+                    </div>
+                    <div className="bg-[#DCF8C6] dark:bg-[#005C4B] rounded-lg rounded-tl-none p-3 max-w-[85%]">
+                      <p className="text-sm text-foreground">
+                        {goalDemos[selectedGoals[currentDemoIndex] as keyof typeof goalDemos].message}
+                      </p>
+                    </div>
+                  </div>
+
+                  <Button 
+                    onClick={handleSendExample}
+                    variant="outline"
+                    className="w-full"
+                  >
+                    Send example to my WhatsApp
+                  </Button>
+                </div>
+
+                {/* Navigation */}
+                <div className="flex items-center justify-between gap-4">
+                  <Button
+                    onClick={handlePrevDemo}
+                    variant="outline"
+                    disabled={currentDemoIndex === 0}
+                    className="flex-1"
+                  >
+                    Previous
+                  </Button>
+                  
+                  {selectedGoals.length > 1 && (
+                    <div className="text-sm text-muted-foreground">
+                      {currentDemoIndex + 1} / {selectedGoals.length}
+                    </div>
+                  )}
+                  
+                  <Button
+                    onClick={handleNextDemo}
+                    className="flex-1"
+                  >
+                    {currentDemoIndex === selectedGoals.length - 1 ? "Continue" : "Next"}
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Frame 3 - About Your Business */}
+        {step === 3 && <div className="space-y-6 animate-fade-in max-w-md mx-auto">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
                 About your business
@@ -306,8 +420,8 @@ const Onboarding = () => {
             </Button>
           </div>}
 
-        {/* Frame 3 - WhatsApp Authorization */}
-        {step === 3 && <div className="space-y-6 animate-fade-in max-w-lg mx-auto">
+        {/* Frame 4 - WhatsApp Authorization */}
+        {step === 4 && <div className="space-y-6 animate-fade-in max-w-lg mx-auto">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold text-foreground">
                 WhatsApp Authorization
@@ -386,8 +500,8 @@ const Onboarding = () => {
             </Button>
           </div>}
 
-        {/* Frame 4 - Success */}
-        {step === 4 && <div className="text-center space-y-6 animate-scale-in">
+        {/* Frame 5 - Success */}
+        {step === 5 && <div className="text-center space-y-6 animate-scale-in">
             <div className="flex justify-center mb-4">
               <div className="bg-primary/10 rounded-full p-8 animate-glow-pulse">
                 <CheckCircle2 className="w-20 h-20 text-primary" />
