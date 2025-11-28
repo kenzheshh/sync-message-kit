@@ -279,13 +279,11 @@ All colors MUST be HSL.
   }
 
   .gradient-wave-hover {
-    background: linear-gradient(135deg, #2781F5 0%, #31DDA9 50%, #56E727 100%);
-    background-size: 300% 300%;
+    background-size: 200% 200%;
     transition: all 0.3s ease;
   }
 
   .gradient-wave-hover:hover {
-    animation: gradient-wave 1.2s ease-in-out infinite;
-    background-size: 300% 300%;
+    animation: gradient-wave 1s ease-in-out infinite;
   }
 }

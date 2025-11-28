@@ -466,7 +466,12 @@ const New = () => {
 
               {/* Business Tariff - Black Friday Sale */}
               <Card className="border-4 border-primary hover:shadow-2xl transition-all relative overflow-hidden group">
-                <div className="absolute inset-0 opacity-90 gradient-wave-hover" />
+                <div 
+                  className="absolute inset-0 opacity-90 gradient-wave-hover"
+                  style={{
+                    background: 'linear-gradient(135deg, #2781F5 0%, #31DDA9 50%, #56E727 100%)'
+                  }}
+                />
                 <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-10">
                   Black Friday –50%
                 </div>
