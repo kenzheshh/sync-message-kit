@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, CreditCard, RefreshCw, Shield, TrendingUp, Users, CheckCircle, Check, MessageCircle, Mail, Phone, Brain, ArrowRight, Tag } from "lucide-react";
 import networkVisual from "@/assets/network-visual.png";
@@ -426,15 +427,21 @@ const New = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Start Tariff */}
               <Card className="border-2 hover:shadow-xl transition-all bg-background">
                 <CardContent className="p-8 space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">{t('new.pricing.starter.name')}</h3>
                     <p className="text-muted-foreground">{t('new.pricing.starter.desc')}</p>
                   </div>
-                  <div>
-                    <div className="text-5xl font-bold">{t('new.pricing.starter.price')}</div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="text-5xl font-bold">5 000 ₸</div>
+                      <Badge className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800">
+                        Trial – 3 days
+                      </Badge>
+                    </div>
                     <p className="text-muted-foreground">{t('new.pricing.starter.period')}</p>
                   </div>
                   <ul className="space-y-3">
@@ -457,73 +464,47 @@ const New = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-4 border-primary hover:shadow-2xl transition-all bg-background relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold">
-                  {t('new.pricing.business.badge')}
+              {/* Business Tariff - Black Friday Sale */}
+              <Card className="border-4 border-primary hover:shadow-2xl transition-all relative overflow-hidden">
+                <div 
+                  className="absolute inset-0 opacity-90"
+                  style={{
+                    background: 'linear-gradient(135deg, #2781F5 0%, #31DDA9 50%, #56E727 100%)'
+                  }}
+                />
+                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-10">
+                  Black Friday –50%
                 </div>
-                <CardContent className="p-8 space-y-6">
+                <CardContent className="p-8 space-y-6 relative z-10">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">{t('new.pricing.business.name')}</h3>
-                    <p className="text-muted-foreground">{t('new.pricing.business.desc')}</p>
+                    <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg">{t('new.pricing.business.name')}</h3>
+                    <p className="text-white/90 drop-shadow">{t('new.pricing.business.desc')}</p>
                   </div>
-                  <div>
-                    <div className="text-5xl font-bold">{t('new.pricing.business.price')}</div>
-                    <p className="text-muted-foreground">{t('new.pricing.business.period')}</p>
+                  <div className="space-y-2">
+                    <div className="text-2xl font-medium text-white/70 line-through">50 000 ₸</div>
+                    <div className="text-5xl font-bold text-white drop-shadow-lg">25 000 ₸</div>
+                    <p className="text-white/90 drop-shadow">{t('new.pricing.business.period')}</p>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.business.feature1')}</span>
+                      <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0 drop-shadow" />
+                      <span className="text-white drop-shadow">{t('new.pricing.business.feature1')}</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.business.feature2')}</span>
+                      <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0 drop-shadow" />
+                      <span className="text-white drop-shadow">{t('new.pricing.business.feature2')}</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.business.feature3')}</span>
+                      <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0 drop-shadow" />
+                      <span className="text-white drop-shadow">{t('new.pricing.business.feature3')}</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.business.feature4')}</span>
+                      <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0 drop-shadow" />
+                      <span className="text-white drop-shadow">{t('new.pricing.business.feature4')}</span>
                     </li>
                   </ul>
-                  <Button onClick={() => navigate("/auth")} className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Button onClick={() => navigate("/auth")} className="w-full h-12 bg-white text-gray-900 hover:bg-white/90 shadow-xl font-bold">
                     {t('new.pricing.business.cta')}
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:shadow-xl transition-all bg-background">
-                <CardContent className="p-8 space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">{t('new.pricing.pro.name')}</h3>
-                    <p className="text-muted-foreground">{t('new.pricing.pro.desc')}</p>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-bold">{t('new.pricing.pro.price')}</div>
-                    <p className="text-muted-foreground">{t('new.pricing.pro.period')}</p>
-                  </div>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.pro.feature1')}</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.pro.feature2')}</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.pro.feature3')}</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>{t('new.pricing.pro.feature4')}</span>
-                    </li>
-                  </ul>
-                  <Button onClick={() => navigate("/auth")} variant="outline" className="w-full h-12">
-                    {t('new.pricing.pro.cta')}
                   </Button>
                 </CardContent>
               </Card>
